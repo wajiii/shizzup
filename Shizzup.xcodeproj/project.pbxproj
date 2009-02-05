@@ -47,6 +47,7 @@
 		32A0B3510F3A420900EEB53C /* ShizzowIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShizzowIcon.png; sourceTree = "<group>"; };
 		32A0B3610F3A427B00EEB53C /* ShoutsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoutsDataSource.h; sourceTree = "<group>"; };
 		32A0B3620F3A427B00EEB53C /* ShoutsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutsDataSource.m; sourceTree = "<group>"; };
+		32A0B4180F3A8B3600EEB53C /* ShizzowConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShizzowConstants.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +138,7 @@
 				3254E71D0F383A7A0074A99F /* Shout.m */,
 				3254E7210F383AF60074A99F /* ShoutManager.h */,
 				3254E7220F383AF60074A99F /* ShoutManager.m */,
+				32A0B4180F3A8B3600EEB53C /* ShizzowConstants.h */,
 			);
 			name = "Shizzow Model";
 			path = Model;

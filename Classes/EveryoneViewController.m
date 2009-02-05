@@ -16,8 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ShoutManager *shoutManager = [[ShoutManager alloc] autorelease];
-    ShoutsDataSource *shoutsDataSource = [[ShoutsDataSource initWithManager:shoutManager] autorelease];
+    ShoutManager *shoutManager = [ShoutManager alloc];
+    ShoutsDataSource *shoutsDataSource = [ShoutsDataSource initWithManager:shoutManager];
     [tableView setDataSource:shoutsDataSource];
     [tableView setDelegate:shoutsDataSource];
 }

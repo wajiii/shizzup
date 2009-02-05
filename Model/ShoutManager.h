@@ -11,6 +11,7 @@
 
 @interface ShoutManager : NSObject {
     long limit;
+    NSString *responseText;
 }
 
 @property (nonatomic) long limit;
