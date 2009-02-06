@@ -16,3 +16,10 @@
 #define TEMP_USERNAME @"shizzup"
 #define TEMP_PASSWORD @"th3_shi1zzn1t"
 
+#define ICON_WIDTH 48.0
+#define ICON_HEIGHT 48.0
+#define ICON_CORNER_WIDTH 8.0
+#define ICON_CORNER_HEIGHT 8.0
+#define ICON_MARGIN_HORIZONTAL 8.0
+#define ICON_MARGIN_VERTICAL 4.0
+#define LABEL_FONT_SIZE 14.0

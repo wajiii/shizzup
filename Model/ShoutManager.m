@@ -9,10 +9,18 @@
 #import "ShoutManager.h"
 #import "Shout.h"
 #import "ShizzowConstants.h"
+#import "ImageManipulator.h"
 
 @implementation ShoutManager
 
 @synthesize limit;
+@synthesize callback;
+
+- (id) init {
+    [super init];
+    remoteImageCache = [NSDictionary alloc];
+    return self;
+}
 
 - (Shout *) createShout:(long)shoutId {
     Shout *dummy = [Shout alloc];
@@ -41,7 +49,6 @@
     
     NSURLCredentialStorage *credStore = [NSURLCredentialStorage sharedCredentialStorage];
     [credStore setDefaultCredential:credential forProtectionSpace:protectionSpace];
-    //[credStore saveOptions];
     NSLog(@"      credStore: %@", credStore);
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:apiUrl];
@@ -54,17 +61,6 @@
     NSLog(@"     connection: %@", connection);
     
     NSMutableArray *list = [[NSMutableArray alloc] init];
-    Shout *dummy = [self createShout:1];
-    [list addObject:dummy];
-    dummy = [self createShout:2];
-    [list addObject:dummy];
-    dummy = [self createShout:3];
-    [list addObject:dummy];
-    dummy = [self createShout:4];
-    [list addObject:dummy];
-    dummy = [self createShout:5];
-    dummy.icon = [UIImage imageNamed:@"DefaultPersonIcon.png"];
-    [list addObject:dummy];
     return list;
 }
 
@@ -100,8 +96,64 @@
     NSLog(@"responseText length: %d", [responseText length]);
 }
 
+- (UIImage *) getImageFromUrl:(NSURL *) url {
+    NSString *cacheKey = [url absoluteString];
+    UIImage *image = [remoteImageCache objectForKey:cacheKey];
+    if (image == nil) {
+        NSLog(@"iconCache miss for key %@", cacheKey);
+        NSData *imageData = [NSData dataWithContentsOfURL:url];
+        image = [UIImage imageWithData:imageData];
+        [remoteImageCache setValue:image forKey:cacheKey];
+    } else {
+        NSLog(@"iconCache hit for key %@", cacheKey);
+    }
+    return image;
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"ShoutManager:connectionDidFinishLoading connection:%@ responseText:\n%@", connection, responseText);
+    //NSLog(@"ShoutManager:connectionDidFinishLoading connection:%@ responseText:\n%@", connection, responseText);
+    NSLog(@"ShoutManager:connectionDidFinishLoading connection: %@", connection);
+    //NSLog(@"                                      responseText: %@", responseText);
+    NSDictionary *responseDictionary = [responseText JSONValue];
+    //NSLog(@"responseDictionary: %@: %@", [responseDictionary class], responseDictionary);
+    NSDictionary *results = [responseDictionary valueForKey:@"results"];
+    //NSLog(@"results: %@: %@", [results class], results);
+    NSArray *shoutArray = [results valueForKey:@"shouts"];
+    //NSLog(@"shouts: %@: %@", [shouts class], shouts);
+    NSMutableArray *newShouts = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [shoutArray count]; i++) {
+        NSDictionary *shout = [shoutArray objectAtIndex:i];
+        NSLog(@"shout: %@: %@", [shout class], shout);
+        NSString *shoutId = [shout valueForKey:@"shouts_history_id"];
+        NSLog(@"   shoutId: %@: %@", [shoutId class], shoutId);
+        id username = [shout valueForKey:@"people_name"];
+        NSLog(@"  username: %@: %@", [username class], username);
+        NSString *placeName = [shout valueForKey:@"places_name"];
+        NSLog(@"   placeName: %@: %@", [placeName class], placeName);
+        NSString *relativeShoutTime = [shout valueForKey:@"shout_time"];
+        NSLog(@"relativeShoutTime: %@: %@", [relativeShoutTime class], relativeShoutTime);
+        NSDictionary *iconAddresses = [shout valueForKey:@"people_images"];
+        NSLog(@"   iconAddresses: %@: %@", [iconAddresses class], placeName);
+        NSString *iconAddress = [iconAddresses valueForKey:@"people_image_48"];
+        NSLog(@"   iconAddress: %@: %@", [iconAddress class], iconAddress);
+        UIImage *roundedIcon;
+        if ([iconAddress compare:@"/images/people/people_48.jpg"] == 0) {
+            roundedIcon = nil;
+        } else {
+            NSURL *iconUrl = [NSURL URLWithString:iconAddress];
+            UIImage *icon = [self getImageFromUrl:iconUrl];
+            roundedIcon = [ImageManipulator makeRoundCornerImage:icon :ICON_CORNER_WIDTH :ICON_CORNER_HEIGHT];
+        }
+        Shout *newShout = [Shout alloc];
+        newShout.shoutId = [shoutId integerValue];
+        newShout.username = username;
+        newShout.relativeShoutTime = relativeShoutTime;
+        newShout.placeName = placeName;
+        newShout.message = [NSString stringWithFormat:@"%s - %s - %s", username, placeName, relativeShoutTime];
+        newShout.icon = roundedIcon;
+        [newShouts addObject:newShout];
+    }
+    [callback managerLoadedShouts:newShouts];
 }
 
 @end

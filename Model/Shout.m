@@ -10,8 +10,11 @@
 
 @implementation Shout
 
-@synthesize message;
 @synthesize shoutId;
+@synthesize username;
+@synthesize placeName;
+@synthesize relativeShoutTime;
+@synthesize message;
 @synthesize icon;
 
 + (Shout*) init:(long)historyId {

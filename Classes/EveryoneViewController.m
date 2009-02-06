@@ -12,14 +12,23 @@
 
 @implementation EveryoneViewController
 
+@synthesize spinnerView;
 @synthesize tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    spinnerView.hidesWhenStopped = YES;
+    [spinnerView startAnimating];
     ShoutManager *shoutManager = [ShoutManager alloc];
-    ShoutsDataSource *shoutsDataSource = [ShoutsDataSource initWithManager:shoutManager];
+    ShoutsDataSource *shoutsDataSource = [ShoutsDataSource initWithManager:shoutManager controller:self];
     [tableView setDataSource:shoutsDataSource];
     [tableView setDelegate:shoutsDataSource];
+}
+
+- (void) dataLoaded {
+    [spinnerView stopAnimating];
+    [tableView setHidden:NO];
+    [tableView reloadData];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
