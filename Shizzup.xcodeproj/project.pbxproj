@@ -15,7 +15,15 @@
 		282CCBFE0DB6C98000C4EA27 /* ListeningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282CCBFD0DB6C98000C4EA27 /* ListeningView.xib */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		32160C850F3FC76900C349D0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32160C840F3FC76900C349D0 /* CoreLocation.framework */; };
+		32160CE50F3FE0B400C349D0 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 32160CE40F3FE0B400C349D0 /* Place.m */; };
+		32160CE80F3FE0C000C349D0 /* PlaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32160CE70F3FE0C000C349D0 /* PlaceManager.m */; };
+		32160D280F3FF18200C349D0 /* ShizzowApiConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 32160D270F3FF18200C349D0 /* ShizzowApiConnection.m */; };
 		322F8F7F0F3C444F003C82E8 /* ImageManipulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F8F7E0F3C444F003C82E8 /* ImageManipulator.m */; };
+		322F90460F3D4EE9003C82E8 /* MainNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F90450F3D4EE9003C82E8 /* MainNavController.m */; };
+		322F906D0F3D500B003C82E8 /* ShoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F906C0F3D500B003C82E8 /* ShoutViewController.m */; };
+		322F906F0F3D503F003C82E8 /* ShoutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 322F906E0F3D503F003C82E8 /* ShoutView.xib */; };
+		324A82C20F403C1F0056857A /* PlacesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 324A82C10F403C1F0056857A /* PlacesDataSource.m */; };
 		3254E71E0F383A7A0074A99F /* Shout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3254E71D0F383A7A0074A99F /* Shout.m */; };
 		3254E7230F383AF60074A99F /* ShoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3254E7220F383AF60074A99F /* ShoutManager.m */; };
 		3254E8140F38D4910074A99F /* EveryoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3254E8130F38D4910074A99F /* EveryoneView.xib */; };
@@ -38,8 +46,22 @@
 		28A0AB4B0D9B1048005BE974 /* Shizzup_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shizzup_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32160C840F3FC76900C349D0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		32160CE30F3FE0B400C349D0 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		32160CE40F3FE0B400C349D0 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		32160CE60F3FE0C000C349D0 /* PlaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceManager.h; sourceTree = "<group>"; };
+		32160CE70F3FE0C000C349D0 /* PlaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceManager.m; sourceTree = "<group>"; };
+		32160D260F3FF18200C349D0 /* ShizzowApiConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShizzowApiConnection.h; sourceTree = "<group>"; };
+		32160D270F3FF18200C349D0 /* ShizzowApiConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShizzowApiConnection.m; sourceTree = "<group>"; };
 		322F8F7D0F3C444F003C82E8 /* ImageManipulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManipulator.h; sourceTree = "<group>"; };
 		322F8F7E0F3C444F003C82E8 /* ImageManipulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManipulator.m; sourceTree = "<group>"; };
+		322F90440F3D4EE9003C82E8 /* MainNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavController.h; sourceTree = "<group>"; };
+		322F90450F3D4EE9003C82E8 /* MainNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavController.m; sourceTree = "<group>"; };
+		322F906B0F3D500B003C82E8 /* ShoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoutViewController.h; sourceTree = "<group>"; };
+		322F906C0F3D500B003C82E8 /* ShoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutViewController.m; sourceTree = "<group>"; };
+		322F906E0F3D503F003C82E8 /* ShoutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoutView.xib; sourceTree = "<group>"; };
+		324A82C00F403C1F0056857A /* PlacesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesDataSource.h; sourceTree = "<group>"; };
+		324A82C10F403C1F0056857A /* PlacesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesDataSource.m; sourceTree = "<group>"; };
 		3254E71C0F383A7A0074A99F /* Shout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shout.h; sourceTree = "<group>"; };
 		3254E71D0F383A7A0074A99F /* Shout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shout.m; sourceTree = "<group>"; };
 		3254E7210F383AF60074A99F /* ShoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoutManager.h; sourceTree = "<group>"; };
@@ -62,6 +84,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
+				32160C850F3FC76900C349D0 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,14 +94,20 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				32A0B3610F3A427B00EEB53C /* ShoutsDataSource.h */,
-				32A0B3620F3A427B00EEB53C /* ShoutsDataSource.m */,
-				28216C950DB411BC00E5133A /* EveryoneViewController.h */,
-				28216C960DB411BC00E5133A /* EveryoneViewController.m */,
 				1D3623240D0F684500981E51 /* ShizzupAppDelegate.h */,
 				1D3623250D0F684500981E51 /* ShizzupAppDelegate.m */,
 				322F8F7D0F3C444F003C82E8 /* ImageManipulator.h */,
 				322F8F7E0F3C444F003C82E8 /* ImageManipulator.m */,
+				324A82C00F403C1F0056857A /* PlacesDataSource.h */,
+				324A82C10F403C1F0056857A /* PlacesDataSource.m */,
+				32A0B3610F3A427B00EEB53C /* ShoutsDataSource.h */,
+				32A0B3620F3A427B00EEB53C /* ShoutsDataSource.m */,
+				322F90440F3D4EE9003C82E8 /* MainNavController.h */,
+				322F90450F3D4EE9003C82E8 /* MainNavController.m */,
+				28216C950DB411BC00E5133A /* EveryoneViewController.h */,
+				28216C960DB411BC00E5133A /* EveryoneViewController.m */,
+				322F906B0F3D500B003C82E8 /* ShoutViewController.h */,
+				322F906C0F3D500B003C82E8 /* ShoutViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -117,11 +146,12 @@
 			isa = PBXGroup;
 			children = (
 				32A0B34F0F3A420900EEB53C /* Images */,
+				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				3254E8130F38D4910074A99F /* EveryoneView.xib */,
 				282CCBFD0DB6C98000C4EA27 /* ListeningView.xib */,
-				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* Info.plist */,
 				3254E81E0F38D5870074A99F /* SettingsView.xib */,
+				322F906E0F3D503F003C82E8 /* ShoutView.xib */,
+				8D1107310486CEB800E47090 /* Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -129,6 +159,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32160C840F3FC76900C349D0 /* CoreLocation.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
@@ -139,11 +170,17 @@
 		3254E6FB0F380D940074A99F /* Shizzow Model */ = {
 			isa = PBXGroup;
 			children = (
+				32A0B4180F3A8B3600EEB53C /* ShizzowConstants.h */,
+				32160D260F3FF18200C349D0 /* ShizzowApiConnection.h */,
+				32160D270F3FF18200C349D0 /* ShizzowApiConnection.m */,
+				32160CE30F3FE0B400C349D0 /* Place.h */,
+				32160CE40F3FE0B400C349D0 /* Place.m */,
+				32160CE60F3FE0C000C349D0 /* PlaceManager.h */,
+				32160CE70F3FE0C000C349D0 /* PlaceManager.m */,
 				3254E71C0F383A7A0074A99F /* Shout.h */,
 				3254E71D0F383A7A0074A99F /* Shout.m */,
 				3254E7210F383AF60074A99F /* ShoutManager.h */,
 				3254E7220F383AF60074A99F /* ShoutManager.m */,
-				32A0B4180F3A8B3600EEB53C /* ShizzowConstants.h */,
 			);
 			name = "Shizzow Model";
 			path = Model;
@@ -207,6 +244,7 @@
 				3254E81F0F38D5870074A99F /* SettingsView.xib in Resources */,
 				32A0B3520F3A420900EEB53C /* DefaultPersonIcon.png in Resources */,
 				32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */,
+				322F906F0F3D503F003C82E8 /* ShoutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +262,12 @@
 				3254E7230F383AF60074A99F /* ShoutManager.m in Sources */,
 				32A0B3630F3A427B00EEB53C /* ShoutsDataSource.m in Sources */,
 				322F8F7F0F3C444F003C82E8 /* ImageManipulator.m in Sources */,
+				322F90460F3D4EE9003C82E8 /* MainNavController.m in Sources */,
+				322F906D0F3D500B003C82E8 /* ShoutViewController.m in Sources */,
+				32160CE50F3FE0B400C349D0 /* Place.m in Sources */,
+				32160CE80F3FE0C000C349D0 /* PlaceManager.m in Sources */,
+				32160D280F3FF18200C349D0 /* ShizzowApiConnection.m in Sources */,
+				324A82C20F403C1F0056857A /* PlacesDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

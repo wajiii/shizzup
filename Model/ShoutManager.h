@@ -9,10 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Shout.h"
 
-// Notification handler interface
-//@interface ShoutManagerCallback
-//- (void) shoutManagerFinishedLoading;
-//@end
 @protocol ShoutManagerCallback
 - (void) managerLoadedShouts:(NSArray *) shouts;
 @end

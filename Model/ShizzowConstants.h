@@ -12,7 +12,9 @@
 #define SHIZZOW_API_URL_PREFIX  @"https://v0.api.shizzow.com:443"
 #define SHIZZOW_API_PATH_PLACES @"/places"
 #define SHIZZOW_API_PATH_SHOUTS @"/shouts"
-
+#define SHIZZOW_API_PLACES_RADIUS_DEFAULT 0.5
+#define SHIZZOW_API_PLACES_RADIUSUNIT_DEFAULT @"km"
+#define SHIZZOW_API_PLACES_LIMIT_DEFAULT 50
 #define TEMP_USERNAME @"shizzup"
 #define TEMP_PASSWORD @"th3_shi1zzn1t"
 

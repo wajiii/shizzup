@@ -8,19 +8,18 @@
 
 #import "ShizzupAppDelegate.h"
 
-
 @implementation ShizzupAppDelegate
 
 @synthesize window;
+@synthesize navController;
 @synthesize tabBarController;
-
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
     // Add the tab bar controller's current view as a subview of the window
-    [window addSubview:tabBarController.view];
+    //[window addSubview:tabBarController.view];
+    [window addSubview:navController.view];
 }
-
 
 /*
 // Optional UITabBarControllerDelegate method
@@ -34,7 +33,6 @@
 }
 */
 
-
 - (void)dealloc {
     [tabBarController release];
     [window release];
@@ -42,4 +40,3 @@
 }
 
 @end
-

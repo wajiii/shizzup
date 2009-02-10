@@ -46,7 +46,7 @@
     } else {
         NSLog(@"Oops! Requested row %u, but shout count is %u.", row, [shouts count]);
     }
-    NSLog(@"getShoutForRow %u = %@", row, shout);
+    //NSLog(@"getShoutForRow %u = %@", row, shout);
     return shout;
 }
 
@@ -71,7 +71,7 @@
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Getting cell for row at index path: %@", indexPath);
+    //NSLog(@"ShoutsDataSource cellForRowAtIndexPath: %@", indexPath);
     NSUInteger shoutIndex = [indexPath indexAtPosition:([indexPath length]-1)];
     Shout *shout = [self getShoutForRow:shoutIndex];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_REUSE_ID];
@@ -85,7 +85,7 @@
         cell.opaque = 1.0;
         
         CGSize cellFrameSize = cell.frame.size;
-        NSLog(@"cell frame size width, height: %f, %f", cellFrameSize.width, cellFrameSize.height);
+        //NSLog(@"cell frame size width, height: %f, %f", cellFrameSize.width, cellFrameSize.height);
         
         // Add label
         //UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(68, 0, (cellFrameSize.width-68), cell.frame.size.height)] autorelease];
@@ -125,18 +125,18 @@
             CGSize cellSize = [shout.message sizeWithFont:[UIFont systemFontOfSize:12] forWidth:320 lineBreakMode:UILineBreakModeWordWrap];
             result = cellSize.height;
         }
-        NSLog(@"row %d (shout %@) height: %d", shoutIndex, shout, result);
+        //NSLog(@"row %d (shout %@) height: %d", shoutIndex, shout, result);
         //        NSString *ageString = @"10 minutes ago";
         //        CGSize ageSize = [ageString sizeWithFont:[UIFont systemFontOfSize:LABEL_FONT_SIZE]];
         //        result += ageSize.height;
         //        NSLog(@"          updated height: %d", shoutIndex, shout, result);
         if (result < CELL_HEIGHT_MIN) {
             result = CELL_HEIGHT_MIN;
-            NSLog(@"Generated row height was too small; overridden to %5.1f.", result);
+            //NSLog(@"Generated row height was too small; overridden to %5.1f.", result);
         }
     }
     @catch (NSException * e) {
-        NSLog(@"Caught exception in ShoutsDataSource:heightForRowAtIndexPath: %@ %@\n%@", [e name], [e reason], [e callStackReturnAddresses]);
+        //NSLog(@"Caught exception in ShoutsDataSource:heightForRowAtIndexPath: %@ %@\n%@", [e name], [e reason], [e callStackReturnAddresses]);
     }
     return result;
 }
