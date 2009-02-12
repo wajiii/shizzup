@@ -7,15 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RMMapView.h>
 
-@interface EveryoneViewController : UIViewController {
+@interface EveryoneViewController : UIViewController <RMMapViewDelegate> {
     UITableView *tableView;
     UIActivityIndicatorView *spinnerView;
+    UIBarButtonItem *mapButton;
+    BOOL viewIsMap;
+    UIView *nonMapView;
+    RMMapView *mapView;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *spinnerView;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *mapButton;
 
-- (void) dataLoaded;
+- (void) dataLoaded:(NSArray *) shouts;
+- (IBAction) mapButtonPressed;
+- (void) updateMarkersWithShouts:(NSArray *)shouts;
 
 @end

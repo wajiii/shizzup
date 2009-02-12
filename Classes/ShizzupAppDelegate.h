@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RMMapView.h>
 
 @interface ShizzupAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     UIWindow *window;

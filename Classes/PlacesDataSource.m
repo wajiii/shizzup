@@ -7,6 +7,7 @@
 //
 
 #import "PlacesDataSource.h"
+#import "MainNavController.h"
 
 #define CELL_REUSE_ID            @"PlaceCell"
 #define CELL_HEIGHT_MIN         36.0
@@ -26,7 +27,6 @@
     PlacesDataSource *source = [[PlacesDataSource alloc] init];
     [source setController:controller];
     [manager setDelegate:source];
-//    [manager findPlaces];
     return source;
 }
 
@@ -53,6 +53,15 @@ NSInteger distanceSort(id place1, id place2, void *context) {
     }
 //    NSLog(@"   - places: %@", places);
     [controller dataLoaded];
+}
+
+- (void) placeManager:(PlaceManager *) manager loadError:(NSError *) error {
+    if (error != nil) {
+        NSString *alertTitle = [NSString stringWithFormat:@"Connection Error (%d)", [error code]];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle message:[error description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+        [alert show];
+    }
+    [(MainNavController *)[controller parentViewController] exitShoutView];
 }
 
 - (Place *) getPlaceForIndexPath:(NSIndexPath *)indexPath {

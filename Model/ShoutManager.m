@@ -9,29 +9,19 @@
 #import "ShoutManager.h"
 #import "Shout.h"
 #import "ShizzowConstants.h"
-#import "ImageManipulator.h"
 
 @implementation ShoutManager
 
 @synthesize limit;
-@synthesize callback;
+@synthesize delegate;
 
 - (id) init {
     [super init];
-    remoteImageCache = [NSDictionary alloc];
     return self;
 }
 
-- (Shout *) createShout:(long)shoutId {
-    Shout *dummy = [Shout alloc];
-    dummy.shoutId = shoutId;
-    dummy.message = [NSString stringWithFormat:@"Hello, Shizzow!  %u: Someone-or-other shouted from such-and-such a place a certain amount of time ago.", shoutId];
-    //NSLog([NSString stringWithFormat:@"Shout %u: %@", dummy.shoutId, dummy.message]);
-    return dummy;
-}
-
-- (NSArray*) getList {
-    NSString *apiUrlString = [NSString stringWithFormat:@"%@%@", SHIZZOW_API_URL_PREFIX, SHIZZOW_API_PATH_SHOUTS];
+- (void) findShouts {
+    NSString *apiUrlString = [NSString stringWithFormat:@"%@%@?limit=%d", SHIZZOW_API_URL_PREFIX, SHIZZOW_API_PATH_SHOUTS, SHIZZOW_API_SHOUTS_LIMIT_DEFAULT];
     //NSLog(@"   apiUrlString: %@", apiUrlString);
     
     NSURL *apiUrl = [NSURL URLWithString:apiUrlString];
@@ -51,10 +41,10 @@
     [credStore setDefaultCredential:credential forProtectionSpace:protectionSpace];
     //NSLog(@"      credStore: %@", credStore);
     
-    //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:apiUrl];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:apiUrl];
     //NSLog(@"        request: %@", request);
     
-    // TODO: Find a better way around this!  Perhaps user should be prompted, a la Safari's invalid-certificate handling.
+    // TODO: Find a better way around this!  User should probably be prompted, a la Safari's invalid-certificate handling.
     @try {
         [NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[apiUrl host]];
     }
@@ -62,16 +52,15 @@
         NSLog(@"Error attempting to override certificate handling; API calls will probably fail.\nException %@ (%@): %@", [e class], [e name], [e description]);
     }
     
-    //NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    // Silly hack to avoid "unused variable" warning.
+    [connection class];
     //NSLog(@"     connection: %@", connection);
-    
-    NSMutableArray *list = [[NSMutableArray alloc] init];
-    return list;
 }
 
 - (void) connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     NSInteger failureCount = [challenge previousFailureCount];
-    //NSLog(@"ShoutManager:didRecieveAuthenticationChallenge; previous failure count: %d", failureCount);
+    NSLog(@"ShoutManager:didRecieveAuthenticationChallenge; previous failure count: %d", failureCount);
     if (failureCount == 0) {
         NSURLCredential *newCredential = [NSURLCredential credentialWithUser:TEMP_USERNAME
                                                                     password:TEMP_PASSWORD
@@ -91,7 +80,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    //NSLog(@"ShoutManager:didReceiveData connection:%@ data.length:%u", connection, [data length]);
+    NSLog(@"ShoutManager:didReceiveData connection:%@ data.length:%u", connection, [data length]);
     NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     if (responseText == nil) {
         responseText = dataString;
@@ -101,23 +90,9 @@
     //NSLog(@"responseText length: %d", [responseText length]);
 }
 
-- (UIImage *) getImageFromUrl:(NSURL *) url {
-    NSString *cacheKey = [url absoluteString];
-    UIImage *image = [remoteImageCache objectForKey:cacheKey];
-    if (image == nil) {
-        //NSLog(@"iconCache miss for key %@", cacheKey);
-        NSData *imageData = [NSData dataWithContentsOfURL:url];
-        image = [UIImage imageWithData:imageData];
-        [remoteImageCache setValue:image forKey:cacheKey];
-    } else {
-        //NSLog(@"iconCache hit for key %@", cacheKey);
-    }
-    return image;
-}
-
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     //NSLog(@"ShoutManager:connectionDidFinishLoading connection:%@ responseText:\n%@", connection, responseText);
-    //NSLog(@"ShoutManager:connectionDidFinishLoading connection: %@", connection);
+    NSLog(@"ShoutManager:connectionDidFinishLoading connection: %@", connection);
     //NSLog(@"                                      responseText: %@", responseText);
     NSDictionary *responseDictionary = [responseText JSONValue];
     //NSLog(@"responseDictionary: %@: %@", [responseDictionary class], responseDictionary);
@@ -125,40 +100,13 @@
     //NSLog(@"results: %@: %@", [results class], results);
     NSArray *shoutArray = [results valueForKey:@"shouts"];
     //NSLog(@"shouts: %@: %@", [shouts class], shouts);
-    NSMutableArray *newShouts = [[NSMutableArray alloc] init];
+    NSMutableArray *newShouts = [[[NSMutableArray alloc] init] retain];
     for (int i = 0; i < [shoutArray count]; i++) {
-        NSDictionary *shout = [shoutArray objectAtIndex:i];
-        //NSLog(@"shout: %@: %@", [shout class], shout);
-        NSString *shoutId = [shout valueForKey:@"shouts_history_id"];
-        //NSLog(@"   shoutId: %@: %@", [shoutId class], shoutId);
-        id username = [shout valueForKey:@"people_name"];
-        //NSLog(@"  username: %@: %@", [username class], username);
-        NSString *placeName = [shout valueForKey:@"places_name"];
-        //NSLog(@"   placeName: %@: %@", [placeName class], placeName);
-        NSString *relativeShoutTime = [shout valueForKey:@"shout_time"];
-        //NSLog(@"relativeShoutTime: %@: %@", [relativeShoutTime class], relativeShoutTime);
-        NSDictionary *iconAddresses = [shout valueForKey:@"people_images"];
-        //NSLog(@"   iconAddresses: %@: %@", [iconAddresses class], placeName);
-        NSString *iconAddress = [iconAddresses valueForKey:@"people_image_48"];
-        //NSLog(@"   iconAddress: %@: %@", [iconAddress class], iconAddress);
-        UIImage *roundedIcon;
-        if ([iconAddress compare:@"/images/people/people_48.jpg"] == 0) {
-            roundedIcon = nil;
-        } else {
-            NSURL *iconUrl = [NSURL URLWithString:iconAddress];
-            UIImage *icon = [self getImageFromUrl:iconUrl];
-            roundedIcon = [ImageManipulator makeRoundCornerImage:icon :ICON_CORNER_WIDTH :ICON_CORNER_HEIGHT];
-        }
-        Shout *newShout = [Shout alloc];
-        newShout.shoutId = [shoutId integerValue];
-        newShout.username = username;
-        newShout.relativeShoutTime = relativeShoutTime;
-        newShout.placeName = placeName;
-        newShout.message = [NSString stringWithFormat:@"%s - %s - %s", username, placeName, relativeShoutTime];
-        newShout.icon = roundedIcon;
-        [newShouts addObject:newShout];
+        NSDictionary *shoutDict = [shoutArray objectAtIndex:i];
+        Shout *shout = [Shout initWithDict:shoutDict fromManager:self];
+        [newShouts addObject:[shout retain]];
     }
-    [callback managerLoadedShouts:newShouts];
+    [delegate managerLoadedShouts:newShouts];
 }
 
 @end

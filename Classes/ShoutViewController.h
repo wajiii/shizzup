@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CLLocationManagerDelegate.h>
+#import <RMMapView.h>
 #import "PlaceManager.h"
 
 @interface ShoutViewController : UIViewController <CLLocationManagerDelegate> {
@@ -18,6 +19,7 @@
     UILabel *locationLabel;
     UIActivityIndicatorView *spinnerView;
     UITableView *tableView;
+    RMMapView *mapView;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *altitudeLabel;
@@ -25,6 +27,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *locationLabel;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *spinnerView;
+@property (nonatomic, retain) IBOutlet RMMapView *mapView;
 
 - (void) dataLoaded;
 

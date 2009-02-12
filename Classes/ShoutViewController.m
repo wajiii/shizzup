@@ -18,6 +18,7 @@
 @synthesize locationLabel;
 @synthesize spinnerView;
 @synthesize tableView;
+@synthesize mapView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,6 +43,11 @@
     [locationManager stopUpdatingLocation];
     [super viewDidDisappear:animated];
 }
+
+// At this point, our view orientation is set to the new orientation.
+//- (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration {
+//    [tableView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+//}
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     NSLog(@"New location: %@", newLocation);

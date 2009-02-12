@@ -10,8 +10,11 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Place.h"
 
+@class PlaceManager;
+
 @protocol PlaceManagerDelegate
 - (void) managerLoadedPlaces:(NSArray *) places;
+- (void) placeManager:(PlaceManager *) manager loadError:(NSError *) error;
 @end
 
 @interface PlaceManager : NSObject {

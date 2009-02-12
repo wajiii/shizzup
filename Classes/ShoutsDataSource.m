@@ -27,10 +27,8 @@
 
 + (ShoutsDataSource *) initWithManager:(ShoutManager *)manager controller:(EveryoneViewController *)controller{
     ShoutsDataSource *source = [[ShoutsDataSource alloc] init];
-    [manager setCallback:source];
-    NSArray* shouts = [manager getList];
     [source setController:controller];
-    [source setShouts:shouts];
+    [manager setDelegate:source];
     return source;
 }
 
@@ -68,6 +66,18 @@
     imageView.image = icon;
 }
 
+- (NSString *) textForShout: (Shout *) shout  {
+    if (shout == nil) {
+        NSLog(@"WTF, passing nil to textForShout?!");
+        return @"WTF";
+    }
+    NSString *username = shout.username;
+    NSString *placeName = shout.placeName;
+    NSString *relativeShoutTime = shout.relativeShoutTime;
+    NSString *shoutText = [NSString stringWithFormat:@"%@ shouted from %@ %@", username, placeName, relativeShoutTime];
+    return shoutText;
+}
+
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -99,7 +109,7 @@
         label.textAlignment = UITextAlignmentLeft;
         //label.textColor = [UIColor blueColor];
         //label.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
-        label.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
+        label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [label setNumberOfLines:(cellFrameSize.height / LABEL_FONT_SIZE)];
         label.lineBreakMode = UILineBreakModeWordWrap;
         [cell.contentView addSubview:label];
@@ -108,10 +118,7 @@
     // Set icon
     [self setIcon:shout.icon forCell:cell];
     
-    NSString *shoutText = [NSString stringWithFormat:@"%@ shouted from %@ %@", shout.username, shout.placeName, shout.relativeShoutTime];
-    //    if (shout.message != nil && [shout.message length] > 0) {
-    //        shoutText = [shoutText stringByAppendingString:[NSString stringWithFormat:@"\n%@", shout.message]];
-    //    }
+    NSString *shoutText = [self textForShout: shout];
     [(UILabel*)[cell.contentView viewWithTag:TAG_LABEL] setText:shoutText];
     return cell;
 }
@@ -121,8 +128,9 @@
     @try {
         NSUInteger shoutIndex = [indexPath indexAtPosition:([indexPath length]-1)];
         Shout *shout = [self getShoutForRow:shoutIndex];
+        NSString *shoutText = [self textForShout: shout];
         if (shout != nil) {
-            CGSize cellSize = [shout.message sizeWithFont:[UIFont systemFontOfSize:12] forWidth:320 lineBreakMode:UILineBreakModeWordWrap];
+            CGSize cellSize = [shoutText sizeWithFont:[UIFont systemFontOfSize:12] forWidth:320 lineBreakMode:UILineBreakModeWordWrap];
             result = cellSize.height;
         }
         //NSLog(@"row %d (shout %@) height: %d", shoutIndex, shout, result);
@@ -132,7 +140,7 @@
         //        NSLog(@"          updated height: %d", shoutIndex, shout, result);
         if (result < CELL_HEIGHT_MIN) {
             result = CELL_HEIGHT_MIN;
-            //NSLog(@"Generated row height was too small; overridden to %5.1f.", result);
+            NSLog(@"Generated row height was too small; overridden to %5.1f.", result);
         }
     }
     @catch (NSException * e) {
@@ -143,7 +151,7 @@
 
 - (void) managerLoadedShouts:(NSArray *)newShouts {
     [self setShouts:newShouts];
-    [controller dataLoaded];
+    [controller dataLoaded:newShouts];
 }
 
 @end

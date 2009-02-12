@@ -9,6 +9,9 @@
 
 #import "ImageManipulator.h"
 
+#define ICON_CORNER_WIDTH 8.0
+#define ICON_CORNER_HEIGHT 8.0
+
 @implementation ImageManipulator
 
 static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWidth, float ovalHeight)
@@ -32,7 +35,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     CGContextRestoreGState(context);
 }
 
-+(UIImage *)makeRoundCornerImage : (UIImage*) img : (int) cornerWidth : (int) cornerHeight
++(UIImage *) makeRoundCornerImage:(UIImage*)img :(int)cornerWidth :(int)cornerHeight
 {
     int w = img.size.width;
     int h = img.size.height;
@@ -54,6 +57,26 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     //[img release];
     
     return [UIImage imageWithCGImage:imageMasked];
+}
+
++ (UIImage *) getImageForUrl:(NSURL *) url {
+    UIImage *image = nil;
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:5];
+    NSURLResponse *response;
+    NSError *error;
+    NSData *imageData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if ([error code] != 0) {
+        NSLog(@"Error retrieving \"%@\"!  %@", url, error);
+    } else {
+        image = [UIImage imageWithData:imageData];
+    }
+    return image;
+}
+
++ (UIImage *) getIconForUrl:(NSURL *) url {
+    UIImage *icon = [self getImageForUrl:url];
+    UIImage *roundedIcon = [ImageManipulator makeRoundCornerImage:icon :ICON_CORNER_WIDTH :ICON_CORNER_HEIGHT];
+    return roundedIcon;
 }
 
 @end

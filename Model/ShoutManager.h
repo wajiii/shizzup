@@ -9,20 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "Shout.h"
 
-@protocol ShoutManagerCallback
+@protocol ShoutManagerDelegate
 - (void) managerLoadedShouts:(NSArray *) shouts;
 @end
 
 @interface ShoutManager : NSObject {
     long limit;
     NSString *responseText; 
-    id<ShoutManagerCallback> callback;
-    NSDictionary *remoteImageCache;
+    id<ShoutManagerDelegate> delegate;
 }
 
 @property (nonatomic) long limit;
-@property (nonatomic, retain) id<ShoutManagerCallback> callback;
+@property (nonatomic, retain) id<ShoutManagerDelegate> delegate;
 
-- (NSArray*) getList;
+- (void) findShouts;
 
 @end

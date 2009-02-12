@@ -78,7 +78,7 @@
 					</object>
 					<object class="IBUILabel" id="1017726292">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">291</int>
 						<string key="NSFrame">{{98, 8}, {202, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -92,7 +92,7 @@
 					</object>
 					<object class="IBUILabel" id="1019629897">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">291</int>
 						<string key="NSFrame">{{98, 37}, {202, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -106,7 +106,7 @@
 					</object>
 					<object class="IBUITableView" id="850579217">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">-2147483374</int>
+						<int key="NSvFlags">-2147483366</int>
 						<string key="NSFrame">{{0, 66}, {320, 350}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -116,6 +116,14 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+						<double key="IBUIContentInset.top">0.000000e+00</double>
+						<double key="IBUIContentInset.bottom">0.000000e+00</double>
+						<double key="IBUIContentInset.left">1.000000e+00</double>
+						<double key="IBUIContentInset.right">0.000000e+00</double>
+						<double key="IBUIScrollIndicatorInsets.top">0.000000e+00</double>
+						<double key="IBUIScrollIndicatorInsets.bottom">0.000000e+00</double>
+						<double key="IBUIScrollIndicatorInsets.left">0.000000e+00</double>
+						<double key="IBUIScrollIndicatorInsets.right">1.000000e+00</double>
 						<bool key="IBUIBouncesZoom">NO</bool>
 						<int key="IBUISeparatorStyle">1</int>
 						<int key="IBUISectionIndexMinimumDisplayRowCount">1</int>
@@ -126,7 +134,7 @@
 					</object>
 					<object class="IBUIActivityIndicatorView" id="814619793">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">301</int>
+						<int key="NSvFlags">269</int>
 						<string key="NSFrame">{{150, 195}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>

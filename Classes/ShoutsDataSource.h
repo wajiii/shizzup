@@ -10,7 +10,7 @@
 #import "EveryoneViewController.h"
 #import "ShoutManager.h"
 
-@interface ShoutsDataSource : NSMutableArray <ShoutManagerCallback, UITableViewDataSource, UITableViewDelegate> {
+@interface ShoutsDataSource : NSMutableArray <ShoutManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
     UIImage *defaultPersonIcon;
     NSArray* shouts;
     EveryoneViewController *controller;

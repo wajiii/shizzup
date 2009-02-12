@@ -13,6 +13,7 @@
     ShoutViewController *shoutViewController;
 }
 
-- (IBAction) pushShoutView;
+- (IBAction) enterShoutView;
+- (IBAction) exitShoutView;
 
 @end

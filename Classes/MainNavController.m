@@ -12,7 +12,7 @@
 
 //@synthesize shoutViewController;
 
-- (IBAction) pushShoutView {
+- (IBAction) enterShoutView {
     if (shoutViewController == nil)
     {
         shoutViewController = [ShoutViewController alloc];
@@ -21,14 +21,23 @@
     [self pushViewController:shoutViewController animated:YES];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    NSLog(@"MainNavController viewDidAppear:%@", animated);
-    [self pushShoutView];
+- (IBAction) exitShoutView {
+    [self popViewControllerAnimated:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    NSLog(@"MainNavController viewDidAppear:%@", animated);
+    //[self enterShoutView];
+}
+
+// Notification of rotation beginning.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
+
+// At this point, our view orientation is set to the new orientation.
+//- (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration {
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview

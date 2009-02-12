@@ -30,12 +30,6 @@
     [api callUri:apiUriStub delegate:self];
 }
 
-- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response {
-    NSLog(@"PlaceManager.willSendRequest: %@, %@, %@", connection, request, response);
-    //    return [super connection:connection willSendRequest:request redirectResponse:response];
-    return request;
-}
-
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     NSLog(@"PlaceManager didReceiveAuthenticationChallenge: %@, %@", connection, challenge);
     NSInteger failureCount = [challenge previousFailureCount];
@@ -52,10 +46,6 @@
         //[self showPreferencesCredentialsAreIncorrectPanel:self];
         NSLog(@"Cancelling authentication attempt after %d failures.", failureCount);
     }
-}
-
-- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    NSLog(@"PlaceManager didCancelAuthenticationChallenge: %@, %@", connection, challenge);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -90,22 +80,22 @@
     } else  {
         [responseText stringByAppendingString:dataString];
     }
-//    NSLog(@"responseText length: %d", [responseText length]);
+    //    NSLog(@"responseText length: %d", [responseText length]);
     //    [super connection:connection didReceiveData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-//    NSLog(@"PlaceManager:connectionDidFinishLoading connection: %@", connection);
+    //    NSLog(@"PlaceManager:connectionDidFinishLoading connection: %@", connection);
     NSDictionary *responseDictionary = [responseText JSONValue];
-//    NSLog(@"   - responseDictionary: %@: %@", [responseDictionary class], responseDictionary);
+    //    NSLog(@"   - responseDictionary: %@: %@", [responseDictionary class], responseDictionary);
     NSDictionary *results = [responseDictionary valueForKey:@"results"];
-//    NSLog(@"   - results: %@: %@", [results class], results);
+    //    NSLog(@"   - results: %@: %@", [results class], results);
     NSArray *placeArray = [results valueForKey:@"places"];
-//    NSLog(@"   - placeArray: %@: %@", [placeArray class], placeArray);
+    //    NSLog(@"   - placeArray: %@: %@", [placeArray class], placeArray);
     NSMutableArray *places = [[NSMutableArray alloc] init];
     for (int i = 0; i < [placeArray count]; i++) {
         NSDictionary *placeDict = [placeArray objectAtIndex:i];
-//        NSLog(@"      - placeDict: %@: %@", [placeDict class], placeDict);
+        //        NSLog(@"      - placeDict: %@: %@", [placeDict class], placeDict);
         Place *place = [Place alloc];
         [place initFromDict:placeDict];
         [places addObject:place];
@@ -115,7 +105,11 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"PlaceManager didFailWithError: %@, %@", connection, error);
-    //    [super connection:connection didFailWithError:error];
+    [delegate placeManager:self loadError:error];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [delegate placeManager:self loadError:nil];
 }
 
 @end

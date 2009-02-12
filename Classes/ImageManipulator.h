@@ -12,6 +12,8 @@
 @interface ImageManipulator : NSObject {
 }
 
-+(UIImage *)makeRoundCornerImage:(UIImage*)img :(int) cornerWidth :(int) cornerHeight;
++ (UIImage *) makeRoundCornerImage:(UIImage*)img :(int) cornerWidth :(int) cornerHeight;
++ (UIImage *) getImageForUrl:(NSURL *) url;
++ (UIImage *) getIconForUrl:(NSURL *) url;
 
 @end

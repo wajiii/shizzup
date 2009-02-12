@@ -19,6 +19,19 @@
 		32160CE50F3FE0B400C349D0 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 32160CE40F3FE0B400C349D0 /* Place.m */; };
 		32160CE80F3FE0C000C349D0 /* PlaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32160CE70F3FE0C000C349D0 /* PlaceManager.m */; };
 		32160D280F3FF18200C349D0 /* ShizzowApiConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 32160D270F3FF18200C349D0 /* ShizzowApiConnection.m */; };
+		321E7F140F420A0D00E4B1C6 /* plan.html in Resources */ = {isa = PBXBuildFile; fileRef = 321E7F130F420A0D00E4B1C6 /* plan.html */; };
+		321E7F180F420A8800E4B1C6 /* plan.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 321E7F170F420A8800E4B1C6 /* plan.rtf */; };
+		321E7F7B0F421A4800E4B1C6 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321E7F340F42191B00E4B1C6 /* libMapView.a */; };
+		321E7F840F421AA300E4B1C6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321E7F830F421AA300E4B1C6 /* QuartzCore.framework */; };
+		321E7F860F421AB100E4B1C6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 321E7F850F421AB100E4B1C6 /* libsqlite3.dylib */; };
+		321E7FB20F421C1700E4B1C6 /* ListeningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 321E7FB10F421C1700E4B1C6 /* ListeningViewController.m */; };
+		321E7FF20F42207000E4B1C6 /* marker-blue-withletter.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FEE0F42207000E4B1C6 /* marker-blue-withletter.png */; };
+		321E7FF30F42207000E4B1C6 /* marker-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FEF0F42207000E4B1C6 /* marker-blue.png */; };
+		321E7FF40F42207000E4B1C6 /* marker-red-withletter.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */; };
+		321E7FF50F42207000E4B1C6 /* marker-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FF10F42207000E4B1C6 /* marker-red.png */; };
+		321E807C0F42512600E4B1C6 /* Shizzup.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 321E7F0E0F42098B00E4B1C6 /* Shizzup.xcclassmodel */; };
+		321E833E0F42B69B00E4B1C6 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 321E833D0F42B69B00E4B1C6 /* MapView.xib */; };
+		321E83410F42B77300E4B1C6 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 321E83400F42B77300E4B1C6 /* MapViewController.m */; };
 		322F8F7F0F3C444F003C82E8 /* ImageManipulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F8F7E0F3C444F003C82E8 /* ImageManipulator.m */; };
 		322F90460F3D4EE9003C82E8 /* MainNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F90450F3D4EE9003C82E8 /* MainNavController.m */; };
 		322F906D0F3D500B003C82E8 /* ShoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F906C0F3D500B003C82E8 /* ShoutViewController.m */; };
@@ -32,6 +45,30 @@
 		32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3510F3A420900EEB53C /* ShizzowIcon.png */; };
 		32A0B3630F3A427B00EEB53C /* ShoutsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A0B3620F3A427B00EEB53C /* ShoutsDataSource.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		321E7F310F42191B00E4B1C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 321E7F2C0F42191B00E4B1C6 /* MapView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B83E673E0E80F332001663B6;
+			remoteInfo = SimpleMap;
+		};
+		321E7F330F42191B00E4B1C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 321E7F2C0F42191B00E4B1C6 /* MapView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B8C974590E8A19B2007D16AD;
+			remoteInfo = MapView;
+		};
+		321E7F810F421A8600E4B1C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 321E7F2C0F42191B00E4B1C6 /* MapView.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B8C974130E8A19B2007D16AD;
+			remoteInfo = MapView;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,6 +90,21 @@
 		32160CE70F3FE0C000C349D0 /* PlaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceManager.m; sourceTree = "<group>"; };
 		32160D260F3FF18200C349D0 /* ShizzowApiConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShizzowApiConnection.h; sourceTree = "<group>"; };
 		32160D270F3FF18200C349D0 /* ShizzowApiConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShizzowApiConnection.m; sourceTree = "<group>"; };
+		321E7F0E0F42098B00E4B1C6 /* Shizzup.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = Shizzup.xcclassmodel; sourceTree = "<group>"; };
+		321E7F130F420A0D00E4B1C6 /* plan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = plan.html; sourceTree = "<group>"; };
+		321E7F170F420A8800E4B1C6 /* plan.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = plan.rtf; sourceTree = "<group>"; };
+		321E7F2C0F42191B00E4B1C6 /* MapView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = ../MapView/MapView.xcodeproj; sourceTree = SOURCE_ROOT; };
+		321E7F830F421AA300E4B1C6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		321E7F850F421AB100E4B1C6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		321E7FB00F421C1700E4B1C6 /* ListeningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeningViewController.h; sourceTree = "<group>"; };
+		321E7FB10F421C1700E4B1C6 /* ListeningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListeningViewController.m; sourceTree = "<group>"; };
+		321E7FEE0F42207000E4B1C6 /* marker-blue-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-blue-withletter.png"; sourceTree = "<group>"; };
+		321E7FEF0F42207000E4B1C6 /* marker-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-blue.png"; sourceTree = "<group>"; };
+		321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-red-withletter.png"; sourceTree = "<group>"; };
+		321E7FF10F42207000E4B1C6 /* marker-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-red.png"; sourceTree = "<group>"; };
+		321E833D0F42B69B00E4B1C6 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
+		321E833F0F42B77300E4B1C6 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		321E83400F42B77300E4B1C6 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		322F8F7D0F3C444F003C82E8 /* ImageManipulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManipulator.h; sourceTree = "<group>"; };
 		322F8F7E0F3C444F003C82E8 /* ImageManipulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManipulator.m; sourceTree = "<group>"; };
 		322F90440F3D4EE9003C82E8 /* MainNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavController.h; sourceTree = "<group>"; };
@@ -85,6 +137,9 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
 				32160C850F3FC76900C349D0 /* CoreLocation.framework in Frameworks */,
+				321E7F7B0F421A4800E4B1C6 /* libMapView.a in Frameworks */,
+				321E7F840F421AA300E4B1C6 /* QuartzCore.framework in Frameworks */,
+				321E7F860F421AB100E4B1C6 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +161,12 @@
 				322F90450F3D4EE9003C82E8 /* MainNavController.m */,
 				28216C950DB411BC00E5133A /* EveryoneViewController.h */,
 				28216C960DB411BC00E5133A /* EveryoneViewController.m */,
+				321E7FB00F421C1700E4B1C6 /* ListeningViewController.h */,
+				321E7FB10F421C1700E4B1C6 /* ListeningViewController.m */,
 				322F906B0F3D500B003C82E8 /* ShoutViewController.h */,
 				322F906C0F3D500B003C82E8 /* ShoutViewController.m */,
+				321E833F0F42B77300E4B1C6 /* MapViewController.h */,
+				321E83400F42B77300E4B1C6 /* MapViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -123,6 +182,8 @@
 		29B97314FDCFA39411CA2CEA /* Shizzup */ = {
 			isa = PBXGroup;
 			children = (
+				321E7F170F420A8800E4B1C6 /* plan.rtf */,
+				321E7F130F420A0D00E4B1C6 /* plan.html */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				3254E6FB0F380D940074A99F /* Shizzow Model */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -138,6 +199,7 @@
 			children = (
 				28A0AB4B0D9B1048005BE974 /* Shizzup_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				321E7F0E0F42098B00E4B1C6 /* Shizzup.xcclassmodel */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -151,6 +213,7 @@
 				282CCBFD0DB6C98000C4EA27 /* ListeningView.xib */,
 				3254E81E0F38D5870074A99F /* SettingsView.xib */,
 				322F906E0F3D503F003C82E8 /* ShoutView.xib */,
+				321E833D0F42B69B00E4B1C6 /* MapView.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 			);
 			name = Resources;
@@ -159,12 +222,24 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				32160C840F3FC76900C349D0 /* CoreLocation.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				321E7F2C0F42191B00E4B1C6 /* MapView.xcodeproj */,
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
+				32160C840F3FC76900C349D0 /* CoreLocation.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				321E7F830F421AA300E4B1C6 /* QuartzCore.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				321E7F850F421AB100E4B1C6 /* libsqlite3.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		321E7F2D0F42191B00E4B1C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				321E7F320F42191B00E4B1C6 /* MapView.app */,
+				321E7F340F42191B00E4B1C6 /* libMapView.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		3254E6FB0F380D940074A99F /* Shizzow Model */ = {
@@ -189,6 +264,10 @@
 		32A0B34F0F3A420900EEB53C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				321E7FEE0F42207000E4B1C6 /* marker-blue-withletter.png */,
+				321E7FEF0F42207000E4B1C6 /* marker-blue.png */,
+				321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */,
+				321E7FF10F42207000E4B1C6 /* marker-red.png */,
 				32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */,
 				32A0B3510F3A420900EEB53C /* ShizzowIcon.png */,
 			);
@@ -210,6 +289,7 @@
 			);
 			comments = "Hello, Shizzow!";
 			dependencies = (
+				321E7F820F421A8600E4B1C6 /* PBXTargetDependency */,
 			);
 			name = Shizzup;
 			productName = Shizzup;
@@ -226,12 +306,35 @@
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Shizzup */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 321E7F2D0F42191B00E4B1C6 /* Products */;
+					ProjectRef = 321E7F2C0F42191B00E4B1C6 /* MapView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Shizzup */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		321E7F320F42191B00E4B1C6 /* MapView.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = MapView.app;
+			remoteRef = 321E7F310F42191B00E4B1C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		321E7F340F42191B00E4B1C6 /* libMapView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMapView.a;
+			remoteRef = 321E7F330F42191B00E4B1C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -245,6 +348,14 @@
 				32A0B3520F3A420900EEB53C /* DefaultPersonIcon.png in Resources */,
 				32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */,
 				322F906F0F3D503F003C82E8 /* ShoutView.xib in Resources */,
+				321E7F140F420A0D00E4B1C6 /* plan.html in Resources */,
+				321E7F180F420A8800E4B1C6 /* plan.rtf in Resources */,
+				321E7FF20F42207000E4B1C6 /* marker-blue-withletter.png in Resources */,
+				321E7FF30F42207000E4B1C6 /* marker-blue.png in Resources */,
+				321E7FF40F42207000E4B1C6 /* marker-red-withletter.png in Resources */,
+				321E7FF50F42207000E4B1C6 /* marker-red.png in Resources */,
+				321E807C0F42512600E4B1C6 /* Shizzup.xcclassmodel in Resources */,
+				321E833E0F42B69B00E4B1C6 /* MapView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,10 +379,20 @@
 				32160CE80F3FE0C000C349D0 /* PlaceManager.m in Sources */,
 				32160D280F3FF18200C349D0 /* ShizzowApiConnection.m in Sources */,
 				324A82C20F403C1F0056857A /* PlacesDataSource.m in Sources */,
+				321E7FB20F421C1700E4B1C6 /* ListeningViewController.m in Sources */,
+				321E83410F42B77300E4B1C6 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		321E7F820F421A8600E4B1C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MapView;
+			targetProxy = 321E7F810F421A8600E4B1C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -279,12 +400,14 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphonesimulator.sdk;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shizzup_Prefix.pch;
+				HEADER_SEARCH_PATHS = "../MapView/**";
 				INFOPLIST_FILE = Info.plist;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -300,10 +423,12 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphonesimulator.sdk;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shizzup_Prefix.pch;
+				HEADER_SEARCH_PATHS = "../MapView/**";
 				INFOPLIST_FILE = Info.plist;
 				OTHER_LDFLAGS = (
 					"-ObjC",
