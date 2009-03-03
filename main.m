@@ -10,14 +10,7 @@
 
 int main(int argc, char *argv[]) {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    int retVal;
-    @try {
-        retVal = UIApplicationMain(argc, argv, nil, nil);
-    }
-    @catch (NSException * e) {
-        NSLog(@"Caught exception: %@ %@\n%@", [e name], [e reason], [e callStackReturnAddresses]);
-        @throw e;
-    }
+    int retVal = UIApplicationMain(argc, argv, nil, nil);
     [pool release];
     return retVal;
 }

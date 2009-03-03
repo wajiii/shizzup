@@ -17,7 +17,7 @@
     NSString *placeName;
     NSString *relativeShoutTime;
     UIImage *icon;
-
+    
     // Start dictionary keys
     NSString *people_name;
     NSString *places_name;
@@ -43,6 +43,7 @@
     NSString *modified;
     NSString *city;
     NSString *state_iso;
+    NSString *altitude;
 }
 
 @property (readonly, retain) NSNumber *shoutId;

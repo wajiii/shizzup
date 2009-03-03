@@ -28,11 +28,11 @@
 
 - (Shout *) initWithDict:(NSDictionary *) shoutDict fromManager:(ShoutManager *)manager {
     //NSLog(@"Shout initWithDict:%@", shoutDict);
-    NSLog(@"Shout initWithDict");
+    //NSLog(@"Shout initWithDict");
     raw = shoutDict;
     [self setValuesForKeysWithDictionary:raw];
     shoutId = [[NSNumber alloc] initWithLongLong:[shouts_history_id longLongValue]];
-
+    
     NSDictionary *iconAddresses = [raw valueForKey:@"people_images"];
     //NSLog(@"   iconAddresses: %@: %@", [iconAddresses class], placeName);
     NSString *iconAddress = [iconAddresses valueForKey:@"people_image_48"];
@@ -45,7 +45,7 @@
         roundedIcon = [ImageManipulator getIconForUrl:iconUrl];
     }
     icon = [roundedIcon retain];
-
+    
     return self;
 }
 

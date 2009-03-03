@@ -16,6 +16,7 @@
     NSString * country_iso;
     NSString * country_name;
     NSString * distance;
+    NSString * distance_unit;
     NSString * is_favorite;
     NSString * latitude;
     NSString * longitude;
@@ -34,6 +35,7 @@
 @property (nonatomic, retain) NSString *country_iso;
 @property (nonatomic, retain) NSString *country_name;
 @property (nonatomic, retain) NSString *distance;
+@property (nonatomic, retain) NSString *distance_unit;
 @property (nonatomic, retain) NSString *is_favorite;
 @property (nonatomic, retain) NSString *latitude;
 @property (nonatomic, retain) NSString *longitude;

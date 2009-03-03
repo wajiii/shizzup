@@ -25,7 +25,7 @@
     return self;
 }
 
-+ (ShoutsDataSource *) initWithManager:(ShoutManager *)manager controller:(EveryoneViewController *)controller{
++ (ShoutsDataSource *) initWithManager:(ShoutManager *)manager controller:(ShoutListViewController *)controller{
     ShoutsDataSource *source = [[ShoutsDataSource alloc] init];
     [source setController:controller];
     [manager setDelegate:source];
@@ -140,7 +140,7 @@
         //        NSLog(@"          updated height: %d", shoutIndex, shout, result);
         if (result < CELL_HEIGHT_MIN) {
             result = CELL_HEIGHT_MIN;
-            NSLog(@"Generated row height was too small; overridden to %5.1f.", result);
+            //NSLog(@"Generated row height was too small; overridden to %5.1f.", result);
         }
     }
     @catch (NSException * e) {

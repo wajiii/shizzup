@@ -17,7 +17,7 @@
 
 - (id) init {
     [super init];
-    center = [[CLLocation alloc] initWithLatitude:45.515963 longitude:-122.656525];
+    center = [[CLLocation alloc] initWithLatitude:MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
     return self;
 }
 

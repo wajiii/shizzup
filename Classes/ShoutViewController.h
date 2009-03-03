@@ -12,18 +12,17 @@
 #import "PlaceManager.h"
 
 @interface ShoutViewController : UIViewController <CLLocationManagerDelegate> {
-    CLLocationManager *locationManager;
     PlaceManager *placeManager;
-    UILabel *altitudeLabel;
-    UILabel *altitudeLabelLabel;
+//    UILabel *altitudeLabel;
+//    UILabel *altitudeLabelLabel;
     UILabel *locationLabel;
     UIActivityIndicatorView *spinnerView;
     UITableView *tableView;
     RMMapView *mapView;
 }
 
-@property (nonatomic, retain) IBOutlet UILabel *altitudeLabel;
-@property (nonatomic, retain) IBOutlet UILabel *altitudeLabelLabel;
+//@property (nonatomic, retain) IBOutlet UILabel *altitudeLabel;
+//@property (nonatomic, retain) IBOutlet UILabel *altitudeLabelLabel;
 @property (nonatomic, retain) IBOutlet UILabel *locationLabel;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *spinnerView;

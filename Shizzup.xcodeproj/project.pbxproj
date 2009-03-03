@@ -11,7 +11,7 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		28216C970DB411BC00E5133A /* EveryoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* EveryoneViewController.m */; };
+		28216C970DB411BC00E5133A /* ShoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* ShoutListViewController.m */; };
 		282CCBFE0DB6C98000C4EA27 /* ListeningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282CCBFD0DB6C98000C4EA27 /* ListeningView.xib */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
@@ -19,19 +19,15 @@
 		32160CE50F3FE0B400C349D0 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 32160CE40F3FE0B400C349D0 /* Place.m */; };
 		32160CE80F3FE0C000C349D0 /* PlaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32160CE70F3FE0C000C349D0 /* PlaceManager.m */; };
 		32160D280F3FF18200C349D0 /* ShizzowApiConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 32160D270F3FF18200C349D0 /* ShizzowApiConnection.m */; };
-		321E7F140F420A0D00E4B1C6 /* plan.html in Resources */ = {isa = PBXBuildFile; fileRef = 321E7F130F420A0D00E4B1C6 /* plan.html */; };
-		321E7F180F420A8800E4B1C6 /* plan.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 321E7F170F420A8800E4B1C6 /* plan.rtf */; };
 		321E7F7B0F421A4800E4B1C6 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321E7F340F42191B00E4B1C6 /* libMapView.a */; };
 		321E7F840F421AA300E4B1C6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321E7F830F421AA300E4B1C6 /* QuartzCore.framework */; };
 		321E7F860F421AB100E4B1C6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 321E7F850F421AB100E4B1C6 /* libsqlite3.dylib */; };
-		321E7FB20F421C1700E4B1C6 /* ListeningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 321E7FB10F421C1700E4B1C6 /* ListeningViewController.m */; };
 		321E7FF20F42207000E4B1C6 /* marker-blue-withletter.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FEE0F42207000E4B1C6 /* marker-blue-withletter.png */; };
 		321E7FF30F42207000E4B1C6 /* marker-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FEF0F42207000E4B1C6 /* marker-blue.png */; };
 		321E7FF40F42207000E4B1C6 /* marker-red-withletter.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */; };
 		321E7FF50F42207000E4B1C6 /* marker-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FF10F42207000E4B1C6 /* marker-red.png */; };
 		321E807C0F42512600E4B1C6 /* Shizzup.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 321E7F0E0F42098B00E4B1C6 /* Shizzup.xcclassmodel */; };
 		321E833E0F42B69B00E4B1C6 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 321E833D0F42B69B00E4B1C6 /* MapView.xib */; };
-		321E83410F42B77300E4B1C6 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 321E83400F42B77300E4B1C6 /* MapViewController.m */; };
 		322F8F7F0F3C444F003C82E8 /* ImageManipulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F8F7E0F3C444F003C82E8 /* ImageManipulator.m */; };
 		322F90460F3D4EE9003C82E8 /* MainNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F90450F3D4EE9003C82E8 /* MainNavController.m */; };
 		322F906D0F3D500B003C82E8 /* ShoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F906C0F3D500B003C82E8 /* ShoutViewController.m */; };
@@ -41,9 +37,13 @@
 		3254E7230F383AF60074A99F /* ShoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3254E7220F383AF60074A99F /* ShoutManager.m */; };
 		3254E8140F38D4910074A99F /* EveryoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3254E8130F38D4910074A99F /* EveryoneView.xib */; };
 		3254E81F0F38D5870074A99F /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3254E81E0F38D5870074A99F /* SettingsView.xib */; };
+		326A0EF10F4E17C800322F4D /* Everyone.png in Resources */ = {isa = PBXBuildFile; fileRef = 326A0EF00F4E17C800322F4D /* Everyone.png */; };
+		32750FF20F5D0955000885F6 /* Shizzettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 32750FF10F5D0955000885F6 /* Shizzettings.bundle */; };
+		327802310F5C5FD0007E197C /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327802300F5C5FD0007E197C /* CrashReporter.framework */; };
 		32A0B3520F3A420900EEB53C /* DefaultPersonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */; };
 		32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3510F3A420900EEB53C /* ShizzowIcon.png */; };
 		32A0B3630F3A427B00EEB53C /* ShoutsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A0B3620F3A427B00EEB53C /* ShoutsDataSource.m */; };
+		32EA04430F548939000462BE /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EA04420F548939000462BE /* LocationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +76,8 @@
 		1D3623250D0F684500981E51 /* ShizzupAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShizzupAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Shizzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shizzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		28216C950DB411BC00E5133A /* EveryoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryoneViewController.h; sourceTree = "<group>"; };
-		28216C960DB411BC00E5133A /* EveryoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryoneViewController.m; sourceTree = "<group>"; };
+		28216C950DB411BC00E5133A /* ShoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoutListViewController.h; sourceTree = "<group>"; };
+		28216C960DB411BC00E5133A /* ShoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutListViewController.m; sourceTree = "<group>"; };
 		282CCBFD0DB6C98000C4EA27 /* ListeningView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListeningView.xib; sourceTree = "<group>"; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* Shizzup_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shizzup_Prefix.pch; sourceTree = "<group>"; };
@@ -96,15 +96,11 @@
 		321E7F2C0F42191B00E4B1C6 /* MapView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = ../MapView/MapView.xcodeproj; sourceTree = SOURCE_ROOT; };
 		321E7F830F421AA300E4B1C6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		321E7F850F421AB100E4B1C6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		321E7FB00F421C1700E4B1C6 /* ListeningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeningViewController.h; sourceTree = "<group>"; };
-		321E7FB10F421C1700E4B1C6 /* ListeningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListeningViewController.m; sourceTree = "<group>"; };
 		321E7FEE0F42207000E4B1C6 /* marker-blue-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-blue-withletter.png"; sourceTree = "<group>"; };
 		321E7FEF0F42207000E4B1C6 /* marker-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-blue.png"; sourceTree = "<group>"; };
 		321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-red-withletter.png"; sourceTree = "<group>"; };
 		321E7FF10F42207000E4B1C6 /* marker-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-red.png"; sourceTree = "<group>"; };
 		321E833D0F42B69B00E4B1C6 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
-		321E833F0F42B77300E4B1C6 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		321E83400F42B77300E4B1C6 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		322F8F7D0F3C444F003C82E8 /* ImageManipulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManipulator.h; sourceTree = "<group>"; };
 		322F8F7E0F3C444F003C82E8 /* ImageManipulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManipulator.m; sourceTree = "<group>"; };
 		322F90440F3D4EE9003C82E8 /* MainNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavController.h; sourceTree = "<group>"; };
@@ -120,11 +116,16 @@
 		3254E7220F383AF60074A99F /* ShoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutManager.m; sourceTree = "<group>"; };
 		3254E8130F38D4910074A99F /* EveryoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EveryoneView.xib; sourceTree = "<group>"; };
 		3254E81E0F38D5870074A99F /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		326A0EF00F4E17C800322F4D /* Everyone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Everyone.png; sourceTree = "<group>"; };
+		32750FF10F5D0955000885F6 /* Shizzettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Shizzettings.bundle; sourceTree = "<group>"; };
+		327802300F5C5FD0007E197C /* CrashReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = CrashReporter.framework; path = "../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone/CrashReporter.framework"; sourceTree = SOURCE_ROOT; };
 		32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultPersonIcon.png; sourceTree = "<group>"; };
 		32A0B3510F3A420900EEB53C /* ShizzowIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShizzowIcon.png; sourceTree = "<group>"; };
 		32A0B3610F3A427B00EEB53C /* ShoutsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoutsDataSource.h; sourceTree = "<group>"; };
 		32A0B3620F3A427B00EEB53C /* ShoutsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutsDataSource.m; sourceTree = "<group>"; };
 		32A0B4180F3A8B3600EEB53C /* ShizzowConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShizzowConstants.h; sourceTree = "<group>"; };
+		32EA04410F548939000462BE /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		32EA04420F548939000462BE /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +141,7 @@
 				321E7F7B0F421A4800E4B1C6 /* libMapView.a in Frameworks */,
 				321E7F840F421AA300E4B1C6 /* QuartzCore.framework in Frameworks */,
 				321E7F860F421AB100E4B1C6 /* libsqlite3.dylib in Frameworks */,
+				327802310F5C5FD0007E197C /* CrashReporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,14 +161,12 @@
 				32A0B3620F3A427B00EEB53C /* ShoutsDataSource.m */,
 				322F90440F3D4EE9003C82E8 /* MainNavController.h */,
 				322F90450F3D4EE9003C82E8 /* MainNavController.m */,
-				28216C950DB411BC00E5133A /* EveryoneViewController.h */,
-				28216C960DB411BC00E5133A /* EveryoneViewController.m */,
-				321E7FB00F421C1700E4B1C6 /* ListeningViewController.h */,
-				321E7FB10F421C1700E4B1C6 /* ListeningViewController.m */,
+				28216C950DB411BC00E5133A /* ShoutListViewController.h */,
+				28216C960DB411BC00E5133A /* ShoutListViewController.m */,
 				322F906B0F3D500B003C82E8 /* ShoutViewController.h */,
 				322F906C0F3D500B003C82E8 /* ShoutViewController.m */,
-				321E833F0F42B77300E4B1C6 /* MapViewController.h */,
-				321E83400F42B77300E4B1C6 /* MapViewController.m */,
+				32EA04410F548939000462BE /* LocationManager.h */,
+				32EA04420F548939000462BE /* LocationManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -215,6 +215,7 @@
 				322F906E0F3D503F003C82E8 /* ShoutView.xib */,
 				321E833D0F42B69B00E4B1C6 /* MapView.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
+				32750FF10F5D0955000885F6 /* Shizzettings.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -223,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				321E7F2C0F42191B00E4B1C6 /* MapView.xcodeproj */,
+				327802300F5C5FD0007E197C /* CrashReporter.framework */,
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
 				32160C840F3FC76900C349D0 /* CoreLocation.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -264,6 +266,7 @@
 		32A0B34F0F3A420900EEB53C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				326A0EF00F4E17C800322F4D /* Everyone.png */,
 				321E7FEE0F42207000E4B1C6 /* marker-blue-withletter.png */,
 				321E7FEF0F42207000E4B1C6 /* marker-blue.png */,
 				321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */,
@@ -349,14 +352,14 @@
 				32A0B3520F3A420900EEB53C /* DefaultPersonIcon.png in Resources */,
 				32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */,
 				322F906F0F3D503F003C82E8 /* ShoutView.xib in Resources */,
-				321E7F140F420A0D00E4B1C6 /* plan.html in Resources */,
-				321E7F180F420A8800E4B1C6 /* plan.rtf in Resources */,
 				321E7FF20F42207000E4B1C6 /* marker-blue-withletter.png in Resources */,
 				321E7FF30F42207000E4B1C6 /* marker-blue.png in Resources */,
 				321E7FF40F42207000E4B1C6 /* marker-red-withletter.png in Resources */,
 				321E7FF50F42207000E4B1C6 /* marker-red.png in Resources */,
 				321E807C0F42512600E4B1C6 /* Shizzup.xcclassmodel in Resources */,
 				321E833E0F42B69B00E4B1C6 /* MapView.xib in Resources */,
+				326A0EF10F4E17C800322F4D /* Everyone.png in Resources */,
+				32750FF20F5D0955000885F6 /* Shizzettings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +389,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* ShizzupAppDelegate.m in Sources */,
-				28216C970DB411BC00E5133A /* EveryoneViewController.m in Sources */,
+				28216C970DB411BC00E5133A /* ShoutListViewController.m in Sources */,
 				3254E71E0F383A7A0074A99F /* Shout.m in Sources */,
 				3254E7230F383AF60074A99F /* ShoutManager.m in Sources */,
 				32A0B3630F3A427B00EEB53C /* ShoutsDataSource.m in Sources */,
@@ -397,8 +400,7 @@
 				32160CE80F3FE0C000C349D0 /* PlaceManager.m in Sources */,
 				32160D280F3FF18200C349D0 /* ShizzowApiConnection.m in Sources */,
 				324A82C20F403C1F0056857A /* PlacesDataSource.m in Sources */,
-				321E7FB20F421C1700E4B1C6 /* ListeningViewController.m in Sources */,
-				321E83410F42B77300E4B1C6 /* MapViewController.m in Sources */,
+				32EA04430F548939000462BE /* LocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,71 +418,153 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphonesimulator.sdk;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shizzup_Prefix.pch;
-				HEADER_SEARCH_PATHS = "../MapView/**";
-				INFOPLIST_FILE = Info.plist;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-ljson",
 				);
-				PRODUCT_NAME = Shizzup;
-				VERSIONING_SYSTEM = "apple-generic";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
+				SDKROOT = iphonesimulator2.2.1;
 			};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphonesimulator.sdk;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphoneos.sdk;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bill Jackson";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shizzup_Prefix.pch;
-				HEADER_SEARCH_PATHS = "../MapView/**";
-				INFOPLIST_FILE = Info.plist;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-ljson",
 				);
-				PRODUCT_NAME = Shizzup;
-				VERSIONING_SYSTEM = "apple-generic";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
+				SDKROOT = iphoneos2.2;
 			};
 			name = Release;
+		};
+		326C42A80F55E8EC001C6CD8 /* Debug-Phone */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphoneos.sdk;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bill Jackson";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "../MapView/**";
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = Shizzup;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
+				SDKROOT = iphoneos2.2.1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_BUILDER = waj;
+			};
+			name = "Debug-Phone";
+		};
+		326C42A90F55E8EC001C6CD8 /* Debug-Phone */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bill Jackson";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Shizzup_Prefix.pch;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-ljson",
+				);
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
+				SDKROOT = iphoneos2.2;
+			};
+			name = "Debug-Phone";
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphonesimulator.sdk;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bill Jackson";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PROFILING_CODE = NO;
+				HEADER_SEARCH_PATHS = "../MapView/**";
+				IBC_FLATTEN_NIBS = YES;
+				INFOPLIST_FILE = Info.plist;
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
-				SDKROOT = iphoneos2.2;
+				PRODUCT_NAME = Shizzup;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
+				SDKROOT = iphonesimulator2.2.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_BUILDER = waj;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphoneos.sdk;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bill Jackson";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = iphoneos2.2;
+				HEADER_SEARCH_PATHS = "../MapView/**";
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = Shizzup;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
+				SDKROOT = iphoneos2.2.1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_BUILDER = waj;
+				VERSION_INFO_EXPORT_DECL = versionvar;
+				VERSION_INFO_FILE = versionsource;
+				VERSION_INFO_PREFIX = verpre;
+				VERSION_INFO_SUFFIX = verpost;
 			};
 			name = Release;
 		};
@@ -491,6 +575,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
+				326C42A90F55E8EC001C6CD8 /* Debug-Phone */,
 				1D6058950D05DD3E006BFB54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -500,6 +585,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
+				326C42A80F55E8EC001C6CD8 /* Debug-Phone */,
 				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

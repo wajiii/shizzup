@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <RMMapView.h>
 
-@interface EveryoneViewController : UIViewController <RMMapViewDelegate> {
+@interface ShoutListViewController : UIViewController <CLLocationManagerDelegate, RMMapViewDelegate> {
     UITableView *tableView;
     UIActivityIndicatorView *spinnerView;
     UIBarButtonItem *mapButton;

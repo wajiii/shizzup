@@ -7,18 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EveryoneViewController.h"
+#import "ShoutListViewController.h"
 #import "ShoutManager.h"
 
 @interface ShoutsDataSource : NSMutableArray <ShoutManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
     UIImage *defaultPersonIcon;
     NSArray* shouts;
-    EveryoneViewController *controller;
+    ShoutListViewController *controller;
 }
 
 @property (nonatomic, retain) NSArray *shouts;
-@property (nonatomic, retain) EveryoneViewController* controller;
+@property (nonatomic, retain) ShoutListViewController* controller;
 
-+ (ShoutsDataSource *) initWithManager:(ShoutManager *)manager controller:(EveryoneViewController *)controller;
++ (ShoutsDataSource *) initWithManager:(ShoutManager *)manager controller:(ShoutListViewController *)controller;
 
 @end

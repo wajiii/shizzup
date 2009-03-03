@@ -6,25 +6,22 @@
 //  Copyright waj3 2009. All rights reserved.
 //
 
-#import "EveryoneViewController.h"
+#import "ShoutListViewController.h"
 #import "ShoutManager.h"
 #import "ShoutsDataSource.h"
+#import "ShizzowConstants.h"
 #import <RMMarkerManager.h>
 #import <RMMarkerStyle.h>
+#import "LocationManager.h"
 
-#define MAP_LAT_INITIAL     45.515963
-#define MAP_LON_INITIAL   -122.656525
-#define MAP_SCALE_INITIAL    3.0
-
-@implementation EveryoneViewController
+@implementation ShoutListViewController
 
 @synthesize spinnerView;
 @synthesize tableView;
 @synthesize mapButton;
 
-- (void)viewDidLoad {
+- (void) viewDidLoad {
     [super viewDidLoad];
-    //[[[self parentViewController] navigationItem] setLeftBarButtonItem:mapButton animated:NO];
     [[[self parentViewController] navigationItem] setLeftBarButtonItem:mapButton animated:NO];
     viewIsMap = NO;
     
@@ -32,23 +29,40 @@
     ShoutManager *shoutManager = [ShoutManager alloc];
     ShoutsDataSource *shoutsDataSource = [ShoutsDataSource initWithManager:shoutManager controller:self];
     
+    NSLog(@"Setting up list view...");
     // Set up list view
     nonMapView = [[self view] retain];
     [tableView setDataSource:shoutsDataSource];
     [tableView setDelegate:shoutsDataSource];
     [tableView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-    
+
+    NSLog(@"Setting up map view...");
     // Set up map view
     mapView = [[RMMapView alloc] initWithFrame:[[self view] frame]];
-    CLLocation *location = [[CLLocation alloc] initWithLatitude: MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
     RMMapContents *mapContents = [mapView contents];
+    CLLocation *location = [LocationManager location];
+    NSLog(@"Setting location: %f, %f", location.coordinate.latitude, location.coordinate.longitude);
     [mapContents setMapCenter:location.coordinate];
     [mapContents setScale:MAP_SCALE_INITIAL];
     [mapContents setZoomBounds:0.5 maxZoom:125000];
     [mapView setDelegate:self];
-    
+
+    NSLog(@"Starting shout retrieval...");
     // Start data retrieval
     [shoutManager findShouts];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    NSLog(@"ShoutListViewController starting location updates...");
+    [super viewWillAppear:animated];
+    [LocationManager setDelegate:self];
+    [LocationManager startUpdating];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+    NSLog(@"ShoutListViewController stopping location updates...");
+    [LocationManager stopUpdating];
+    [super viewWillDisappear:animated];
 }
 
 - (void) dataLoaded:(NSArray *)shouts {
@@ -57,6 +71,13 @@
     [tableView reloadData];
     // Update map view markers
     [self updateMarkersWithShouts:shouts];
+    NSUInteger shoutCount = 0;
+    if (shouts != nil) {
+        shoutCount = [shouts count];
+    }
+    NSString *shoutCountS = [NSString stringWithFormat:@"%u", shoutCount];
+    [[self tabBarItem] setBadgeValue:shoutCountS];
+    //[[self tabBarItem] setBadgeValue:[[shouts count] stringValue]];
     [spinnerView stopAnimating];
 }
 
@@ -77,14 +98,15 @@
                 //NSLog(@"Alright!");
                 UILabel *label = (UILabel *)labelView;
                 //[label setShadowColor:[UIColor whiteColor]];
-                //[label setBackgroundColor:[UIColor lightGrayColor]];
                 //[label setNumberOfLines:2];
-                CGRect frame = [label frame];
+                //CGRect frame = [label frame];
                 //frame.size.height *= 2;
-                [label setFrame:frame];
+                //[label setFrame:frame];
                 [label setTextAlignment:UITextAlignmentCenter];
                 [label setFont:[UIFont systemFontOfSize:14]];
-                [label setAlpha:0.25];
+                [label setAlpha:1.0];
+                //[label setBackgroundColor:[UIColor lightGrayColor]];
+                [label setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.5]];
             } else {
                 NSLog(@"Whoops, marker labelView %@ is not a UILabel.  Oh well!", labelView);
             }
@@ -100,7 +122,7 @@
 }
 
 - (IBAction) mapButtonPressed {
-    //    NSLog(@"EveryoneViewController mapButtonPressed");
+    //    NSLog(@"ShoutListViewController mapButtonPressed");
     //    NSLog(@"   - viewIsMap: %d", viewIsMap);
     //    NSLog(@"   - mapButton.title: %@", [mapButton title]);
     if (viewIsMap) {
@@ -116,17 +138,39 @@
     [[self view] addSubview:spinnerView];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    NSLog(@"ShoutListViewController received new location: %@", newLocation);
+    // If we are in the simulator, override with MAP_*_INITIAL values; One Infinite Loop is of no use to us!
+#if (TARGET_IPHONE_SIMULATOR)
+    newLocation = [[CLLocation alloc] initWithLatitude:MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
+#endif
+    CLLocationCoordinate2D coordinate = newLocation.coordinate;
+    [[mapView contents] setMapCenter:coordinate];
+//    NSString *locationText = [NSString stringWithFormat:@"%1.6f°, %1.6f°", coordinate.latitude, coordinate.longitude];
+//    if (newLocation.horizontalAccuracy != 0) {
+//        locationText = [locationText stringByAppendingFormat:@" (±%1.0fm)", newLocation.horizontalAccuracy];
+//    }
+//    locationLabel.text = locationText;
+//    altitudeLabel.text = [NSString stringWithFormat:@"%1.1fm (±%1.0fm)", newLocation.altitude, newLocation.verticalAccuracy];
+//    if (newLocation.altitude != 0) {
+//        [altitudeLabelLabel setHidden:NO];
+//        [altitudeLabel setHidden:NO];
+//    }
+//    placeManager.center = newLocation;
+//    [placeManager findPlaces];
+}
+
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     [[self view] setAutoresizesSubviews:YES];
     return YES;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
 }
 
-- (void)dealloc {
+- (void) dealloc {
     [super dealloc];
 }
 

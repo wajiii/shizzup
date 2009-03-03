@@ -10,21 +10,20 @@
 #import <CoreLocation/CoreLocation.h>
 #import "PlaceManager.h"
 #import "PlacesDataSource.h"
+#import "ShizzowConstants.h"
+#import "LocationManager.h"
+
 
 @implementation ShoutViewController
 
-@synthesize altitudeLabel;
-@synthesize altitudeLabelLabel;
+
 @synthesize locationLabel;
 @synthesize spinnerView;
 @synthesize tableView;
 @synthesize mapView;
 
-- (void)viewDidLoad {
+- (void) viewDidLoad {
     [super viewDidLoad];
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     placeManager = [[PlaceManager alloc] init];
     PlacesDataSource *placesDataSource = [PlacesDataSource initWithManager:placeManager controller:self];
     [placeManager setDelegate:placesDataSource];
@@ -32,39 +31,34 @@
     [tableView setDelegate:placesDataSource];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"Starting location updates...");
-    [locationManager startUpdatingLocation];
+    NSLog(@"ShoutViewController starting location updates...");
+    [LocationManager setDelegate:self];
+    [LocationManager startUpdating];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    NSLog(@"Stopping location updates...");
-    [locationManager stopUpdatingLocation];
-    [super viewDidDisappear:animated];
+- (void) viewWillDisappear:(BOOL)animated {
+    NSLog(@"ShoutViewController stopping location updates...");
+    [LocationManager stopUpdating];
+    [super viewWillDisappear:animated];
 }
 
-// At this point, our view orientation is set to the new orientation.
-//- (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration {
-//    [tableView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-//}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+- (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     NSLog(@"New location: %@", newLocation);
-    newLocation = [[CLLocation alloc] initWithLatitude:45.515963 longitude:-122.656525];
+    // If we are in the simulator, override with MAP_*_INITIAL values; One Infinite Loop is of no use to us!
+#if (TARGET_IPHONE_SIMULATOR)
+    newLocation = [[CLLocation alloc] initWithLatitude:MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
+#endif
     CLLocationCoordinate2D coordinate = newLocation.coordinate;
     NSString *locationText = [NSString stringWithFormat:@"%1.6f°, %1.6f°", coordinate.latitude, coordinate.longitude];
     if (newLocation.horizontalAccuracy != 0) {
         locationText = [locationText stringByAppendingFormat:@" (±%1.0fm)", newLocation.horizontalAccuracy];
     }
     locationLabel.text = locationText;
-    altitudeLabel.text = [NSString stringWithFormat:@"%1.1fm (±%1.0fm)", newLocation.altitude, newLocation.verticalAccuracy];
-    if (newLocation.altitude != 0) {
-        [altitudeLabelLabel setHidden:NO];
-        [altitudeLabel setHidden:NO];
-    }
     placeManager.center = newLocation;
     [placeManager findPlaces];
+    @throw [NSException exceptionWithName:@"WhoopsieGoldberg" reason:@"Whoopsie Daisy!" userInfo:nil];
 }
 
 - (void)didReceiveMemoryWarning {

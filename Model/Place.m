@@ -16,6 +16,7 @@
 @synthesize country_iso;
 @synthesize country_name;
 @synthesize distance;
+@synthesize distance_unit;
 @synthesize is_favorite;
 @synthesize latitude;
 @synthesize longitude;
@@ -48,6 +49,10 @@
 //    [self setValue:[placeDict objectForKey:@"website"] forKey:@"website"];
 //    [self setValue:[placeDict objectForKey:@"zip"] forKey:@"zip"];
     return self;
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    NSLog(@"Place setValue:%@ forUndefinedKey:%@", value, key);
 }
 
 @end
