@@ -12,6 +12,7 @@
 @interface Place : NSObject {
     NSString * address1;
     NSString * address2;
+    NSString * altitude;
     NSString * city;
     NSString * country_iso;
     NSString * country_name;
@@ -31,6 +32,7 @@
 
 @property (nonatomic, retain) NSString *address1;
 @property (nonatomic, retain) NSString *address2;
+@property (nonatomic, retain) NSString *altitude;
 @property (nonatomic, retain) NSString *city;
 @property (nonatomic, retain) NSString *country_iso;
 @property (nonatomic, retain) NSString *country_name;

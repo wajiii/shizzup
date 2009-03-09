@@ -12,6 +12,7 @@
 
 @synthesize address1;
 @synthesize address2;
+@synthesize altitude;
 @synthesize city;
 @synthesize country_iso;
 @synthesize country_name;

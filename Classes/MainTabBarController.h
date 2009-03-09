@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShizzupAppDelegate.h"
 #import "ShoutViewController.h"
 
-@interface MainNavController : UINavigationController {
+@interface MainTabBarController : UITabBarController {
     ShoutViewController *shoutViewController;
+    ShizzupAppDelegate *appDelegate;
 }
+
+@property (nonatomic, retain) IBOutlet ShizzupAppDelegate *appDelegate;
 
 - (IBAction) enterShoutView;
 - (IBAction) exitShoutView;

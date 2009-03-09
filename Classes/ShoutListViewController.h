@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <RMMapView.h>
 
+@class ShoutManager;
+
 @interface ShoutListViewController : UIViewController <CLLocationManagerDelegate, RMMapViewDelegate> {
     UITableView *tableView;
     UIActivityIndicatorView *spinnerView;
@@ -16,6 +18,7 @@
     BOOL viewIsMap;
     UIView *nonMapView;
     RMMapView *mapView;
+    ShoutManager *shoutManager;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;

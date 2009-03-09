@@ -18,7 +18,16 @@ void ensureInit() {
     if (wrapped == nil) {
         NSLog(@"Oh crap, wrapped is nil, we're all going to die!");
         wrapped = [[CLLocationManager alloc] init];
-        defaultLocation = [[CLLocation alloc] initWithLatitude:MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
+        NSLog(@"MAP_LAT_INITIAL: %f", MAP_LAT_INITIAL);
+        float latJiggle = (arc4random() % 500000);
+        NSLog(@"latJiggle.1: %f", latJiggle);
+        latJiggle -= 250000;
+        NSLog(@"latJiggle.2: %f", latJiggle);
+        latJiggle /= 1000000;
+        NSLog(@"latJiggle.3: %f", latJiggle);
+        CLLocationDegrees defaultLatitude = MAP_LAT_INITIAL + latJiggle;
+        NSLog(@"defaultLatitude: %f", defaultLatitude);
+        defaultLocation = [[CLLocation alloc] initWithLatitude:defaultLatitude longitude:MAP_LON_INITIAL];
         //[wrapped setLocation:defaultLocation];
         [wrapped setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
     }
@@ -26,7 +35,7 @@ void ensureInit() {
 
 + (void) setDelegate:(id<CLLocationManagerDelegate>) delegate {
     ensureInit();
-    [wrapped setDelegate:delegate];
+    [wrapped setDelegate: delegate];
 }
 
 + (void) startUpdating {

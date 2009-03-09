@@ -7,7 +7,7 @@
 //
 
 #import "PlacesDataSource.h"
-#import "MainNavController.h"
+#import "MainTabBarController.h"
 
 #define CELL_REUSE_ID            @"PlaceCell"
 #define CELL_HEIGHT_MIN         36.0
@@ -62,7 +62,7 @@ NSInteger distanceSort(id place1, id place2, void *context) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle message:[error description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
         [alert show];
     }
-    [(MainNavController *)[controller parentViewController] exitShoutView];
+    [controller exitShoutView];
 }
 
 - (Place *) getPlaceForIndexPath:(NSIndexPath *)indexPath {

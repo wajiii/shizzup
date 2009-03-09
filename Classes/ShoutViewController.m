@@ -45,20 +45,24 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    NSLog(@"New location: %@", newLocation);
-    // If we are in the simulator, override with MAP_*_INITIAL values; One Infinite Loop is of no use to us!
-#if (TARGET_IPHONE_SIMULATOR)
-    newLocation = [[CLLocation alloc] initWithLatitude:MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
-#endif
-    CLLocationCoordinate2D coordinate = newLocation.coordinate;
-    NSString *locationText = [NSString stringWithFormat:@"%1.6f°, %1.6f°", coordinate.latitude, coordinate.longitude];
-    if (newLocation.horizontalAccuracy != 0) {
-        locationText = [locationText stringByAppendingFormat:@" (±%1.0fm)", newLocation.horizontalAccuracy];
+    @synchronized(self) {
+        newLocation = [LocationManager location];
+        NSLog(@"New location: %@", newLocation);
+        // If we are in the simulator, override with MAP_*_INITIAL values; One Infinite Loop is of no use to us!
+//#if (TARGET_IPHONE_SIMULATOR)
+//        newLocation = [[CLLocation alloc] initWithLatitude:MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
+//#endif
+        CLLocationCoordinate2D coordinate = newLocation.coordinate;
+        NSString *locationText = [NSString stringWithFormat:@"%1.6f°, %1.6f°", coordinate.latitude, coordinate.longitude];
+        if (newLocation.horizontalAccuracy != 0) {
+            locationText = [locationText stringByAppendingFormat:@" (±%1.0fm)", newLocation.horizontalAccuracy];
+        }
+        locationLabel.text = locationText;
+        placeManager.center = newLocation;
+        [placeManager findPlaces];
+        // For exception handler testing only!
+        //@throw [NSException exceptionWithName:@"WhoopsieGoldberg" reason:@"Whoopsie Daisy!" userInfo:nil];
     }
-    locationLabel.text = locationText;
-    placeManager.center = newLocation;
-    [placeManager findPlaces];
-    @throw [NSException exceptionWithName:@"WhoopsieGoldberg" reason:@"Whoopsie Daisy!" userInfo:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,5 +81,11 @@
     [tableView setHidden:NO];
     [tableView reloadData];
 }
+
+- (IBAction) exitShoutView {
+    NSLog(@"MainTabBarController exitShoutView");
+    [(UINavigationController *)[self parentViewController] popViewControllerAnimated:YES];
+}
+
 
 @end

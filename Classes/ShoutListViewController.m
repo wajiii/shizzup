@@ -26,7 +26,7 @@
     viewIsMap = NO;
     
     // Set up data source
-    ShoutManager *shoutManager = [ShoutManager alloc];
+    shoutManager = [ShoutManager alloc];
     ShoutsDataSource *shoutsDataSource = [ShoutsDataSource initWithManager:shoutManager controller:self];
     
     NSLog(@"Setting up list view...");
@@ -35,7 +35,7 @@
     [tableView setDataSource:shoutsDataSource];
     [tableView setDelegate:shoutsDataSource];
     [tableView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-
+    
     NSLog(@"Setting up map view...");
     // Set up map view
     mapView = [[RMMapView alloc] initWithFrame:[[self view] frame]];
@@ -46,17 +46,23 @@
     [mapContents setScale:MAP_SCALE_INITIAL];
     [mapContents setZoomBounds:0.5 maxZoom:125000];
     [mapView setDelegate:self];
-
+    
     NSLog(@"Starting shout retrieval...");
     // Start data retrieval
     [shoutManager findShouts];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    NSLog(@"ShoutListViewController starting location updates...");
+    NSLog(@"ShoutListViewController viewWillAppear");
     [super viewWillAppear:animated];
+    NSLog(@"   - ShoutListViewController setting location manager delegate: %@", self);
     [LocationManager setDelegate:self];
+    NSLog(@"   - ShoutListViewController starting location updates...");
     [LocationManager startUpdating];
+    
+    NSLog(@"Starting shout retrieval...");
+    // Start data retrieval
+    [shoutManager findShouts];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -140,24 +146,32 @@
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     NSLog(@"ShoutListViewController received new location: %@", newLocation);
-    // If we are in the simulator, override with MAP_*_INITIAL values; One Infinite Loop is of no use to us!
-#if (TARGET_IPHONE_SIMULATOR)
-    newLocation = [[CLLocation alloc] initWithLatitude:MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
-#endif
-    CLLocationCoordinate2D coordinate = newLocation.coordinate;
-    [[mapView contents] setMapCenter:coordinate];
-//    NSString *locationText = [NSString stringWithFormat:@"%1.6f°, %1.6f°", coordinate.latitude, coordinate.longitude];
-//    if (newLocation.horizontalAccuracy != 0) {
-//        locationText = [locationText stringByAppendingFormat:@" (±%1.0fm)", newLocation.horizontalAccuracy];
-//    }
-//    locationLabel.text = locationText;
-//    altitudeLabel.text = [NSString stringWithFormat:@"%1.1fm (±%1.0fm)", newLocation.altitude, newLocation.verticalAccuracy];
-//    if (newLocation.altitude != 0) {
-//        [altitudeLabelLabel setHidden:NO];
-//        [altitudeLabel setHidden:NO];
-//    }
-//    placeManager.center = newLocation;
-//    [placeManager findPlaces];
+    @synchronized(self) {
+        newLocation = [LocationManager location];
+        // If we are in the simulator, override with MAP_*_INITIAL values; One Infinite Loop is of no use to us!
+//#if (TARGET_IPHONE_SIMULATOR)
+//        newLocation = [[CLLocation alloc] initWithLatitude:MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
+//#endif
+        NSLog(@"ShoutListViewController updating with location: %@", newLocation);
+        CLLocationCoordinate2D coordinate = newLocation.coordinate;
+        [[mapView contents] setMapCenter:coordinate];
+        
+        NSLog(@"Starting shout retrieval...");
+        // Start data retrieval
+        [shoutManager findShouts];
+        //    NSString *locationText = [NSString stringWithFormat:@"%1.6f°, %1.6f°", coordinate.latitude, coordinate.longitude];
+        //    if (newLocation.horizontalAccuracy != 0) {
+        //        locationText = [locationText stringByAppendingFormat:@" (±%1.0fm)", newLocation.horizontalAccuracy];
+        //    }
+        //    locationLabel.text = locationText;
+        //    altitudeLabel.text = [NSString stringWithFormat:@"%1.1fm (±%1.0fm)", newLocation.altitude, newLocation.verticalAccuracy];
+        //    if (newLocation.altitude != 0) {
+        //        [altitudeLabelLabel setHidden:NO];
+        //        [altitudeLabel setHidden:NO];
+        //    }
+        //    placeManager.center = newLocation;
+        //    [placeManager findPlaces];
+    }
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

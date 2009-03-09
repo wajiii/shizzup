@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface ShizzowApiConnection : NSURLConnection {
+    NSURLConnection *connection;
 }
 
 - (NSURLConnection *) callUri:(NSString *)apiUriStub delegate:(id)delegate;
+- (void) abort;
 
 @end

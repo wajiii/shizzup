@@ -12,9 +12,8 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		28216C970DB411BC00E5133A /* ShoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* ShoutListViewController.m */; };
-		282CCBFE0DB6C98000C4EA27 /* ListeningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282CCBFD0DB6C98000C4EA27 /* ListeningView.xib */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
-		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		28AD73880D9D96C1002E5188 /* MainNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainNavView.xib */; };
 		32160C850F3FC76900C349D0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32160C840F3FC76900C349D0 /* CoreLocation.framework */; };
 		32160CE50F3FE0B400C349D0 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 32160CE40F3FE0B400C349D0 /* Place.m */; };
 		32160CE80F3FE0C000C349D0 /* PlaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32160CE70F3FE0C000C349D0 /* PlaceManager.m */; };
@@ -29,16 +28,20 @@
 		321E807C0F42512600E4B1C6 /* Shizzup.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 321E7F0E0F42098B00E4B1C6 /* Shizzup.xcclassmodel */; };
 		321E833E0F42B69B00E4B1C6 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 321E833D0F42B69B00E4B1C6 /* MapView.xib */; };
 		322F8F7F0F3C444F003C82E8 /* ImageManipulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F8F7E0F3C444F003C82E8 /* ImageManipulator.m */; };
-		322F90460F3D4EE9003C82E8 /* MainNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F90450F3D4EE9003C82E8 /* MainNavController.m */; };
+		322F90460F3D4EE9003C82E8 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F90450F3D4EE9003C82E8 /* MainTabBarController.m */; };
 		322F906D0F3D500B003C82E8 /* ShoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322F906C0F3D500B003C82E8 /* ShoutViewController.m */; };
 		322F906F0F3D503F003C82E8 /* ShoutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 322F906E0F3D503F003C82E8 /* ShoutView.xib */; };
 		324A82C20F403C1F0056857A /* PlacesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 324A82C10F403C1F0056857A /* PlacesDataSource.m */; };
 		3254E71E0F383A7A0074A99F /* Shout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3254E71D0F383A7A0074A99F /* Shout.m */; };
 		3254E7230F383AF60074A99F /* ShoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3254E7220F383AF60074A99F /* ShoutManager.m */; };
-		3254E8140F38D4910074A99F /* EveryoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3254E8130F38D4910074A99F /* EveryoneView.xib */; };
+		3254E8140F38D4910074A99F /* ShoutListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3254E8130F38D4910074A99F /* ShoutListView.xib */; };
 		3254E81F0F38D5870074A99F /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3254E81E0F38D5870074A99F /* SettingsView.xib */; };
 		326A0EF10F4E17C800322F4D /* Everyone.png in Resources */ = {isa = PBXBuildFile; fileRef = 326A0EF00F4E17C800322F4D /* Everyone.png */; };
-		32750FF20F5D0955000885F6 /* Shizzettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 32750FF10F5D0955000885F6 /* Shizzettings.bundle */; };
+		32750FF20F5D0955000885F6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 32750FF10F5D0955000885F6 /* Settings.bundle */; };
+		327510150F5E5012000885F6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327510140F5E5012000885F6 /* MainWindow.xib */; };
+		3275106B0F5E5939000885F6 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3275106A0F5E5939000885F6 /* LoginController.m */; };
+		3275110E0F5E5F6E000885F6 /* MainTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3275110D0F5E5F6E000885F6 /* MainTabBar.xib */; };
+		327513230F5E87F0000885F6 /* AnotherTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327513220F5E87F0000885F6 /* AnotherTabBar.xib */; };
 		327802310F5C5FD0007E197C /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327802300F5C5FD0007E197C /* CrashReporter.framework */; };
 		32A0B3520F3A420900EEB53C /* DefaultPersonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */; };
 		32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3510F3A420900EEB53C /* ShizzowIcon.png */; };
@@ -73,15 +76,14 @@
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* ShizzupAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShizzupAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* ShizzupAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShizzupAppDelegate.m; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* ShizzupAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = ShizzupAppDelegate.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; };
 		1D6058910D05DD3D006BFB54 /* Shizzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shizzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28216C950DB411BC00E5133A /* ShoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoutListViewController.h; sourceTree = "<group>"; };
 		28216C960DB411BC00E5133A /* ShoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutListViewController.m; sourceTree = "<group>"; };
-		282CCBFD0DB6C98000C4EA27 /* ListeningView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListeningView.xib; sourceTree = "<group>"; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* Shizzup_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shizzup_Prefix.pch; sourceTree = "<group>"; };
-		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28AD73870D9D96C1002E5188 /* MainNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNavView.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32160C840F3FC76900C349D0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		32160CE30F3FE0B400C349D0 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
@@ -103,8 +105,8 @@
 		321E833D0F42B69B00E4B1C6 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		322F8F7D0F3C444F003C82E8 /* ImageManipulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManipulator.h; sourceTree = "<group>"; };
 		322F8F7E0F3C444F003C82E8 /* ImageManipulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManipulator.m; sourceTree = "<group>"; };
-		322F90440F3D4EE9003C82E8 /* MainNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavController.h; sourceTree = "<group>"; };
-		322F90450F3D4EE9003C82E8 /* MainNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavController.m; sourceTree = "<group>"; };
+		322F90440F3D4EE9003C82E8 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		322F90450F3D4EE9003C82E8 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		322F906B0F3D500B003C82E8 /* ShoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoutViewController.h; sourceTree = "<group>"; };
 		322F906C0F3D500B003C82E8 /* ShoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutViewController.m; sourceTree = "<group>"; };
 		322F906E0F3D503F003C82E8 /* ShoutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoutView.xib; sourceTree = "<group>"; };
@@ -114,10 +116,15 @@
 		3254E71D0F383A7A0074A99F /* Shout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shout.m; sourceTree = "<group>"; };
 		3254E7210F383AF60074A99F /* ShoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoutManager.h; sourceTree = "<group>"; };
 		3254E7220F383AF60074A99F /* ShoutManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutManager.m; sourceTree = "<group>"; };
-		3254E8130F38D4910074A99F /* EveryoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EveryoneView.xib; sourceTree = "<group>"; };
+		3254E8130F38D4910074A99F /* ShoutListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoutListView.xib; sourceTree = "<group>"; };
 		3254E81E0F38D5870074A99F /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		326A0EF00F4E17C800322F4D /* Everyone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Everyone.png; sourceTree = "<group>"; };
-		32750FF10F5D0955000885F6 /* Shizzettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Shizzettings.bundle; sourceTree = "<group>"; };
+		32750FF10F5D0955000885F6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		327510140F5E5012000885F6 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		327510690F5E5939000885F6 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		3275106A0F5E5939000885F6 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		3275110D0F5E5F6E000885F6 /* MainTabBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTabBar.xib; sourceTree = "<group>"; };
+		327513220F5E87F0000885F6 /* AnotherTabBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnotherTabBar.xib; sourceTree = "<group>"; };
 		327802300F5C5FD0007E197C /* CrashReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = CrashReporter.framework; path = "../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone/CrashReporter.framework"; sourceTree = SOURCE_ROOT; };
 		32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultPersonIcon.png; sourceTree = "<group>"; };
 		32A0B3510F3A420900EEB53C /* ShizzowIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShizzowIcon.png; sourceTree = "<group>"; };
@@ -159,14 +166,16 @@
 				324A82C10F403C1F0056857A /* PlacesDataSource.m */,
 				32A0B3610F3A427B00EEB53C /* ShoutsDataSource.h */,
 				32A0B3620F3A427B00EEB53C /* ShoutsDataSource.m */,
-				322F90440F3D4EE9003C82E8 /* MainNavController.h */,
-				322F90450F3D4EE9003C82E8 /* MainNavController.m */,
+				322F90440F3D4EE9003C82E8 /* MainTabBarController.h */,
+				322F90450F3D4EE9003C82E8 /* MainTabBarController.m */,
 				28216C950DB411BC00E5133A /* ShoutListViewController.h */,
 				28216C960DB411BC00E5133A /* ShoutListViewController.m */,
 				322F906B0F3D500B003C82E8 /* ShoutViewController.h */,
 				322F906C0F3D500B003C82E8 /* ShoutViewController.m */,
 				32EA04410F548939000462BE /* LocationManager.h */,
 				32EA04420F548939000462BE /* LocationManager.m */,
+				327510690F5E5939000885F6 /* LoginController.h */,
+				3275106A0F5E5939000885F6 /* LoginController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -208,14 +217,16 @@
 			isa = PBXGroup;
 			children = (
 				32A0B34F0F3A420900EEB53C /* Images */,
-				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
-				3254E8130F38D4910074A99F /* EveryoneView.xib */,
-				282CCBFD0DB6C98000C4EA27 /* ListeningView.xib */,
-				3254E81E0F38D5870074A99F /* SettingsView.xib */,
-				322F906E0F3D503F003C82E8 /* ShoutView.xib */,
+				28AD73870D9D96C1002E5188 /* MainNavView.xib */,
+				3275110D0F5E5F6E000885F6 /* MainTabBar.xib */,
+				327510140F5E5012000885F6 /* MainWindow.xib */,
 				321E833D0F42B69B00E4B1C6 /* MapView.xib */,
+				3254E81E0F38D5870074A99F /* SettingsView.xib */,
+				3254E8130F38D4910074A99F /* ShoutListView.xib */,
+				322F906E0F3D503F003C82E8 /* ShoutView.xib */,
+				327513220F5E87F0000885F6 /* AnotherTabBar.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				32750FF10F5D0955000885F6 /* Shizzettings.bundle */,
+				32750FF10F5D0955000885F6 /* Settings.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -345,9 +356,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
-				282CCBFE0DB6C98000C4EA27 /* ListeningView.xib in Resources */,
-				3254E8140F38D4910074A99F /* EveryoneView.xib in Resources */,
+				28AD73880D9D96C1002E5188 /* MainNavView.xib in Resources */,
+				3254E8140F38D4910074A99F /* ShoutListView.xib in Resources */,
 				3254E81F0F38D5870074A99F /* SettingsView.xib in Resources */,
 				32A0B3520F3A420900EEB53C /* DefaultPersonIcon.png in Resources */,
 				32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */,
@@ -359,7 +369,10 @@
 				321E807C0F42512600E4B1C6 /* Shizzup.xcclassmodel in Resources */,
 				321E833E0F42B69B00E4B1C6 /* MapView.xib in Resources */,
 				326A0EF10F4E17C800322F4D /* Everyone.png in Resources */,
-				32750FF20F5D0955000885F6 /* Shizzettings.bundle in Resources */,
+				32750FF20F5D0955000885F6 /* Settings.bundle in Resources */,
+				327510150F5E5012000885F6 /* MainWindow.xib in Resources */,
+				3275110E0F5E5F6E000885F6 /* MainTabBar.xib in Resources */,
+				327513230F5E87F0000885F6 /* AnotherTabBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,13 +407,14 @@
 				3254E7230F383AF60074A99F /* ShoutManager.m in Sources */,
 				32A0B3630F3A427B00EEB53C /* ShoutsDataSource.m in Sources */,
 				322F8F7F0F3C444F003C82E8 /* ImageManipulator.m in Sources */,
-				322F90460F3D4EE9003C82E8 /* MainNavController.m in Sources */,
+				322F90460F3D4EE9003C82E8 /* MainTabBarController.m in Sources */,
 				322F906D0F3D500B003C82E8 /* ShoutViewController.m in Sources */,
 				32160CE50F3FE0B400C349D0 /* Place.m in Sources */,
 				32160CE80F3FE0C000C349D0 /* PlaceManager.m in Sources */,
 				32160D280F3FF18200C349D0 /* ShizzowApiConnection.m in Sources */,
 				324A82C20F403C1F0056857A /* PlacesDataSource.m in Sources */,
 				32EA04430F548939000462BE /* LocationManager.m in Sources */,
+				3275106B0F5E5939000885F6 /* LoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

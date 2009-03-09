@@ -30,7 +30,7 @@
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:apiUrl];
     NSLog(@"        request: %@", request);
     
-    // TODO: Find a better way around this!  Perhaps user should be prompted, a la Safari's invalid-certificate handling.
+    // TODO: Find a better way around this!  Perhaps user could be prompted, a la Safari's invalid-certificate handling.
     @try {
         [NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[apiUrl host]];
     }
@@ -38,10 +38,14 @@
         NSLog(@"Error attempting to override certificate handling; API calls will probably fail.\nException %@ (%@): %@", [e class], [e name], [e description]);
     }
     
-    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:delegate];
+    connection = [NSURLConnection connectionWithRequest:request delegate:delegate];
     NSLog(@"     connection: %@", connection);
     
     return connection;
+}
+
+- (void) abort {
+    [connection cancel];
 }
 
 @end

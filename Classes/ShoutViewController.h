@@ -29,5 +29,6 @@
 @property (nonatomic, retain) IBOutlet RMMapView *mapView;
 
 - (void) dataLoaded;
+- (IBAction) exitShoutView;
 
 @end

@@ -9,6 +9,7 @@
 #import "ShoutManager.h"
 #import "Shout.h"
 #import "ShizzowConstants.h"
+#import "ShizzupAppDelegate.h"
 
 @implementation ShoutManager
 
@@ -61,9 +62,10 @@
 - (void) connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     NSInteger failureCount = [challenge previousFailureCount];
     NSLog(@"ShoutManager:didRecieveAuthenticationChallenge; previous failure count: %d", failureCount);
-    if (failureCount == 0) {
-        NSURLCredential *newCredential = [NSURLCredential credentialWithUser:TEMP_USERNAME
-                                                                    password:TEMP_PASSWORD
+    ShizzupAppDelegate *appDelegate = [ShizzupAppDelegate singleton];
+    if (failureCount == 0 && [appDelegate hasCredentials]) {
+        NSURLCredential *newCredential = [NSURLCredential credentialWithUser:appDelegate.username
+                                                                    password:appDelegate.password
                                                                  persistence:NSURLCredentialPersistenceNone];
         [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
         //NSLog(@"Trying credential %@...", newCredential);
@@ -72,6 +74,7 @@
         // inform the user that the user name and password in the preferences are incorrect
         //[self showPreferencesCredentialsAreIncorrectPanel:self];
         NSLog(@"Cancelling authentication attempt after %d failures.", failureCount);
+        [appDelegate updateCredentials];
     }
 }
 

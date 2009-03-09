@@ -9,6 +9,7 @@
 #import "PlaceManager.h"
 #import "ShizzowConstants.h"
 #import "ShizzowApiConnection.h"
+#import "ShizzupAppDelegate.h"
 
 @implementation PlaceManager
 
@@ -25,8 +26,10 @@
     NSLog(@"PlaceManager findPlaces: %@", self);
     NSString *apiUriStub = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&radius=%f&radiusUnit=%@&limit=%d", SHIZZOW_API_PATH_PLACES, center.coordinate.latitude, center.coordinate.longitude, SHIZZOW_API_PLACES_RADIUS_DEFAULT, SHIZZOW_API_PLACES_RADIUSUNIT_DEFAULT, SHIZZOW_API_PLACES_LIMIT_DEFAULT];
     NSLog(@"   apiUriStub: %@", apiUriStub);
-    
-    ShizzowApiConnection *api = [[ShizzowApiConnection alloc] init];
+    if (api != nil) {
+        [api abort];
+    }
+    api = [[ShizzowApiConnection alloc] init];
     [api callUri:apiUriStub delegate:self];
 }
 
@@ -34,9 +37,10 @@
     NSLog(@"PlaceManager didReceiveAuthenticationChallenge: %@, %@", connection, challenge);
     NSInteger failureCount = [challenge previousFailureCount];
     NSLog(@"   - failure count: %d", failureCount);
-    if (failureCount == 0) {
-        NSURLCredential *newCredential = [NSURLCredential credentialWithUser:TEMP_USERNAME
-                                                                    password:TEMP_PASSWORD
+    ShizzupAppDelegate *appDelegate = [ShizzupAppDelegate singleton];
+    if (failureCount == 0 && [appDelegate hasCredentials]) {
+        NSURLCredential *newCredential = [NSURLCredential credentialWithUser:appDelegate.username
+                                                                    password:appDelegate.password
                                                                  persistence:NSURLCredentialPersistenceNone];
         [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
         NSLog(@"Trying credential %@...", newCredential);
@@ -45,6 +49,7 @@
         // inform the user that the user name and password in the preferences are incorrect
         //[self showPreferencesCredentialsAreIncorrectPanel:self];
         NSLog(@"Cancelling authentication attempt after %d failures.", failureCount);
+        [appDelegate updateCredentials];
     }
 }
 
@@ -91,7 +96,7 @@
     NSDictionary *results = [responseDictionary valueForKey:@"results"];
     //    NSLog(@"   - results: %@: %@", [results class], results);
     NSArray *placeArray = [results valueForKey:@"places"];
-    //    NSLog(@"   - placeArray: %@: %@", [placeArray class], placeArray);
+    NSLog(@"   - placeArray: %@: %@", [placeArray class], placeArray);
     NSMutableArray *places = [[NSMutableArray alloc] init];
     for (int i = 0; i < [placeArray count]; i++) {
         NSDictionary *placeDict = [placeArray objectAtIndex:i];
@@ -100,6 +105,7 @@
         [place initFromDict:placeDict];
         [places addObject:place];
     }
+    api = nil;
     [delegate managerLoadedPlaces:places];
 }
 

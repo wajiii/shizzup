@@ -11,6 +11,7 @@
 #import "Place.h"
 
 @class PlaceManager;
+@class ShizzowApiConnection;
 
 @protocol PlaceManagerDelegate
 - (void) managerLoadedPlaces:(NSArray *) places;
@@ -21,6 +22,7 @@
     CLLocation *center;
     id<PlaceManagerDelegate> delegate;
     NSString *responseText;
+    ShizzowApiConnection *api;
 }
 
 @property (nonatomic, retain) CLLocation *center;

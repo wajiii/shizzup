@@ -10,18 +10,34 @@
 #import <CrashReporter/CrashReporter.h>
 #import <dlfcn.h>
 #import <execinfo.h>
+#import <MainTabBarController.h>
+
+#define PREFKEY_USERNAME @"net.waj3.shizzup.accounts.1.username"
+#define PREFKEY_PASSWORD @"net.waj3.shizzup.accounts.1.password"
 
 @implementation ShizzupAppDelegate
 
+id APP_DELEGATE;
+
 @synthesize window;
 @synthesize navController;
-@synthesize tabBarController;
+@synthesize loginController;
+@synthesize mainTabBarController;
+@synthesize username;
+@synthesize password;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+    // Attempt to load saved credentials
+    [self retrieveCredentials];
     
     // Add the tab bar controller's current view as a subview of the window
     //[window addSubview:tabBarController.view];
+    [navController initWithRootViewController:mainTabBarController];
+//    if (![self checkCredentials]) {
+//        [navController pushViewController:loginController animated:YES];
+//    }
     [window addSubview:navController.view];
+    APP_DELEGATE = self;
 
     // Crash reporting stuff
     PLCrashReporter *crashReporter = [PLCrashReporter sharedReporter];
@@ -34,6 +50,7 @@
     if (![crashReporter enableCrashReporterAndReturnError: &error]) {
         NSLog(@"Warning: Could not enable crash reporter: %@", error);
     }
+    
 }
 
 //
@@ -78,22 +95,62 @@
     return;
 }
 
-/*
- // Optional UITabBarControllerDelegate method
- - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
- }
- */
+- (IBAction) usernameChanged:(id)sender {
+    username = [sender text];
+    NSLog(@"ShizzupAppDelegate usernameChanged: %@", username);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:username forKey:PREFKEY_USERNAME];
+}
 
-/*
- // Optional UITabBarControllerDelegate method
- - (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed {
- }
- */
+- (IBAction) passwordChanged:(id)sender {
+    password = [sender text];
+    NSLog(@"ShizzupAppDelegate passwordChanged: %@", password);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:password forKey:PREFKEY_PASSWORD];
+}
+
+- (BOOL) hasCredentials {
+    BOOL result = YES;
+    if (username == nil) {
+        result = NO;
+    }
+    if (password == nil) {
+        result = NO;
+    }
+    NSLog(@"ShizzupAppDelegate hasCredentials returning: %u", result);
+    return result;
+}
 
 - (void)dealloc {
-    [tabBarController release];
     [window release];
     [super dealloc];
+}
+
+- (id) updateCredentials {
+    NSLog(@"ShizzupAppDelegate updateCredentials");
+    @synchronized(self) {
+        NSLog(@"ShizzupAppDelegate updateCredentials - synchronized");
+        //if (![self hasCredentials]){
+            NSLog(@"ShizzupAppDelegate updateCredentials - ! hasCredentials");
+            [navController pushViewController:loginController animated:YES];
+        //}
+    }
+    return self;
+}
+
+- (void) retrieveCredentials {
+    NSLog(@"ShizzupAppDelegate :: retrieveCredentials");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"   - defaults: %@", defaults);
+    NSLog(@"   - [defaults dictionaryRepresentation]: %@", [defaults dictionaryRepresentation]);
+    username = [defaults stringForKey:PREFKEY_USERNAME];
+    NSLog(@"   - username: %@", username);
+    password = [defaults stringForKey:PREFKEY_PASSWORD];
+    NSLog(@"   - password: %@", password);
+}
+
++ (id) singleton {
+    return APP_DELEGATE;
 }
 
 @end
