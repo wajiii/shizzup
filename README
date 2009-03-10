@@ -1,1 +1,12 @@
-Yes, it's what you think! :)
+Shizzup is a Shizzow API client for the iPhone.  See http://code.google.com/p/shizzup for more information and links to the mailing list, issues list, et cetera.
+
+Right now, you may try out the app by either building and installing it yourself (assuming you have the knowledge and developer certificate required to do so), or sending Bill Jackson your iPhone's device ID.  You may send it via Twitter direct message or, if you must, email (contact details below).  If you need assistance, the following page describes two different ways to get your device id:  http://www.innerfence.com/howto/find-iphone-unique-device-identifier-udid
+
+As soon as Shizzup is stable enough for a wide beta, it will be submitted to the iTunes app store for review.  Also, I don't know this for a fact, but I would imagine a jailbroken iPhone can run the application without being added to the mobileprovision file?
+
+Cheers,
+
+-Bill Jackson
+http://twitter.com/wajiii
+<wajiii+shizzup@gmail.com>
+
