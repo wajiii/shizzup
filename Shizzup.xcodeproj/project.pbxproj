@@ -11,7 +11,6 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
-		28AD73880D9D96C1002E5188 /* MainNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainNavView.xib */; };
 		32160C850F3FC76900C349D0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32160C840F3FC76900C349D0 /* CoreLocation.framework */; };
 		321E7F7B0F421A4800E4B1C6 /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321E7F340F42191B00E4B1C6 /* libMapView.a */; };
 		321E7F840F421AA300E4B1C6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321E7F830F421AA300E4B1C6 /* QuartzCore.framework */; };
@@ -21,7 +20,6 @@
 		321E7FF40F42207000E4B1C6 /* marker-red-withletter.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */; };
 		321E7FF50F42207000E4B1C6 /* marker-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FF10F42207000E4B1C6 /* marker-red.png */; };
 		321E807C0F42512600E4B1C6 /* Shizzup.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 321E7F0E0F42098B00E4B1C6 /* Shizzup.xcclassmodel */; };
-		322F906F0F3D503F003C82E8 /* ShoutPlace.xib in Resources */ = {isa = PBXBuildFile; fileRef = 322F906E0F3D503F003C82E8 /* ShoutPlace.xib */; };
 		324BCAC00F66692900B3AE7E /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCAB70F66692900B3AE7E /* LoginController.m */; };
 		324BCAC10F66692900B3AE7E /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCAB90F66692900B3AE7E /* MainTabBarController.m */; };
 		324BCAC20F66692900B3AE7E /* NearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCABB0F66692900B3AE7E /* NearbyViewController.m */; };
@@ -44,21 +42,26 @@
 		324BCB920F67286100B3AE7E /* ShoutListReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCB890F67286100B3AE7E /* ShoutListReceiver.m */; };
 		324BCB930F67286100B3AE7E /* ShoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCB8B0F67286100B3AE7E /* ShoutManager.m */; };
 		324BCB940F67286100B3AE7E /* ShoutSendReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCB8D0F67286100B3AE7E /* ShoutSendReceiver.m */; };
-		3254E8140F38D4910074A99F /* ListeningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3254E8130F38D4910074A99F /* ListeningView.xib */; };
-		3254E81F0F38D5870074A99F /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3254E81E0F38D5870074A99F /* SettingsView.xib */; };
+		324BCBA10F672F1F00B3AE7E /* ListeningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB980F672F1F00B3AE7E /* ListeningView.xib */; };
+		324BCBA20F672F1F00B3AE7E /* MainNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB990F672F1F00B3AE7E /* MainNavView.xib */; };
+		324BCBA30F672F1F00B3AE7E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB9A0F672F1F00B3AE7E /* MainWindow.xib */; };
+		324BCBA50F672F1F00B3AE7E /* NearbyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB9C0F672F1F00B3AE7E /* NearbyView.xib */; };
+		324BCBA60F672F1F00B3AE7E /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB9D0F672F1F00B3AE7E /* SettingsView.xib */; };
+		324BCBA70F672F1F00B3AE7E /* ShoutMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB9E0F672F1F00B3AE7E /* ShoutMessage.xib */; };
+		324BCBA80F672F1F00B3AE7E /* ShoutPlace.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB9F0F672F1F00B3AE7E /* ShoutPlace.xib */; };
+		324BCBAE0F672F7500B3AE7E /* plan.html in Resources */ = {isa = PBXBuildFile; fileRef = 324BCBAA0F672F7500B3AE7E /* plan.html */; };
+		324BCBAF0F672F7500B3AE7E /* plan.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 324BCBAB0F672F7500B3AE7E /* plan.rtf */; };
+		324BCBB00F672F7500B3AE7E /* shizzow-api-shouts-json.html in Resources */ = {isa = PBXBuildFile; fileRef = 324BCBAC0F672F7500B3AE7E /* shizzow-api-shouts-json.html */; };
+		324BCBB10F672F7500B3AE7E /* shizzow-api-shouts-json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 324BCBAD0F672F7500B3AE7E /* shizzow-api-shouts-json.txt */; };
 		326A0EF10F4E17C800322F4D /* Listening.png in Resources */ = {isa = PBXBuildFile; fileRef = 326A0EF00F4E17C800322F4D /* Listening.png */; };
 		32750FF20F5D0955000885F6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 32750FF10F5D0955000885F6 /* Settings.bundle */; };
-		327510150F5E5012000885F6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327510140F5E5012000885F6 /* MainWindow.xib */; };
-		327513230F5E87F0000885F6 /* AnotherTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327513220F5E87F0000885F6 /* AnotherTabBar.xib */; };
 		327802310F5C5FD0007E197C /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327802300F5C5FD0007E197C /* CrashReporter.framework */; };
 		32A0B3520F3A420900EEB53C /* DefaultPersonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */; };
 		32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3510F3A420900EEB53C /* ShizzowIcon.png */; };
-		32F8F36F0F65A5DE0065886D /* ShoutMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F36E0F65A5DE0065886D /* ShoutMessage.xib */; };
 		32F8F4DE0F65D8270065886D /* Nearby.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4DD0F65D8270065886D /* Nearby.png */; };
 		32F8F4E30F65D8F60065886D /* Hotspots.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4E20F65D8F60065886D /* Hotspots.png */; };
 		32F8F4E50F65D9050065886D /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4E40F65D9050065886D /* Settings.png */; };
 		32F8F4ED0F65E10A0065886D /* Refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4EC0F65E10A0065886D /* Refresh.png */; };
-		32F8F5BB0F65EECA0065886D /* NearbyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F5BA0F65EECA0065886D /* NearbyView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,12 +94,9 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* Shizzup_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shizzup_Prefix.pch; sourceTree = "<group>"; };
-		28AD73870D9D96C1002E5188 /* MainNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNavView.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32160C840F3FC76900C349D0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		321E7F0E0F42098B00E4B1C6 /* Shizzup.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = Shizzup.xcclassmodel; sourceTree = "<group>"; };
-		321E7F130F420A0D00E4B1C6 /* plan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = plan.html; sourceTree = "<group>"; };
-		321E7F170F420A8800E4B1C6 /* plan.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = plan.rtf; sourceTree = "<group>"; };
 		321E7F2C0F42191B00E4B1C6 /* MapView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = ../MapView/MapView.xcodeproj; sourceTree = SOURCE_ROOT; };
 		321E7F830F421AA300E4B1C6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		321E7F850F421AB100E4B1C6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -104,7 +104,6 @@
 		321E7FEF0F42207000E4B1C6 /* marker-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-blue.png"; sourceTree = "<group>"; };
 		321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-red-withletter.png"; sourceTree = "<group>"; };
 		321E7FF10F42207000E4B1C6 /* marker-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-red.png"; sourceTree = "<group>"; };
-		322F906E0F3D503F003C82E8 /* ShoutPlace.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoutPlace.xib; sourceTree = "<group>"; };
 		324BCAB60F66692900B3AE7E /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = UI/LoginController.h; sourceTree = "<group>"; };
 		324BCAB70F66692900B3AE7E /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginController.m; path = UI/LoginController.m; sourceTree = "<group>"; };
 		324BCAB80F66692900B3AE7E /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabBarController.h; path = UI/MainTabBarController.h; sourceTree = "<group>"; };
@@ -150,21 +149,26 @@
 		324BCB8C0F67286100B3AE7E /* ShoutSendReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoutSendReceiver.h; sourceTree = "<group>"; };
 		324BCB8D0F67286100B3AE7E /* ShoutSendReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutSendReceiver.m; sourceTree = "<group>"; };
 		324BCB950F67288800B3AE7E /* ShizzupConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShizzupConstants.h; path = Utility/ShizzupConstants.h; sourceTree = "<group>"; };
-		3254E8130F38D4910074A99F /* ListeningView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListeningView.xib; sourceTree = "<group>"; };
-		3254E81E0F38D5870074A99F /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		324BCB980F672F1F00B3AE7E /* ListeningView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ListeningView.xib; path = UIs/ListeningView.xib; sourceTree = "<group>"; };
+		324BCB990F672F1F00B3AE7E /* MainNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainNavView.xib; path = UIs/MainNavView.xib; sourceTree = "<group>"; };
+		324BCB9A0F672F1F00B3AE7E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = UIs/MainWindow.xib; sourceTree = "<group>"; };
+		324BCB9C0F672F1F00B3AE7E /* NearbyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NearbyView.xib; path = UIs/NearbyView.xib; sourceTree = "<group>"; };
+		324BCB9D0F672F1F00B3AE7E /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsView.xib; path = UIs/SettingsView.xib; sourceTree = "<group>"; };
+		324BCB9E0F672F1F00B3AE7E /* ShoutMessage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShoutMessage.xib; path = UIs/ShoutMessage.xib; sourceTree = "<group>"; };
+		324BCB9F0F672F1F00B3AE7E /* ShoutPlace.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShoutPlace.xib; path = UIs/ShoutPlace.xib; sourceTree = "<group>"; };
+		324BCBAA0F672F7500B3AE7E /* plan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = plan.html; sourceTree = "<group>"; };
+		324BCBAB0F672F7500B3AE7E /* plan.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = plan.rtf; sourceTree = "<group>"; };
+		324BCBAC0F672F7500B3AE7E /* shizzow-api-shouts-json.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "shizzow-api-shouts-json.html"; sourceTree = "<group>"; };
+		324BCBAD0F672F7500B3AE7E /* shizzow-api-shouts-json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "shizzow-api-shouts-json.txt"; sourceTree = "<group>"; };
 		326A0EF00F4E17C800322F4D /* Listening.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Listening.png; sourceTree = "<group>"; };
 		32750FF10F5D0955000885F6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		327510140F5E5012000885F6 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		327513220F5E87F0000885F6 /* AnotherTabBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnotherTabBar.xib; sourceTree = "<group>"; };
 		327802300F5C5FD0007E197C /* CrashReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = CrashReporter.framework; path = "../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone/CrashReporter.framework"; sourceTree = SOURCE_ROOT; };
 		32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultPersonIcon.png; sourceTree = "<group>"; };
 		32A0B3510F3A420900EEB53C /* ShizzowIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShizzowIcon.png; sourceTree = "<group>"; };
-		32F8F36E0F65A5DE0065886D /* ShoutMessage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoutMessage.xib; sourceTree = "<group>"; };
 		32F8F4DD0F65D8270065886D /* Nearby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nearby.png; sourceTree = "<group>"; };
 		32F8F4E20F65D8F60065886D /* Hotspots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hotspots.png; sourceTree = "<group>"; };
 		32F8F4E40F65D9050065886D /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
 		32F8F4EC0F65E10A0065886D /* Refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Refresh.png; sourceTree = "<group>"; };
-		32F8F5BA0F65EECA0065886D /* NearbyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearbyView.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,8 +213,7 @@
 		29B97314FDCFA39411CA2CEA /* Shizzup */ = {
 			isa = PBXGroup;
 			children = (
-				321E7F170F420A8800E4B1C6 /* plan.rtf */,
-				321E7F130F420A0D00E4B1C6 /* plan.html */,
+				324BCBA90F672F7500B3AE7E /* docs */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -233,15 +236,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				324BCB960F672EFF00B3AE7E /* UIs */,
 				32A0B34F0F3A420900EEB53C /* Images */,
-				28AD73870D9D96C1002E5188 /* MainNavView.xib */,
-				327510140F5E5012000885F6 /* MainWindow.xib */,
-				32F8F5BA0F65EECA0065886D /* NearbyView.xib */,
-				3254E81E0F38D5870074A99F /* SettingsView.xib */,
-				3254E8130F38D4910074A99F /* ListeningView.xib */,
-				32F8F36E0F65A5DE0065886D /* ShoutMessage.xib */,
-				322F906E0F3D503F003C82E8 /* ShoutPlace.xib */,
-				327513220F5E87F0000885F6 /* AnotherTabBar.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				32750FF10F5D0955000885F6 /* Settings.bundle */,
 			);
@@ -309,22 +305,47 @@
 		324BCB7E0F67286100B3AE7E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				324BCB830F67286100B3AE7E /* ShizzowApiConnection.h */,
+				324BCB840F67286100B3AE7E /* ShizzowApiConnection.m */,
 				324BCB7F0F67286100B3AE7E /* Place.h */,
 				324BCB800F67286100B3AE7E /* Place.m */,
 				324BCB810F67286100B3AE7E /* PlaceManager.h */,
 				324BCB820F67286100B3AE7E /* PlaceManager.m */,
-				324BCB830F67286100B3AE7E /* ShizzowApiConnection.h */,
-				324BCB840F67286100B3AE7E /* ShizzowApiConnection.m */,
 				324BCB860F67286100B3AE7E /* Shout.h */,
 				324BCB870F67286100B3AE7E /* Shout.m */,
-				324BCB880F67286100B3AE7E /* ShoutListReceiver.h */,
-				324BCB890F67286100B3AE7E /* ShoutListReceiver.m */,
 				324BCB8A0F67286100B3AE7E /* ShoutManager.h */,
 				324BCB8B0F67286100B3AE7E /* ShoutManager.m */,
+				324BCB880F67286100B3AE7E /* ShoutListReceiver.h */,
+				324BCB890F67286100B3AE7E /* ShoutListReceiver.m */,
 				324BCB8C0F67286100B3AE7E /* ShoutSendReceiver.h */,
 				324BCB8D0F67286100B3AE7E /* ShoutSendReceiver.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		324BCB960F672EFF00B3AE7E /* UIs */ = {
+			isa = PBXGroup;
+			children = (
+				324BCB980F672F1F00B3AE7E /* ListeningView.xib */,
+				324BCB990F672F1F00B3AE7E /* MainNavView.xib */,
+				324BCB9A0F672F1F00B3AE7E /* MainWindow.xib */,
+				324BCB9C0F672F1F00B3AE7E /* NearbyView.xib */,
+				324BCB9D0F672F1F00B3AE7E /* SettingsView.xib */,
+				324BCB9F0F672F1F00B3AE7E /* ShoutPlace.xib */,
+				324BCB9E0F672F1F00B3AE7E /* ShoutMessage.xib */,
+			);
+			name = UIs;
+			sourceTree = "<group>";
+		};
+		324BCBA90F672F7500B3AE7E /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				324BCBAA0F672F7500B3AE7E /* plan.html */,
+				324BCBAB0F672F7500B3AE7E /* plan.rtf */,
+				324BCBAC0F672F7500B3AE7E /* shizzow-api-shouts-json.html */,
+				324BCBAD0F672F7500B3AE7E /* shizzow-api-shouts-json.txt */,
+			);
+			path = docs;
 			sourceTree = "<group>";
 		};
 		327DF1C80F65F3E9002B7AB1 /* Utility */ = {
@@ -431,12 +452,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD73880D9D96C1002E5188 /* MainNavView.xib in Resources */,
-				3254E8140F38D4910074A99F /* ListeningView.xib in Resources */,
-				3254E81F0F38D5870074A99F /* SettingsView.xib in Resources */,
 				32A0B3520F3A420900EEB53C /* DefaultPersonIcon.png in Resources */,
 				32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */,
-				322F906F0F3D503F003C82E8 /* ShoutPlace.xib in Resources */,
 				321E7FF20F42207000E4B1C6 /* marker-blue-withletter.png in Resources */,
 				321E7FF30F42207000E4B1C6 /* marker-blue.png in Resources */,
 				321E7FF40F42207000E4B1C6 /* marker-red-withletter.png in Resources */,
@@ -444,14 +461,21 @@
 				321E807C0F42512600E4B1C6 /* Shizzup.xcclassmodel in Resources */,
 				326A0EF10F4E17C800322F4D /* Listening.png in Resources */,
 				32750FF20F5D0955000885F6 /* Settings.bundle in Resources */,
-				327510150F5E5012000885F6 /* MainWindow.xib in Resources */,
-				327513230F5E87F0000885F6 /* AnotherTabBar.xib in Resources */,
-				32F8F36F0F65A5DE0065886D /* ShoutMessage.xib in Resources */,
 				32F8F4DE0F65D8270065886D /* Nearby.png in Resources */,
 				32F8F4E30F65D8F60065886D /* Hotspots.png in Resources */,
 				32F8F4E50F65D9050065886D /* Settings.png in Resources */,
 				32F8F4ED0F65E10A0065886D /* Refresh.png in Resources */,
-				32F8F5BB0F65EECA0065886D /* NearbyView.xib in Resources */,
+				324BCBA10F672F1F00B3AE7E /* ListeningView.xib in Resources */,
+				324BCBA20F672F1F00B3AE7E /* MainNavView.xib in Resources */,
+				324BCBA30F672F1F00B3AE7E /* MainWindow.xib in Resources */,
+				324BCBA50F672F1F00B3AE7E /* NearbyView.xib in Resources */,
+				324BCBA60F672F1F00B3AE7E /* SettingsView.xib in Resources */,
+				324BCBA70F672F1F00B3AE7E /* ShoutMessage.xib in Resources */,
+				324BCBA80F672F1F00B3AE7E /* ShoutPlace.xib in Resources */,
+				324BCBAE0F672F7500B3AE7E /* plan.html in Resources */,
+				324BCBAF0F672F7500B3AE7E /* plan.rtf in Resources */,
+				324BCBB00F672F7500B3AE7E /* shizzow-api-shouts-json.html in Resources */,
+				324BCBB10F672F7500B3AE7E /* shizzow-api-shouts-json.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

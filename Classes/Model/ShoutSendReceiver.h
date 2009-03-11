@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ShoutManager.h"
 
 @interface ShoutSendReceiver : NSObject {
-
+    id<ShoutManagerDelegate> delegate;
+    NSString *responseText;
 }
+
+@property (nonatomic, retain) id<ShoutManagerDelegate> delegate;
 
 @end

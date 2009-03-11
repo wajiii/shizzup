@@ -12,7 +12,7 @@
 @implementation ShizzowApiConnection
 
 - (NSURLConnection *) callUri:(NSString *)apiUriStub delegate:(id)delegate {
-    return [self calUri:apiUriStub usingMethod:@"GET" withDelegate:delegate withBody:nil];
+    return [self callUri:apiUriStub usingMethod:@"GET" withDelegate:delegate withBody:nil];
 }
 
 - (NSURLConnection *) callUri:(NSString *)apiUriStub usingMethod:(NSString *)method withDelegate:(id)delegate withBody:(NSString *)body {

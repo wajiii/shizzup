@@ -13,6 +13,7 @@
 #import "ShizzupConstants.h"
 #import "Shout.h"
 #import "ShoutListReceiver.h"
+#import "ShoutSendReceiver.h"
 
 @implementation ShoutManager
 
@@ -39,7 +40,7 @@
     api = [[ShizzowApiConnection alloc] init];
     ShoutListReceiver *receiver = [[ShoutListReceiver alloc] init];
     [receiver setDelegate: delegate];
-    [api callUri:apiUriStub delegate:self];
+    [api callUri: apiUriStub delegate: receiver];
 }
 
 - (void) findShouts {
@@ -55,10 +56,10 @@
 }
 
 - (void) sendShoutFromPlace:(NSString *)placeKey withMessage:(NSString *)message{
-    NSString *apiUriStub = [NSString stringWithFormat:@"/places/%@/shout"];
+    NSString *apiUriStub = [NSString stringWithFormat:@"/places/%@/shout", placeKey];
     NSString *body = [NSString stringWithFormat:@"shouts_message=%@", message];
     api = [[ShizzowApiConnection alloc] init];
-    ShoutListReceiver *receiver = [[ShoutListReceiver alloc] init];
+    ShoutSendReceiver *receiver = [[ShoutListReceiver alloc] init];
     [receiver setDelegate: delegate];
     [api callUri: apiUriStub usingMethod:@"PUT" withDelegate:receiver withBody:body];
 }

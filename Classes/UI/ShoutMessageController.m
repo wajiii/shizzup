@@ -8,6 +8,8 @@
 
 #import "ShoutMessageController.h"
 
+#import "ShoutManager.h"
+
 @implementation ShoutMessageController
 
 @synthesize place;
@@ -49,6 +51,8 @@
     NSLog(@"   - place.name: %@", [place key]);
     NSLog(@"   - place.key: %@", [place key]);
     NSLog(@"   - message: %@", [message text]);
+    ShoutManager *manager = [[ShoutManager alloc] init];
+    [manager sendShoutFromPlace:[place key] withMessage:[message text]];
     [(UINavigationController *)[self parentViewController] popToRootViewControllerAnimated:YES];
 }
 

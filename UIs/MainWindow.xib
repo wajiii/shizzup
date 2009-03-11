@@ -9,7 +9,7 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="271"/>
-			<integer value="299"/>
+			<integer value="309"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -68,43 +68,43 @@
 							<reference key="IBUINavigationBar"/>
 							<string key="IBUITitle">Shizzup</string>
 							<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="513323410">
+								<string key="IBUITitle">Shout</string>
 								<int key="IBUIStyle">1</int>
-								<int key="IBUISystemItemIdentifier">7</int>
 							</object>
 						</object>
 						<reference key="IBUIParentViewController" ref="737181111"/>
 						<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
 						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-						<object class="IBUIViewController" key="IBUISelectedViewController" id="467328793">
-							<string key="IBUITitle">Listening</string>
-							<object class="IBUITabBarItem" key="IBUITabBarItem" id="695638562">
-								<string key="IBUITitle">Listening</string>
+						<object class="IBUIViewController" key="IBUISelectedViewController" id="912755230">
+							<string key="IBUITitle">Nearby</string>
+							<object class="IBUITabBarItem" key="IBUITabBarItem" id="120643528">
+								<int key="IBUITag">1</int>
+								<string key="IBUITitle">Nearby</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Listening.png</string>
+									<string key="NSResourceName">Nearby.png</string>
 								</object>
 								<reference key="IBUITabBar"/>
 							</object>
 							<reference key="IBUIParentViewController" ref="340127094"/>
-							<string key="IBUINibName">ListeningView</string>
+							<string key="IBUINibName">NearbyView</string>
 						</object>
 						<object class="NSMutableArray" key="IBUIViewControllers">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="467328793"/>
-							<object class="IBUIViewController" id="912755230">
-								<string key="IBUITitle">Nearby</string>
-								<object class="IBUITabBarItem" key="IBUITabBarItem" id="120643528">
-									<int key="IBUITag">1</int>
-									<string key="IBUITitle">Nearby</string>
+							<object class="IBUIViewController" id="467328793">
+								<string key="IBUITitle">Listening</string>
+								<object class="IBUITabBarItem" key="IBUITabBarItem" id="695638562">
+									<string key="IBUITitle">Listening</string>
 									<object class="NSCustomResource" key="IBUIImage">
 										<string key="NSClassName">NSImage</string>
-										<string key="NSResourceName">Places.png</string>
+										<string key="NSResourceName">Listening.png</string>
 									</object>
 									<reference key="IBUITabBar"/>
 								</object>
 								<reference key="IBUIParentViewController" ref="340127094"/>
-								<string key="IBUINibName">NearbyView</string>
+								<string key="IBUINibName">ListeningView</string>
 							</object>
+							<reference ref="912755230"/>
 							<object class="IBUIViewController" id="488320906">
 								<string key="IBUITitle">Hotspots</string>
 								<object class="IBUITabBarItem" key="IBUITabBarItem" id="829620416">
@@ -801,7 +801,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/ListeningViewController.h</string>
+						<string key="minorKey">Classes/UI/ListeningViewController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -834,7 +834,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/LoginController.h</string>
+						<string key="minorKey">Classes/UI/LoginController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -867,7 +867,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/MainTabBarController.h</string>
+						<string key="minorKey">Classes/UI/MainTabBarController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -888,7 +888,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/NearbyViewController.h</string>
+						<string key="minorKey">Classes/UI/NearbyViewController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -930,7 +930,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/ShizzupAppDelegate.h</string>
+						<string key="minorKey">Classes/Misc/ShizzupAppDelegate.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -944,7 +944,7 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.LastKnownRelativeProjectPath">Shizzup.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../Shizzup.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 	</data>
 </archive>
