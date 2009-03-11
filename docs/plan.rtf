@@ -1,28 +1,59 @@
 {\rtf1\ansi\ansicpg1252\cocoartf949\cocoasubrtf430
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
+{\colortbl;\red255\green255\blue255;\red0\green255\blue0;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid0\'02\'05.;}{\levelnumbers\'01;}}{\listlevel\levelnfc23\levelnfcn23\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid1\'02\'05.;}{\levelnumbers\'01;}}{\listlevel\levelnfc23\levelnfcn23\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid2\'02\'05.;}{\levelnumbers\'01;}}{\listname ;}\listid1}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\vieww15240\viewh13480\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
 
 \f0\fs24 \cf0 \
 The plan:\
 \
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\ql\qnatural\pardirnatural
-\ls1\ilvl0\cf0 {\listtext	1.	}"Everyone" screen\
+\ls1\ilvl0\cf0 {\listtext	1.	}"Listening" screen (if logged in)\
 \pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
-\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}Toggle between "Shout List" and "Shout Map"\
-{\listtext	\uc0\u8259 	}Supports rotation\
-\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\ql\qnatural\pardirnatural
-\ls1\ilvl0\cf0 {\listtext	2.	}"Listening" screen (if logged in)\
-\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
-\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}Toggle between "Shout List" and "Shout Map"\
-{\listtext	\uc0\u8259 	}Supports rotation\
+\ls1\ilvl1\cf0 \strike \strikec2 {\listtext	\uc0\u8259 	}Shouts descending by timestamp\
+{\listtext	\uc0\u8259 	}User icon\
+{\listtext	\uc0\u8259 	}User name\
+{\listtext	\uc0\u8259 	}Location (place_name)\
+{\listtext	\uc0\u8259 	}Age (how long ago)\
+\ls1\ilvl1\strike0\striked0 {\listtext	\uc0\u8259 	}Message (if any)\
+\ls1\ilvl1\strike \strikec2     	-	First row refreshes list\
+\ls1\ilvl1\strike0\striked0 {\listtext	\uc0\u8259 	}Last row allows loading more shouts\
+\pard\tx1660\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-2160\ql\qnatural\pardirnatural
+\ls1\ilvl2\cf0 {\listtext	\uc0\u8259 	}Up to a limit?\
 \pard\tx220\tx720\tx1120\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\ql\qnatural\pardirnatural
-\ls1\ilvl0\cf0 {\listtext	3.	}"Shout" screen (if logged in)\
+\ls1\ilvl0\cf0 {\listtext	2.	}"Nearby"\
 \pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
-\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}List of matches (ascending by distance)\
-{\listtext	\uc0\u8259 	}Search for place by name+city (like web)\
+\ls1\ilvl1\cf0 \strike \strikec2 {\listtext	\uc0\u8259 	}Pushpin for each shout 
+\b [done]
+\b0 \
+{\listtext	\uc0\u8259 	}Limited to 50 most recent shouts 
+\b [done]
+\b0 \
+{\listtext	\uc0\u8259 	}Pushpins fade with age, with boundaries such as: 
+\b [done]
+\b0 \
+\pard\tx1660\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-2160\ql\qnatural\pardirnatural
+\ls1\ilvl2\cf0 {\listtext	\uc0\u8259 	}1 hour or less: 100% opacity\
+{\listtext	\uc0\u8259 	}8 hours or more: 50% opacity\
+{\listtext	\uc0\u8259 	}Linear gradient in between\
+\pard\tx940\tx1440\tx1680\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
+\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}Filtered to only display most recent shout for each person 
+\b [done]\
+\ls1\ilvl1
+\b0 \strike0\striked0 {\listtext	\uc0\u8259 	}Combine shouts from the same location\
+{\listtext	\uc0\u8259 	}Tapping a marker expands to shouts from that location\
+{\listtext	\uc0\u8259 	}Combine markers depending on distance and zoom level (a la {\field{\*\fldinst{HYPERLINK "http://googlemapsapi.martinpearman.co.uk/readarticle.php?article_id=1"}}{\fldrslt http://googlemapsapi.martinpearman.co.uk/readarticle.php?article_id=1}})\
+\pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\ql\qnatural\pardirnatural
+\ls1\ilvl0\cf0 {\listtext	3.	}"Hotspots" screen\
+\pard\tx940\tx1440\tx1680\tx2240\tx2800\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
+\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}...\
+\pard\tx220\tx720\tx1120\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\ql\qnatural\pardirnatural
+\ls1\ilvl0\cf0 {\listtext	4.	}"Shout" screen\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
+\ls1\ilvl1\cf0 \strike \strikec2 {\listtext	\uc0\u8259 	}List of nearby places (ascending by distance)\
+\ls1\ilvl1\strike0\striked0 {\listtext	\uc0\u8259 	}Search for place by name+city (like web)\
 \pard\tx1660\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-2160\ql\qnatural\pardirnatural
 \ls1\ilvl2\cf0 {\listtext	\uc0\u8259 	}When an exact match is found, display it and nearby places\
 {\listtext	\uc0\u8259 	}When no exact match is found, display similar names (like web)\
@@ -36,36 +67,32 @@ The plan:\
 \pard\tx940\tx1440\tx1680\tx2240\tx2800\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
 \ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}Supports rotation\
 \pard\tx220\tx720\tx1120\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\ql\qnatural\pardirnatural
-\ls1\ilvl0\cf0 {\listtext	4.	}"Settings" screen\
+\ls1\ilvl0\cf0 {\listtext	5.	}"More" screen\
 \pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
-\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}Username\
+\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}Simple table\
+{\listtext	\uc0\u8259 	}Link to "About" screen\
+{\listtext	\uc0\u8259 	}Link to "Settings" screen\
+\pard\tx220\tx720\tx1120\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\ql\qnatural\pardirnatural
+\ls1\ilvl0\cf0 {\listtext	6.	}"About" screen\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
+\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}Current version\
+{\listtext	\uc0\u8259 	}Credits\
+{\listtext	\uc0\u8259 	}License information\
+{\listtext	\uc0\u8259 	}Attribution of included / forked code (with links to original sources)\
+\pard\tx220\tx720\tx1120\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\ql\qnatural\pardirnatural
+\ls1\ilvl0\cf0 {\listtext	7.	}"Settings" screen\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
+\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}So far, just needs everything from the settings bundle (below):\
+{\listtext	\uc0\u8259 	}Username\
 {\listtext	\uc0\u8259 	}Password\
-{\listtext	\uc0\u8259 	}Shout on startup [auto, prompt, none]\
-{\listtext	\uc0\u8259 	}Supports rotation?\
+{\listtext	\uc0\u8259 	}Shout on startup\
 \pard\tx220\tx720\tx1120\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\ql\qnatural\pardirnatural
-\ls1\ilvl0\cf0 {\listtext	5.	}"Shout List"\
+\ls1\ilvl0\cf0 {\listtext	8.	}Settings bundle\
 \pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
-\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}Shouts descending by timestamp\
-{\listtext	\uc0\u8259 	}User icon\
-{\listtext	\uc0\u8259 	}User name\
-{\listtext	\uc0\u8259 	}Location (place_name)\
-{\listtext	\uc0\u8259 	}Age (how long ago)\
-{\listtext	\uc0\u8259 	}Most recent message (if any)\
-{\listtext	\uc0\u8259 	}Last item in list allows loading more shouts\
-\pard\tx1660\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-2160\ql\qnatural\pardirnatural
-\ls1\ilvl2\cf0 {\listtext	\uc0\u8259 	}Up to a limit?\
-\pard\tx220\tx720\tx1120\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\ql\qnatural\pardirnatural
-\ls1\ilvl0\cf0 {\listtext	6.	}"Shout Map"\
-\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
-\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}Pushpin for each shout\
-{\listtext	\uc0\u8259 	}Limited to X most recent shouts\
-{\listtext	\uc0\u8259 	}Pushpins fade with age, with boundaries such as:\
-\pard\tx1660\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-2160\ql\qnatural\pardirnatural
-\ls1\ilvl2\cf0 {\listtext	\uc0\u8259 	}5 minutes or less: 100% opacity\
-{\listtext	\uc0\u8259 	}4 hours or more: 20% opacity\
-{\listtext	\uc0\u8259 	}Linear gradient in between\
-\pard\tx940\tx1440\tx1680\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\ql\qnatural\pardirnatural
-\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}\
+\ls1\ilvl1\cf0 \strike \strikec2 {\listtext	\uc0\u8259 	}Username\
+{\listtext	\uc0\u8259 	}Password\
+\ls1\ilvl1\strike0\striked0 {\listtext	\uc0\u8259 	}Shout on startup [auto, prompt, none]\
 \pard\tx220\tx720\tx1120\tx1680\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\ql\qnatural\pardirnatural
-\ls1\ilvl0\cf0 {\listtext	7.	}...\
+\ls1\ilvl0\cf0 {\listtext	9.	}...\
+{\listtext	10.	}\
 }
