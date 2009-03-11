@@ -14,7 +14,6 @@
 #import "NearbyDataSource.h"
 #import "ShizzupConstants.h"
 #import "ShoutManager.h"
-#import "NSCalendarDate+ISO8601Parsing.h"
 
 @implementation NearbyViewController
 

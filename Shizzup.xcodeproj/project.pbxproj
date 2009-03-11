@@ -33,8 +33,6 @@
 		324BCADE0F6669E900B3AE7E /* ImageManipulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCAD50F6669E900B3AE7E /* ImageManipulator.m */; };
 		324BCADF0F6669E900B3AE7E /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCAD70F6669E900B3AE7E /* LocationManager.m */; };
 		324BCAE00F6669E900B3AE7E /* MREntitiesConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCAD90F6669E900B3AE7E /* MREntitiesConverter.m */; };
-		324BCAE10F6669E900B3AE7E /* NSCalendarDate+ISO8601Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCADB0F6669E900B3AE7E /* NSCalendarDate+ISO8601Parsing.m */; };
-		324BCAE20F6669E900B3AE7E /* NSCalendarDate+ISO8601Unparsing.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCADD0F6669E900B3AE7E /* NSCalendarDate+ISO8601Unparsing.m */; };
 		324BCB8E0F67286100B3AE7E /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCB800F67286100B3AE7E /* Place.m */; };
 		324BCB8F0F67286100B3AE7E /* PlaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCB820F67286100B3AE7E /* PlaceManager.m */; };
 		324BCB900F67286100B3AE7E /* ShizzowApiConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCB840F67286100B3AE7E /* ShizzowApiConnection.m */; };
@@ -130,10 +128,6 @@
 		324BCAD70F6669E900B3AE7E /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Utility/LocationManager.m; sourceTree = "<group>"; };
 		324BCAD80F6669E900B3AE7E /* MREntitiesConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MREntitiesConverter.h; path = Utility/MREntitiesConverter.h; sourceTree = "<group>"; };
 		324BCAD90F6669E900B3AE7E /* MREntitiesConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MREntitiesConverter.m; path = Utility/MREntitiesConverter.m; sourceTree = "<group>"; };
-		324BCADA0F6669E900B3AE7E /* NSCalendarDate+ISO8601Parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSCalendarDate+ISO8601Parsing.h"; path = "Utility/NSCalendarDate+ISO8601Parsing.h"; sourceTree = "<group>"; };
-		324BCADB0F6669E900B3AE7E /* NSCalendarDate+ISO8601Parsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCalendarDate+ISO8601Parsing.m"; path = "Utility/NSCalendarDate+ISO8601Parsing.m"; sourceTree = "<group>"; };
-		324BCADC0F6669E900B3AE7E /* NSCalendarDate+ISO8601Unparsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSCalendarDate+ISO8601Unparsing.h"; path = "Utility/NSCalendarDate+ISO8601Unparsing.h"; sourceTree = "<group>"; };
-		324BCADD0F6669E900B3AE7E /* NSCalendarDate+ISO8601Unparsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCalendarDate+ISO8601Unparsing.m"; path = "Utility/NSCalendarDate+ISO8601Unparsing.m"; sourceTree = "<group>"; };
 		324BCB7F0F67286100B3AE7E /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
 		324BCB800F67286100B3AE7E /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
 		324BCB810F67286100B3AE7E /* PlaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceManager.h; sourceTree = "<group>"; };
@@ -358,10 +352,6 @@
 				324BCAD50F6669E900B3AE7E /* ImageManipulator.m */,
 				324BCAD80F6669E900B3AE7E /* MREntitiesConverter.h */,
 				324BCAD90F6669E900B3AE7E /* MREntitiesConverter.m */,
-				324BCADA0F6669E900B3AE7E /* NSCalendarDate+ISO8601Parsing.h */,
-				324BCADB0F6669E900B3AE7E /* NSCalendarDate+ISO8601Parsing.m */,
-				324BCADC0F6669E900B3AE7E /* NSCalendarDate+ISO8601Unparsing.h */,
-				324BCADD0F6669E900B3AE7E /* NSCalendarDate+ISO8601Unparsing.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -517,8 +507,6 @@
 				324BCADE0F6669E900B3AE7E /* ImageManipulator.m in Sources */,
 				324BCADF0F6669E900B3AE7E /* LocationManager.m in Sources */,
 				324BCAE00F6669E900B3AE7E /* MREntitiesConverter.m in Sources */,
-				324BCAE10F6669E900B3AE7E /* NSCalendarDate+ISO8601Parsing.m in Sources */,
-				324BCAE20F6669E900B3AE7E /* NSCalendarDate+ISO8601Unparsing.m in Sources */,
 				324BCB8E0F67286100B3AE7E /* Place.m in Sources */,
 				324BCB8F0F67286100B3AE7E /* PlaceManager.m in Sources */,
 				324BCB900F67286100B3AE7E /* ShizzowApiConnection.m in Sources */,
