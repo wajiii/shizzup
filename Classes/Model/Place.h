@@ -38,7 +38,7 @@
 @property (nonatomic, retain) NSString *country_name;
 @property (nonatomic, retain) NSString *distance;
 @property (nonatomic, retain) NSString *distance_unit;
-@property (nonatomic, retain) NSString *is_favorite;
+@property (nonatomic, readonly) BOOL isFavorite;
 @property (nonatomic, retain) NSString *key;
 @property (nonatomic, retain) NSString *latitude;
 @property (nonatomic, retain) NSString *longitude;

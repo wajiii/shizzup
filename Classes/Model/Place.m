@@ -18,7 +18,7 @@
 @synthesize country_name;
 @synthesize distance;
 @synthesize distance_unit;
-@synthesize is_favorite;
+//@synthesize isFavorite = is_favorite;
 @synthesize key = places_key;
 @synthesize latitude;
 @synthesize longitude;
@@ -54,6 +54,10 @@
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     NSLog(@"Place setValue:%@ forUndefinedKey:%@", value, key);
+}
+
+- (BOOL) isFavorite {
+    return ([is_favorite integerValue] == 1);
 }
 
 @end
