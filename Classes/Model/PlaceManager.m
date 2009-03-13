@@ -28,7 +28,7 @@
 
 - (void) findPlaces {
     NSLog(@"PlaceManager findPlaces: %@", self);
-    NSString *apiUriStub = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&radius=%f&radiusUnit=%@&limit=%d", SHIZZOW_API_PATH_PLACES, center.coordinate.latitude, center.coordinate.longitude, SHIZZOW_API_PLACES_RADIUS_DEFAULT, SHIZZOW_API_PLACES_RADIUSUNIT_DEFAULT, SHIZZOW_API_PLACES_LIMIT_DEFAULT];
+    NSString *apiUriStub = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&radius=%f&radiusUnit=%@&limit=%d", SHIZZOW_API_PATH_PLACES, center.coordinate.latitude, center.coordinate.longitude, SHIZZOW_API_PLACES_RADIUS_DEFAULT, SHIZZOW_API_PLACES_RADIUSUNIT_DEFAULT, SHIZZOW_API_PLACES_LIMIT_DEFAULT ];
     NSLog(@"   apiUriStub: %@", apiUriStub);
     if (api != nil) {
         [api abort];
@@ -53,7 +53,7 @@
         // inform the user that the user name and password in the preferences are incorrect
         //[self showPreferencesCredentialsAreIncorrectPanel:self];
         NSLog(@"Cancelling authentication attempt after %d failures.", failureCount);
-        [appDelegate updateCredentialsWithMessage:@"Invalid login, please try again."];
+        [appDelegate updateCredentialsWithMessage:@"Please log in to Shizzow."];
     }
 }
 
@@ -96,10 +96,10 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"PlaceManager:connectionDidFinishLoading connection: %@", connection);
     NSLog(@"                                      responseText: %@", responseText);
-//    NSString *filteredResponseText = [[[MREntitiesConverter alloc] init] convertEntiesInString: responseText];
-//    NSLog(@"                              filteredResponseText: %@", filteredResponseText);
-    NSDictionary *responseDictionary = [responseText JSONValue];
-//    NSDictionary *responseDictionary = [filteredResponseText JSONValue];
+    //    NSDictionary *responseDictionary = [responseText JSONValue];
+    NSString *filteredResponseText = [[[MREntitiesConverter alloc] init] convertEntiesInString: responseText];
+    NSLog(@"                              filteredResponseText: %@", filteredResponseText);
+    NSDictionary *responseDictionary = [filteredResponseText JSONValue];
 
     //    NSLog(@"   - responseDictionary: %@: %@", [responseDictionary class], responseDictionary);
     NSDictionary *results = [responseDictionary valueForKey:@"results"];

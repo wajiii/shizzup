@@ -32,7 +32,7 @@
         // inform the user that the user name and password in the preferences are incorrect
         //[self showPreferencesCredentialsAreIncorrectPanel:self];
         NSLog(@"Cancelling authentication attempt after %d failures.", failureCount);
-        [appDelegate updateCredentialsWithMessage:@"Invalid login, please try again."];
+        [appDelegate updateCredentialsWithMessage:@"Please log in to Shizzow."];
     }
 }
 
@@ -65,7 +65,9 @@
     NSArray *shoutArray = [results valueForKey:@"shouts"];
     //NSLog(@"   - shoutArray: %@: %@", [shoutArray class], shoutArray);
     NSMutableArray *newShouts = [[[NSMutableArray alloc] init] retain];
-    if (shoutArray == nil) {
+    if ([[results valueForKey:@"count"] integerValue] < 1) {
+        NSLog(@"   - Uh-oh, results.count is zero!");
+    } else if (shoutArray == nil) {
         NSLog(@"   - Uh-oh, shoutArray is nil!");
     } else {
         for (int i = 0; i < [shoutArray count]; i++) {

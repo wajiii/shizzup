@@ -30,7 +30,7 @@
         // inform the user that the user name and password in the preferences are incorrect
         //[self showPreferencesCredentialsAreIncorrectPanel:self];
         NSLog(@"Cancelling authentication attempt after %d failures.", failureCount);
-        [appDelegate updateCredentialsWithMessage:@"Invalid login, please try again."];
+        [appDelegate updateCredentialsWithMessage:@"Please log in to Shizzow."];
     }
 }
 
