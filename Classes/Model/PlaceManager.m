@@ -95,10 +95,10 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"PlaceManager:connectionDidFinishLoading connection: %@", connection);
-    NSLog(@"                                      responseText: %@", responseText);
-    //    NSDictionary *responseDictionary = [responseText JSONValue];
+    //NSLog(@"                                      responseText: %@", responseText);
+    //NSDictionary *responseDictionary = [responseText JSONValue];
     NSString *filteredResponseText = [[[MREntitiesConverter alloc] init] convertEntiesInString: responseText];
-    NSLog(@"                              filteredResponseText: %@", filteredResponseText);
+    //NSLog(@"                              filteredResponseText: %@", filteredResponseText);
     NSDictionary *responseDictionary = [filteredResponseText JSONValue];
 
     //    NSLog(@"   - responseDictionary: %@: %@", [responseDictionary class], responseDictionary);
