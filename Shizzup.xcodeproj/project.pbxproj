@@ -40,7 +40,6 @@
 		324BCB930F67286100B3AE7E /* ShoutManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCB8B0F67286100B3AE7E /* ShoutManager.m */; };
 		324BCB940F67286100B3AE7E /* ShoutSendReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCB8D0F67286100B3AE7E /* ShoutSendReceiver.m */; };
 		324BCBA10F672F1F00B3AE7E /* ListeningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB980F672F1F00B3AE7E /* ListeningView.xib */; };
-		324BCBA20F672F1F00B3AE7E /* MainNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB990F672F1F00B3AE7E /* MainNavView.xib */; };
 		324BCBA30F672F1F00B3AE7E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB9A0F672F1F00B3AE7E /* MainWindow.xib */; };
 		324BCBA50F672F1F00B3AE7E /* NearbyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB9C0F672F1F00B3AE7E /* NearbyView.xib */; };
 		324BCBA60F672F1F00B3AE7E /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB9D0F672F1F00B3AE7E /* SettingsView.xib */; };
@@ -141,7 +140,6 @@
 		324BCB8D0F67286100B3AE7E /* ShoutSendReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutSendReceiver.m; sourceTree = "<group>"; };
 		324BCB950F67288800B3AE7E /* ShizzupConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShizzupConstants.h; path = Utility/ShizzupConstants.h; sourceTree = "<group>"; };
 		324BCB980F672F1F00B3AE7E /* ListeningView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ListeningView.xib; path = UIs/ListeningView.xib; sourceTree = "<group>"; };
-		324BCB990F672F1F00B3AE7E /* MainNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainNavView.xib; path = UIs/MainNavView.xib; sourceTree = "<group>"; };
 		324BCB9A0F672F1F00B3AE7E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = UIs/MainWindow.xib; sourceTree = "<group>"; };
 		324BCB9C0F672F1F00B3AE7E /* NearbyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NearbyView.xib; path = UIs/NearbyView.xib; sourceTree = "<group>"; };
 		324BCB9D0F672F1F00B3AE7E /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsView.xib; path = UIs/SettingsView.xib; sourceTree = "<group>"; };
@@ -315,9 +313,8 @@
 		324BCB960F672EFF00B3AE7E /* UIs */ = {
 			isa = PBXGroup;
 			children = (
-				324BCB980F672F1F00B3AE7E /* ListeningView.xib */,
-				324BCB990F672F1F00B3AE7E /* MainNavView.xib */,
 				324BCB9A0F672F1F00B3AE7E /* MainWindow.xib */,
+				324BCB980F672F1F00B3AE7E /* ListeningView.xib */,
 				324BCB9C0F672F1F00B3AE7E /* NearbyView.xib */,
 				324BCB9D0F672F1F00B3AE7E /* SettingsView.xib */,
 				324BCB9F0F672F1F00B3AE7E /* ShoutPlace.xib */,
@@ -451,7 +448,6 @@
 				32F8F4E50F65D9050065886D /* Settings.png in Resources */,
 				32F8F4ED0F65E10A0065886D /* Refresh.png in Resources */,
 				324BCBA10F672F1F00B3AE7E /* ListeningView.xib in Resources */,
-				324BCBA20F672F1F00B3AE7E /* MainNavView.xib in Resources */,
 				324BCBA30F672F1F00B3AE7E /* MainWindow.xib in Resources */,
 				324BCBA50F672F1F00B3AE7E /* NearbyView.xib in Resources */,
 				324BCBA60F672F1F00B3AE7E /* SettingsView.xib in Resources */,
