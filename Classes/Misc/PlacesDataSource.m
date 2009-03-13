@@ -153,6 +153,9 @@ NSInteger distanceSort(id place1, id place2, void *context) {
     //    NSLog(@"   - nameLabel: %@", nameLabel);
     NSString *nameValue = [place name];
     //    NSLog(@"   - nameValue: %@", nameValue);
+    if ([place isFavorite]) {
+        nameValue = [nameValue stringByAppendingString:@" (favorite)"];
+    }
     [nameLabel setText:nameValue];
     
     UILabel *distLabel = (UILabel *)[cell.contentView viewWithTag:TAG_DISTANCE];
