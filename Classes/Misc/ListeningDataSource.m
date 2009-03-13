@@ -77,6 +77,9 @@
     NSString *placeName = shout.placeName;
     NSString *relativeShoutTime = shout.relativeShoutTime;
     NSString *shoutText = [NSString stringWithFormat:@"%@ shouted from %@ %@", username, placeName, relativeShoutTime];
+    if (shout.message != nil) {
+        shoutText = [shoutText stringByAppendingFormat:@":\n%@", shout.message];
+    }
     return shoutText;
 }
 
@@ -168,6 +171,7 @@
         Shout *shout = [self getShoutForRow:shoutIndex];
         NSLog(@"   - shout: %@", shout);
         NSLog(@"   - shout.placeName: %@", shout.placeName);
+        NSLog(@"   - shout.message: %@", shout.message);
     }
 }
 

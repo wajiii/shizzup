@@ -57,4 +57,24 @@
     NSLog(@"Shout setValue:%@ forUndefinedKey:%@", value, key);
 }
 
+- (NSString *) message {
+    if (!message_checked) {
+        NSLog(@"   - message_checked is false; looking for message for shout %@ in dictionary:\n%@", shouts_history_id, shouts_messages);
+        for (NSDictionary *messageDict in shouts_messages) {
+            NSLog(@"   - messageDict: %@", messageDict);
+            NSString *messageShoutId = [messageDict valueForKey:@"shouts_history_id"];
+            NSLog(@"   - is \"%@\" equal to \"%@\"?", shouts_history_id, messageShoutId);
+            if ([shouts_history_id isEqualToString:messageShoutId]) {
+                NSLog(@"     - yes!");
+                message = [messageDict valueForKey:@"message"];
+                NSLog(@"     - message: \"%@\"", message);
+                break;
+            }
+        }
+//        message = @"abc";
+        message_checked = YES;
+    }
+    return message;
+}
+
 @end

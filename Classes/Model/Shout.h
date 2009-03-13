@@ -30,6 +30,8 @@
     NSString *distance_unit;
     NSString *latitude;
     NSString *longitude;
+    NSString *message;
+    BOOL      message_checked;
     NSString *modified;
     NSString *people_name;
     NSDictionary *people_images;
@@ -53,6 +55,7 @@
 
 @property (readonly, retain) NSString *latitude;
 @property (readonly, retain) NSString *longitude;
+@property (readonly)         NSString *message;
 @property (readonly, retain) NSString *modified;
 @property (readonly, retain) NSString *placeName;
 @property (readonly, retain) NSString *relativeShoutTime;
