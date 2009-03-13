@@ -32,7 +32,7 @@
 }
 
 - (void) findShoutsForLocation:(CLLocation *)location {
-    NSString *apiUriStub = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&radius=%f&radius_unit=%@&limit=%d", SHIZZOW_API_PATH_SHOUTS, location.coordinate.latitude, location.coordinate.longitude, radius, SHIZZOW_API_SHOUTS_RADIUSUNIT_DEFAULT, limit ];
+    NSString *apiUriStub = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&radius=%f&radius_unit=%@&when=recently&limit=%d", SHIZZOW_API_PATH_SHOUTS, location.coordinate.latitude, location.coordinate.longitude, radius, SHIZZOW_API_SHOUTS_RADIUSUNIT_DEFAULT, limit ];
     NSLog(@"   apiUriStub: %@", apiUriStub);
 //    if (api != nil) {
 //        [api abort];
