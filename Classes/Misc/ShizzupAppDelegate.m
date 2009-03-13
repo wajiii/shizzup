@@ -7,11 +7,13 @@
 //
 
 #import "ShizzupAppDelegate.h"
+
 #import <CrashReporter/CrashReporter.h>
 #import <dlfcn.h>
 #import <execinfo.h>
-#import <MainTabBarController.h>
+
 #import "LoginController.h"
+#import "ShoutPlaceController.h"
 
 #define PREFKEY_USERNAME @"net.waj3.shizzup.accounts.1.username"
 #define PREFKEY_PASSWORD @"net.waj3.shizzup.accounts.1.password"
@@ -27,18 +29,15 @@ id APP_DELEGATE;
 @synthesize username;
 @synthesize password;
 
++ (id) singleton {
+    return APP_DELEGATE;
+}
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+    APP_DELEGATE = self;
+
     // Attempt to load saved credentials
     [self retrieveCredentials];
-    
-    // Add the tab bar controller's current view as a subview of the window
-    //[window addSubview:tabBarController.view];
-    [navController initWithRootViewController:mainTabBarController];
-    //    if (![self checkCredentials]) {
-    //        [navController pushViewController:loginController animated:YES];
-    //    }
-    [window addSubview:navController.view];
-    APP_DELEGATE = self;
     
     // Crash reporting stuff
     PLCrashReporter *crashReporter = [PLCrashReporter sharedReporter];
@@ -51,7 +50,10 @@ id APP_DELEGATE;
     if (![crashReporter enableCrashReporterAndReturnError: &error]) {
         NSLog(@"Warning: Could not enable crash reporter: %@", error);
     }
-    
+
+	// Configure and show the window
+    [window addSubview:navController.view];
+	[window makeKeyAndVisible];
 }
 
 //
@@ -123,6 +125,7 @@ id APP_DELEGATE;
 }
 
 - (void)dealloc {
+	[navController release];
     [window release];
     [super dealloc];
 }
@@ -134,7 +137,7 @@ id APP_DELEGATE;
 }
 
 - (id) updateCredentialsWithMessage:(NSString *)message {
-    NSLog(@"ShizzupAppDelegate updateCredentials");
+    NSLog(@"ShizzupAppDelegate updateCredentialsWithMessage");
     @synchronized(self) {
         NSLog(@"ShizzupAppDelegate updateCredentials - synchronized");
         //if (![self hasCredentials]){
@@ -147,7 +150,7 @@ id APP_DELEGATE;
 }
 
 - (void) retrieveCredentials {
-    NSLog(@"ShizzupAppDelegate :: retrieveCredentials");
+    NSLog(@"ShizzupAppDelegate retrieveCredentials");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"   - defaults: %@", defaults);
     //NSLog(@"   - [defaults dictionaryRepresentation]: %@", [defaults dictionaryRepresentation]);
@@ -157,8 +160,21 @@ id APP_DELEGATE;
     NSLog(@"   - password: %@", password);
 }
 
-+ (id) singleton {
-    return APP_DELEGATE;
+- (IBAction) enterShoutView {
+    NSLog(@"ShizzupAppDelegate enterShoutView");
+    ShoutPlaceController *shoutPlaceController = [ShoutPlaceController alloc];
+    [shoutPlaceController initWithNibName:@"ShoutPlace" bundle:nil];
+    [navController pushViewController:shoutPlaceController animated:YES];
+}
+
+- (IBAction) exitCurrentView {
+    NSLog(@"ShizzupAppDelegate exitShoutView");
+    [navController popViewControllerAnimated:YES];
+}
+
+- (IBAction) exitToMainView {
+    NSLog(@"ShizzupAppDelegate exitToMainView");
+    [navController popToRootViewControllerAnimated:YES];
 }
 
 @end

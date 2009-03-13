@@ -7,6 +7,7 @@
 //
 
 #import "ShoutPlaceController.h"
+
 #import <CoreLocation/CoreLocation.h>
 #import "LocationManager.h"
 #import "PlaceManager.h"
@@ -94,7 +95,7 @@
 
 - (IBAction) exitShoutView {
     NSLog(@"ShoutPlaceController exitShoutView");
-    [[[ShizzupAppDelegate singleton] navController] popViewControllerAnimated:YES];
+    [[ShizzupAppDelegate singleton] exitCurrentView];
 }
 
 @end

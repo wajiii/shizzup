@@ -9,14 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <RMMapView.h>
 
-@class MainTabBarController;
 @class LoginController;
 
 @interface ShizzupAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     UIWindow *window;
     UINavigationController *navController;
     LoginController *loginController;
-    MainTabBarController *mainTabBarController;
+    UITabBarController *mainTabBarController;
     BOOL hasCredentials;
     NSString *username;
     NSString *password;
@@ -25,7 +24,7 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
 @property (nonatomic, retain) IBOutlet LoginController *loginController;
-@property (nonatomic, retain) IBOutlet MainTabBarController *mainTabBarController;
+@property (nonatomic, retain) IBOutlet UITabBarController *mainTabBarController;
 @property (nonatomic, retain) IBOutlet NSString *username;
 @property (nonatomic, retain) IBOutlet NSString *password;
 
@@ -38,5 +37,8 @@
 - (IBAction) usernameChanged:(id)sender;
 - (IBAction) passwordChanged:(id)sender;
 - (void) retrieveCredentials;
+- (IBAction) enterShoutView;
+- (IBAction) exitCurrentView;
+- (IBAction) exitToMainView;
 
 @end

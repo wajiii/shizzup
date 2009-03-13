@@ -21,7 +21,6 @@
 		321E7FF50F42207000E4B1C6 /* marker-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FF10F42207000E4B1C6 /* marker-red.png */; };
 		321E807C0F42512600E4B1C6 /* Shizzup.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 321E7F0E0F42098B00E4B1C6 /* Shizzup.xcclassmodel */; };
 		324BCAC00F66692900B3AE7E /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCAB70F66692900B3AE7E /* LoginController.m */; };
-		324BCAC10F66692900B3AE7E /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCAB90F66692900B3AE7E /* MainTabBarController.m */; };
 		324BCAC20F66692900B3AE7E /* NearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCABB0F66692900B3AE7E /* NearbyViewController.m */; };
 		324BCAC30F66692900B3AE7E /* ShoutMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCABD0F66692900B3AE7E /* ShoutMessageController.m */; };
 		324BCAC40F66692900B3AE7E /* ShoutPlaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCABF0F66692900B3AE7E /* ShoutPlaceController.m */; };
@@ -104,8 +103,6 @@
 		321E7FF10F42207000E4B1C6 /* marker-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-red.png"; sourceTree = "<group>"; };
 		324BCAB60F66692900B3AE7E /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = UI/LoginController.h; sourceTree = "<group>"; };
 		324BCAB70F66692900B3AE7E /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginController.m; path = UI/LoginController.m; sourceTree = "<group>"; };
-		324BCAB80F66692900B3AE7E /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabBarController.h; path = UI/MainTabBarController.h; sourceTree = "<group>"; };
-		324BCAB90F66692900B3AE7E /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabBarController.m; path = UI/MainTabBarController.m; sourceTree = "<group>"; };
 		324BCABA0F66692900B3AE7E /* NearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NearbyViewController.h; path = UI/NearbyViewController.h; sourceTree = "<group>"; };
 		324BCABB0F66692900B3AE7E /* NearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearbyViewController.m; path = UI/NearbyViewController.m; sourceTree = "<group>"; };
 		324BCABC0F66692900B3AE7E /* ShoutMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoutMessageController.h; path = UI/ShoutMessageController.h; sourceTree = "<group>"; };
@@ -267,8 +264,6 @@
 			children = (
 				324BCAB60F66692900B3AE7E /* LoginController.h */,
 				324BCAB70F66692900B3AE7E /* LoginController.m */,
-				324BCAB80F66692900B3AE7E /* MainTabBarController.h */,
-				324BCAB90F66692900B3AE7E /* MainTabBarController.m */,
 				324BCAD10F6669A100B3AE7E /* ListeningViewController.h */,
 				324BCAD20F6669A100B3AE7E /* ListeningViewController.m */,
 				324BCABA0F66692900B3AE7E /* NearbyViewController.h */,
@@ -495,7 +490,6 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				324BCAC00F66692900B3AE7E /* LoginController.m in Sources */,
-				324BCAC10F66692900B3AE7E /* MainTabBarController.m in Sources */,
 				324BCAC20F66692900B3AE7E /* NearbyViewController.m in Sources */,
 				324BCAC30F66692900B3AE7E /* ShoutMessageController.m in Sources */,
 				324BCAC40F66692900B3AE7E /* ShoutPlaceController.m in Sources */,

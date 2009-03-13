@@ -13,17 +13,7 @@
 @synthesize appDelegate;
 
 - (IBAction) login:(id)sender {
-//    if (tabBarController == nil) {
-//        NSLog(@"Creating tabBarController");
-//        tabBarController = [[MainTabBarController alloc] initWithNibName:@"MainTabBar" bundle:nil];
-//        NSLog(@"Setting tabBarController.delegate to appDelegate");
-//        [tabBarController setAppDelegate:appDelegate];
-//        NSLog(@"Setting tabBarController selectedIndex");
-//        [tabBarController setSelectedIndex:0];
-//    }
-//    NSLog(@"Pushing tabBarController");
-//    [appDelegate.navController pushViewController: tabBarController animated:YES];
-    [appDelegate.navController popViewControllerAnimated:YES];
+    [appDelegate exitCurrentView];
 }
 
 - (NSString *) message {

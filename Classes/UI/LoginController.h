@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MainTabBarController.h"
 #import "ShizzupAppDelegate.h"
 
 @interface LoginController : UIViewController {
     ShizzupAppDelegate *appDelegate;
-    MainTabBarController *tabBarController;
     IBOutlet UILabel *messageLabel;
 }
 
