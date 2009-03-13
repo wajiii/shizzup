@@ -22,18 +22,18 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    
+
     // Set up data source
     shoutManager = [ShoutManager alloc];
     ListeningDataSource *shoutsDataSource = [ListeningDataSource initWithManager:shoutManager controller:self];
-    
+
     NSLog(@"Setting up list view...");
     // Set up list view
     //    nonMapView = [[self view] retain];
     [tableView setDataSource:shoutsDataSource];
     [tableView setDelegate:shoutsDataSource];
     [tableView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-    
+
     NSLog(@"Starting shout retrieval...");
     // Start data retrieval
     [shoutManager setWho:@"listening"];
@@ -47,7 +47,7 @@
     [LocationManager setDelegate:self];
     NSLog(@"   - ListeningViewController starting location updates...");
     [LocationManager startUpdating];
-    
+
     NSLog(@"Starting shout retrieval...");
     // Start data retrieval
     [shoutManager findShouts];
@@ -83,11 +83,12 @@
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     NSLog(@"ListeningViewController received new location: %@", newLocation);
     @synchronized(self) {
+        [spinnerView startAnimating];
         newLocation = [LocationManager location];
         NSLog(@"ListeningViewController updating with location: %@", newLocation);
         //        CLLocationCoordinate2D coordinate = newLocation.coordinate;
         //        [[mapView contents] setMapCenter:coordinate];
-        
+
         NSLog(@"Starting shout retrieval...");
         // Start data retrieval
         [shoutManager findShouts];
@@ -109,6 +110,7 @@
 }
 
 - (IBAction) refreshShoutList {
+    [spinnerView startAnimating];
     [shoutManager findShouts];
 }
 
