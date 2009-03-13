@@ -22,15 +22,14 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    
+
     // Set up data source
     shoutManager = [[ShoutManager alloc] init];
-    //NearbyDataSource *nearbyDataSource = [NearbyDataSource initWithManager:shoutManager controller:self];
     nearbyDataSource = [NearbyDataSource initWithManager:shoutManager controller:self];
 
     // Set up map view
     NSLog(@"Setting up map view...");
-    mapView = [[RMMapView alloc] initWithFrame:[[self view] frame]];
+    mapView = [self view];
     RMMapContents *mapContents = [mapView contents];
     CLLocation *location = [LocationManager location];
     NSLog(@"Setting location: %f, %f", location.coordinate.latitude, location.coordinate.longitude);
@@ -39,7 +38,7 @@
     [mapContents setZoomBounds:0.5 maxZoom:125000];
     [mapView setDelegate:self];
     [self setView:mapView];
-    
+
     // Start data retrieval
     NSLog(@"Starting shout retrieval...");
     [shoutManager findShoutsForLocation:[LocationManager location]];
@@ -52,9 +51,10 @@
     [LocationManager setDelegate:self];
     NSLog(@"   - NearbyViewController starting location updates...");
     [LocationManager startUpdating];
-    
+
     // Start data retrieval
     NSLog(@"Starting shout retrieval...");
+    [spinnerView startAnimating];
     [shoutManager findShoutsForLocation:[LocationManager location]];
 }
 
@@ -66,17 +66,19 @@
 
 - (void) dataLoaded:(NSArray *)shouts {
     NSLog(@"NearbyViewController dataLoaded:");
-    // Update map view markers
-    NSUInteger shoutCount = [self updateMarkersWithShouts: shouts];
-    NSString *shoutCountS = [NSString stringWithFormat:@"%u", shoutCount];
-    [[self tabBarItem] setBadgeValue:shoutCountS];
-    [spinnerView stopAnimating];
+    @synchronized(self) {
+        // Update map view markers
+        NSUInteger shoutCount = [self updateMarkersWithShouts: shouts];
+        NSString *shoutCountS = [NSString stringWithFormat:@"%u", shoutCount];
+        [[self tabBarItem] setBadgeValue:shoutCountS];
+        [spinnerView stopAnimating];
+    }
 }
 
 /*
-   Derived from code posted by Nathan Vander Wilt: 
-   http://www.cocoabuilder.com/archive/message/cocoa/2008/3/18/201578
-*/
+ Derived from code posted by Nathan Vander Wilt:
+ http://www.cocoabuilder.com/archive/message/cocoa/2008/3/18/201578
+ */
 - (NSDate *) dateFromISO8601:(NSString *) str {
     static NSDateFormatter* sISO8601 = nil;
     if (!sISO8601) {
@@ -85,8 +87,7 @@
         [sISO8601 setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];    // NOTE: problem!
     }
     if ([str hasSuffix:@"Z"]) {
-        str = [[str substringToIndex:(str.length-1)] 
-               stringByAppendingString:@"GMT"];
+        str = [[str substringToIndex:(str.length-1)] stringByAppendingString:@"GMT"];
     }
     return [sISO8601 dateFromString:str];
 }
@@ -141,7 +142,7 @@
                 CLLocationDegrees lon = [[shout longitude] doubleValue];
                 [location initWithLatitude:lat longitude:lon];
                 float markerOpacity = 1;
-                //float shoutAgeWeight = [shout 
+                //float shoutAgeWeight = [shout
                 NSLog(@"   - shout.username: %@; shout.modified: %@", [shout username], [shout modified]);
                 //NSCalendarDate calModified = [NSCalendarDate calendarDateWithString:[shout modified]];
                 NSDate *dateModified = [self dateFromISO8601:[shout modified]];
@@ -179,10 +180,11 @@
         NSLog(@"NearbyViewController updating with location: %@", newLocation);
         CLLocationCoordinate2D coordinate = newLocation.coordinate;
         [[mapView contents] setMapCenter:coordinate];
-        
+
         NSLog(@"Starting shout retrieval...");
         // Start data retrieval
-        //[shoutManager findShoutsForLocation:[LocationManager location]];
+        [spinnerView startAnimating];
+        [shoutManager findShoutsForLocation:[LocationManager location]];
     }
 }
 
@@ -201,6 +203,7 @@
 }
 
 - (IBAction) refreshShoutList {
+    [spinnerView startAnimating];
     [shoutManager findShoutsForLocation:[LocationManager location]];
 }
 
