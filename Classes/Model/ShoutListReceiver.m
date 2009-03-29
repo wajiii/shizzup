@@ -17,6 +17,11 @@
 
 @synthesize delegate;
 
+- (id) initWithManager:(ShoutManager *)shoutManager {
+    manager = shoutManager;
+    return self;
+}
+
 - (void) connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     NSInteger failureCount = [challenge previousFailureCount];
     NSLog(@"ShoutManager:didRecieveAuthenticationChallenge; previous failure count: %d", failureCount);
@@ -31,7 +36,7 @@
         [[challenge sender] cancelAuthenticationChallenge:challenge];
         // inform the user that the user name and password in the preferences are incorrect
         //[self showPreferencesCredentialsAreIncorrectPanel:self];
-        NSLog(@"Cancelling authentication attempt after %d failures.", failureCount);
+        //NSLog(@"Cancelling authentication attempt after %d failures.", failureCount);
         [appDelegate updateCredentialsWithMessage:@"Please log in to Shizzow."];
     }
 }
@@ -56,9 +61,14 @@
     //NSLog(@"ShoutManager:connectionDidFinishLoading connection:%@ responseText:\n%@", connection, responseText);
     NSLog(@"ShoutManager:connectionDidFinishLoading connection: %@", connection);
     //NSLog(@"                                      responseText: %@", responseText);
-    NSString *filteredResponseText = [[[MREntitiesConverter alloc] init] convertEntiesInString: responseText];
+    NSString *filteredResponseText = [[[MREntitiesConverter alloc] init] convertEntitiesInString: responseText];
     //NSLog(@"                              filteredResponseText: %@", filteredResponseText);
+    CFAbsoluteTime jsonStart = CFAbsoluteTimeGetCurrent();
     NSDictionary *responseDictionary = [filteredResponseText JSONValue];
+    CFAbsoluteTime jsonEnd = CFAbsoluteTimeGetCurrent();
+    NSLog(@"   - jsonStart: %f", jsonStart);
+    NSLog(@"   - jsonEnd  : %f", jsonEnd);
+    NSLog(@"   - jsonDelta: %f", (jsonEnd - jsonStart));
     //NSLog(@"responseDictionary: %@: %@", [responseDictionary class], responseDictionary);
     NSDictionary *results = [responseDictionary valueForKey:@"results"];
     //NSLog(@"results: %@: %@", [results class], results);
@@ -72,7 +82,7 @@
     } else {
         for (int i = 0; i < [shoutArray count]; i++) {
             NSDictionary *shoutDict = [shoutArray objectAtIndex:i];
-            Shout *shout = [Shout initWithDict: shoutDict fromManager:self];
+            Shout *shout = [Shout initWithDict: shoutDict fromManager: manager];
             [newShouts addObject:[shout retain]];
         }
         NSLog(@"   - finished parsing shouts.");

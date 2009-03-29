@@ -11,9 +11,12 @@
 
 @interface ShoutListReceiver : NSObject {
     id<ShoutManagerDelegate> delegate;
+    ShoutManager *manager;
     NSString *responseText;
 }
 
 @property (nonatomic, retain) id<ShoutManagerDelegate> delegate;
+
+- (id) initWithManager:(ShoutManager *)manager;
 
 @end

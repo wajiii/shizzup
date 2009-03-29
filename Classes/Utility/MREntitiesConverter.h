@@ -17,6 +17,6 @@
 
 @property (nonatomic, retain) NSMutableString* resultString;
 
-- (NSString*)convertEntiesInString:(NSString*)s;
+- (NSString*)convertEntitiesInString:(NSString*)s;
 
 @end

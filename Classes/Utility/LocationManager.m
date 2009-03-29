@@ -15,22 +15,23 @@ CLLocationManager *wrapped;
 CLLocation *defaultLocation;
 
 void ensureInit() {
-    if (wrapped == nil) {
-        NSLog(@"Oh crap, wrapped is nil, we're all going to die!");
-        wrapped = [[CLLocationManager alloc] init];
-        CLLocationDegrees defaultLatitude = MAP_LAT_INITIAL;
-//        NSLog(@"MAP_LAT_INITIAL: %f", MAP_LAT_INITIAL);
-//        float latJiggle = (arc4random() % 100000);
-//        NSLog(@"latJiggle.1: %f", latJiggle);
-//        latJiggle -= 50000;
-//        NSLog(@"latJiggle.2: %f", latJiggle);
-//        latJiggle /= 1000000;
-//        NSLog(@"latJiggle.3: %f", latJiggle);
-//        defaultLatitude += latJiggle;
-        NSLog(@"defaultLatitude: %f", defaultLatitude);
-        defaultLocation = [[CLLocation alloc] initWithLatitude:defaultLatitude longitude:MAP_LON_INITIAL];
-        //[wrapped setLocation:defaultLocation];
-        [wrapped setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    @synchronized([LocationManager class]) {
+        if (wrapped == nil) {
+            wrapped = [[CLLocationManager alloc] init];
+            CLLocationDegrees defaultLatitude = MAP_LAT_INITIAL;
+            //NSLog(@"MAP_LAT_INITIAL: %f", MAP_LAT_INITIAL);
+            //float latJiggle = (arc4random() % 100000);
+            //NSLog(@"latJiggle.1: %f", latJiggle);
+            //latJiggle -= 50000;
+            //NSLog(@"latJiggle.2: %f", latJiggle);
+            //latJiggle /= 1000000;
+            //NSLog(@"latJiggle.3: %f", latJiggle);
+            //defaultLatitude += latJiggle;
+            NSLog(@"defaultLatitude: %f", defaultLatitude);
+            defaultLocation = [[CLLocation alloc] initWithLatitude:defaultLatitude longitude:MAP_LON_INITIAL];
+            //[wrapped setLocation:defaultLocation];
+            [wrapped setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+        }
     }
 }
 
@@ -63,20 +64,5 @@ void ensureInit() {
     }
     return loc;
 }
-
-//+ (BOOL) locationServicesEnabled {
-//    ensureInit();
-//    return [wrapped locationServicesEnabled];
-//}
-//
-//+ (CLLocationDistance) distanceFilter {
-//    ensureInit();
-//    return [wrapped distanceFilter];
-//}
-//
-//+ (void) setDistanceFilter:(CLLocationDistance) filter {
-//    ensureInit();
-//    [wrapped setDistanceFilter:filter];
-//}
 
 @end

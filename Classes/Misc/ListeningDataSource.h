@@ -11,9 +11,12 @@
 #import "ShoutManager.h"
 
 @interface ListeningDataSource : NSMutableArray <ShoutManagerDelegate, UITableViewDataSource, UITableViewDelegate> {
-    UIImage *defaultPersonIcon;
-    NSArray* shouts;
+    UIFont *ageFont;
     ListeningViewController *controller;
+    UIImage *defaultPersonIcon;
+    CGFloat labelWidth;
+    UIFont *messageFont;
+    NSArray* shouts;
 }
 
 @property (nonatomic, retain) NSArray *shouts;

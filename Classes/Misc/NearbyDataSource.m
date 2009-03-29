@@ -11,10 +11,10 @@
 #import "ShizzupConstants.h"
 #import "ShizzupAppDelegate.h"
 
-#define CELL_REUSE_ID @"ShoutCell"
+#define CELL_REUSE_ID @"ShoutListCell"
 #define TAG_ICON 10
 #define TAG_LABEL 20
-#define CELL_HEIGHT_MIN (ICON_HEIGHT + (ICON_MARGIN_VERTICAL * 2))
+#define CELL_HEIGHT_MIN (ICON_HEIGHT + (SHOUTCELL_MARGIN_VERTICAL * 2))
 
 @implementation NearbyDataSource
 
@@ -34,7 +34,7 @@
 }
 
 - (void) managerLoadedShouts:(NSArray *)newShouts {
-    NSLog(@"NearbyDataSource managerLoadedShouts:");
+    //NSLog(@"NearbyDataSource managerLoadedShouts:");
     [self setShouts: newShouts];
     [controller dataLoaded:newShouts];
 }

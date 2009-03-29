@@ -20,6 +20,9 @@
 		321E7FF40F42207000E4B1C6 /* marker-red-withletter.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */; };
 		321E7FF50F42207000E4B1C6 /* marker-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FF10F42207000E4B1C6 /* marker-red.png */; };
 		321E807C0F42512600E4B1C6 /* Shizzup.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 321E7F0E0F42098B00E4B1C6 /* Shizzup.xcclassmodel */; };
+		322D809A0F6DEB0F00D8C768 /* IconCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 322D80990F6DEB0F00D8C768 /* IconCache.m */; };
+		322D809F0F6DEB1F00D8C768 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 322D809C0F6DEB1F00D8C768 /* ABTableViewCell.m */; };
+		322D80A00F6DEB1F00D8C768 /* ShoutListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 322D809E0F6DEB1F00D8C768 /* ShoutListCell.m */; };
 		324BCAC00F66692900B3AE7E /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCAB70F66692900B3AE7E /* LoginController.m */; };
 		324BCAC20F66692900B3AE7E /* NearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCABB0F66692900B3AE7E /* NearbyViewController.m */; };
 		324BCAC30F66692900B3AE7E /* ShoutMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BCABD0F66692900B3AE7E /* ShoutMessageController.m */; };
@@ -54,6 +57,8 @@
 		327802310F5C5FD0007E197C /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327802300F5C5FD0007E197C /* CrashReporter.framework */; };
 		32A0B3520F3A420900EEB53C /* DefaultPersonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */; };
 		32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3510F3A420900EEB53C /* ShizzowIcon.png */; };
+		32A60B8C0F720C3A00F24337 /* shizzow-api-places-json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 32A60B8B0F720C3A00F24337 /* shizzow-api-places-json.txt */; };
+		32A60B8E0F720C9300F24337 /* shizzow-api-places-json.html in Resources */ = {isa = PBXBuildFile; fileRef = 32A60B8D0F720C9300F24337 /* shizzow-api-places-json.html */; };
 		32F8F4DE0F65D8270065886D /* Nearby.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4DD0F65D8270065886D /* Nearby.png */; };
 		32F8F4E30F65D8F60065886D /* Hotspots.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4E20F65D8F60065886D /* Hotspots.png */; };
 		32F8F4E50F65D9050065886D /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4E40F65D9050065886D /* Settings.png */; };
@@ -100,6 +105,12 @@
 		321E7FEF0F42207000E4B1C6 /* marker-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-blue.png"; sourceTree = "<group>"; };
 		321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-red-withletter.png"; sourceTree = "<group>"; };
 		321E7FF10F42207000E4B1C6 /* marker-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-red.png"; sourceTree = "<group>"; };
+		322D80980F6DEB0F00D8C768 /* IconCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IconCache.h; path = Utility/IconCache.h; sourceTree = "<group>"; };
+		322D80990F6DEB0F00D8C768 /* IconCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IconCache.m; path = Utility/IconCache.m; sourceTree = "<group>"; };
+		322D809B0F6DEB1F00D8C768 /* ABTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABTableViewCell.h; path = UI/ABTableViewCell.h; sourceTree = "<group>"; };
+		322D809C0F6DEB1F00D8C768 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABTableViewCell.m; path = UI/ABTableViewCell.m; sourceTree = "<group>"; };
+		322D809D0F6DEB1F00D8C768 /* ShoutListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShoutListCell.h; path = UI/ShoutListCell.h; sourceTree = "<group>"; };
+		322D809E0F6DEB1F00D8C768 /* ShoutListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShoutListCell.m; path = UI/ShoutListCell.m; sourceTree = "<group>"; };
 		324BCAB60F66692900B3AE7E /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = UI/LoginController.h; sourceTree = "<group>"; };
 		324BCAB70F66692900B3AE7E /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginController.m; path = UI/LoginController.m; sourceTree = "<group>"; };
 		324BCABA0F66692900B3AE7E /* NearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NearbyViewController.h; path = UI/NearbyViewController.h; sourceTree = "<group>"; };
@@ -154,6 +165,8 @@
 		327802300F5C5FD0007E197C /* CrashReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = CrashReporter.framework; path = "../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone/CrashReporter.framework"; sourceTree = SOURCE_ROOT; };
 		32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultPersonIcon.png; sourceTree = "<group>"; };
 		32A0B3510F3A420900EEB53C /* ShizzowIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShizzowIcon.png; sourceTree = "<group>"; };
+		32A60B8B0F720C3A00F24337 /* shizzow-api-places-json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "shizzow-api-places-json.txt"; sourceTree = "<group>"; };
+		32A60B8D0F720C9300F24337 /* shizzow-api-places-json.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "shizzow-api-places-json.html"; sourceTree = "<group>"; };
 		32F8F4DD0F65D8270065886D /* Nearby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nearby.png; sourceTree = "<group>"; };
 		32F8F4E20F65D8F60065886D /* Hotspots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hotspots.png; sourceTree = "<group>"; };
 		32F8F4E40F65D9050065886D /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
@@ -260,6 +273,10 @@
 		324BC98C0F66483500B3AE7E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				322D809B0F6DEB1F00D8C768 /* ABTableViewCell.h */,
+				322D809C0F6DEB1F00D8C768 /* ABTableViewCell.m */,
+				322D809D0F6DEB1F00D8C768 /* ShoutListCell.h */,
+				322D809E0F6DEB1F00D8C768 /* ShoutListCell.m */,
 				324BCAB60F66692900B3AE7E /* LoginController.h */,
 				324BCAB70F66692900B3AE7E /* LoginController.m */,
 				324BCAD10F6669A100B3AE7E /* ListeningViewController.h */,
@@ -330,6 +347,8 @@
 				324BCBAB0F672F7500B3AE7E /* plan.rtf */,
 				324BCBAC0F672F7500B3AE7E /* shizzow-api-shouts-json.html */,
 				324BCBAD0F672F7500B3AE7E /* shizzow-api-shouts-json.txt */,
+				32A60B8D0F720C9300F24337 /* shizzow-api-places-json.html */,
+				32A60B8B0F720C3A00F24337 /* shizzow-api-places-json.txt */,
 			);
 			path = docs;
 			sourceTree = "<group>";
@@ -337,6 +356,8 @@
 		327DF1C80F65F3E9002B7AB1 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				322D80980F6DEB0F00D8C768 /* IconCache.h */,
+				322D80990F6DEB0F00D8C768 /* IconCache.m */,
 				324BCB950F67288800B3AE7E /* ShizzupConstants.h */,
 				324BCAD60F6669E900B3AE7E /* LocationManager.h */,
 				324BCAD70F6669E900B3AE7E /* LocationManager.m */,
@@ -457,6 +478,8 @@
 				324BCBAF0F672F7500B3AE7E /* plan.rtf in Resources */,
 				324BCBB00F672F7500B3AE7E /* shizzow-api-shouts-json.html in Resources */,
 				324BCBB10F672F7500B3AE7E /* shizzow-api-shouts-json.txt in Resources */,
+				32A60B8C0F720C3A00F24337 /* shizzow-api-places-json.txt in Resources */,
+				32A60B8E0F720C9300F24337 /* shizzow-api-places-json.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +527,9 @@
 				324BCB920F67286100B3AE7E /* ShoutListReceiver.m in Sources */,
 				324BCB930F67286100B3AE7E /* ShoutManager.m in Sources */,
 				324BCB940F67286100B3AE7E /* ShoutSendReceiver.m in Sources */,
+				322D809A0F6DEB0F00D8C768 /* IconCache.m in Sources */,
+				322D809F0F6DEB1F00D8C768 /* ABTableViewCell.m in Sources */,
+				322D80A00F6DEB1F00D8C768 /* ShoutListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +600,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "../MapView/**";
 				INFOPLIST_FILE = Info.plist;
+				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = Shizzup;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
 				SDKROOT = iphoneos2.2.1;
@@ -637,6 +664,7 @@
 				IBC_FLATTEN_NIBS = YES;
 				INFOPLIST_FILE = Info.plist;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = Shizzup;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
 				SDKROOT = iphonesimulator2.2.1;
@@ -659,6 +687,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "../MapView/**";
 				INFOPLIST_FILE = Info.plist;
+				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = Shizzup;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
 				SDKROOT = iphoneos2.2.1;

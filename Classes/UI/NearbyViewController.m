@@ -39,9 +39,6 @@
     [mapView setDelegate:self];
     [self setView:mapView];
 
-    // Start data retrieval
-    NSLog(@"Starting shout retrieval...");
-    [shoutManager findShoutsForLocation:[LocationManager location]];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -53,9 +50,10 @@
     [LocationManager startUpdating];
 
     // Start data retrieval
-    NSLog(@"Starting shout retrieval...");
-    [spinnerView startAnimating];
-    [shoutManager findShoutsForLocation:[LocationManager location]];
+//NSLog(@"Starting shout retrieval...");
+//    [spinnerView startAnimating];
+//    [shoutManager findShoutsForLocation:[LocationManager location]];
+    [self refreshShoutList];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -105,7 +103,7 @@
         NSDate *now = [NSDate date];
         for (Shout *shout in shouts) {
             if ([people containsObject:[shout username]]) {
-                NSLog(@"Already have a marker for user %@, discarding shout %@.", [shout username], [shout modified]);
+                NSLog(@"Already have a marker for user %@, discarding shout %@.", [shout username], [shout shoutId]);
                 shoutCount--;
             } else {
                 [people addObject:[shout username]];
@@ -146,22 +144,22 @@
                 NSLog(@"   - shout.username: %@; shout.modified: %@", [shout username], [shout modified]);
                 //NSCalendarDate calModified = [NSCalendarDate calendarDateWithString:[shout modified]];
                 NSDate *dateModified = [self dateFromISO8601:[shout modified]];
-                NSLog(@"   - modified as NSDate: %@", dateModified);
+                //NSLog(@"   - modified as NSDate: %@", dateModified);
                 NSTimeInterval timeInterval = [now timeIntervalSinceDate:dateModified];
                 if (timeInterval > 3600) {
                     if (timeInterval > (60*60*8)) {
                         markerOpacity = 0.5;
                     } else {
                         NSTimeInterval base = (timeInterval - 3600);
-                        NSLog(@"   - base: %f", base);
+                        //NSLog(@"   - base: %f", base);
                         NSTimeInterval diff = (60*60*8) - base;
-                        NSLog(@"   - diff: %f", diff);
+                        //NSLog(@"   - diff: %f", diff);
                         diff /= (60*60*8);
-                        NSLog(@"   - diff: %f", diff);
+                        //NSLog(@"   - diff: %f", diff);
                         diff *= 0.25;
-                        NSLog(@"   - diff: %f", diff);
+                        //NSLog(@"   - diff: %f", diff);
                         diff += 0.75;
-                        NSLog(@"   - diff: %f", diff);
+                        //NSLog(@"   - diff: %f", diff);
                         markerOpacity = diff;
                     }
                 }
@@ -177,20 +175,14 @@
     NSLog(@"NearbyViewController received new location: %@", newLocation);
     @synchronized(self) {
         newLocation = [LocationManager location];
-        NSLog(@"NearbyViewController updating with location: %@", newLocation);
+        NSLog(@"   - NearbyViewController updating with location: %@", newLocation);
         CLLocationCoordinate2D coordinate = newLocation.coordinate;
         [[mapView contents] setMapCenter:coordinate];
 
-        NSLog(@"Starting shout retrieval...");
+        NSLog(@"   - Starting shout retrieval...");
         // Start data retrieval
-        [spinnerView startAnimating];
-        [shoutManager findShoutsForLocation:[LocationManager location]];
+        [self refreshShoutList];
     }
-}
-
-- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    [[self view] setAutoresizesSubviews:YES];
-    return YES;
 }
 
 - (void) didReceiveMemoryWarning {
@@ -203,6 +195,8 @@
 }
 
 - (IBAction) refreshShoutList {
+    // Start data retrieval
+    NSLog(@"NearbyViewController refreshShoutList");
     [spinnerView startAnimating];
     [shoutManager findShoutsForLocation:[LocationManager location]];
 }

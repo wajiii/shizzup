@@ -27,9 +27,9 @@
 }
 
 - (void) findPlaces {
-    NSLog(@"PlaceManager findPlaces: %@", self);
+    //NSLog(@"PlaceManager findPlaces: %@", self);
     NSString *apiUriStub = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&radius=%f&radiusUnit=%@&limit=%d", SHIZZOW_API_PATH_PLACES, center.coordinate.latitude, center.coordinate.longitude, SHIZZOW_API_PLACES_RADIUS_DEFAULT, SHIZZOW_API_PLACES_RADIUSUNIT_DEFAULT, SHIZZOW_API_PLACES_LIMIT_DEFAULT ];
-    NSLog(@"   apiUriStub: %@", apiUriStub);
+    //NSLog(@"   - apiUriStub: %@", apiUriStub);
     if (api != nil) {
         [api abort];
     }
@@ -38,38 +38,38 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    NSLog(@"PlaceManager didReceiveAuthenticationChallenge: %@, %@", connection, challenge);
+    //NSLog(@"PlaceManager didReceiveAuthenticationChallenge: %@, %@", connection, challenge);
     NSInteger failureCount = [challenge previousFailureCount];
-    NSLog(@"   - failure count: %d", failureCount);
+    //NSLog(@"   - failure count: %d", failureCount);
     ShizzupAppDelegate *appDelegate = [ShizzupAppDelegate singleton];
     if (failureCount == 0 && [appDelegate hasCredentials]) {
         NSURLCredential *newCredential = [NSURLCredential credentialWithUser:appDelegate.username
                                                                     password:appDelegate.password
                                                                  persistence:NSURLCredentialPersistenceNone];
         [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
-        NSLog(@"Trying credential %@...", newCredential);
+        //NSLog(@"Trying credential %@...", newCredential);
     } else {
         [[challenge sender] cancelAuthenticationChallenge:challenge];
         // inform the user that the user name and password in the preferences are incorrect
         //[self showPreferencesCredentialsAreIncorrectPanel:self];
-        NSLog(@"Cancelling authentication attempt after %d failures.", failureCount);
+        //NSLog(@"Cancelling authentication attempt after %d failures.", failureCount);
         [appDelegate updateCredentialsWithMessage:@"Please log in to Shizzow."];
     }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSLog(@"PlaceManager didReceiveResponse connection:%@ response:%@", connection, response);
-    NSLog(@"   - URL: %@", [response URL]);
-    NSLog(@"   - MIMEType: %@", [response MIMEType]);
-    NSLog(@"   - expectedContentLength: %d", [response expectedContentLength]);
-    NSLog(@"   - textEncodingName: %@", [response textEncodingName]);
-    NSLog(@"   - suggestedFilename: %@", [response suggestedFilename]);
+    //NSLog(@"   - URL: %@", [response URL]);
+    //NSLog(@"   - MIMEType: %@", [response MIMEType]);
+    //NSLog(@"   - expectedContentLength: %d", [response expectedContentLength]);
+    //NSLog(@"   - textEncodingName: %@", [response textEncodingName]);
+    //NSLog(@"   - suggestedFilename: %@", [response suggestedFilename]);
     BOOL responseIsHttp = [response isKindOfClass:[NSHTTPURLResponse class]];
-    NSLog(@"   - response is NSHTTPURLResponse: %d", responseIsHttp);
+    //NSLog(@"   - response is NSHTTPURLResponse: %d", responseIsHttp);
     if (responseIsHttp) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
         NSInteger status = [httpResponse statusCode];
-        NSLog(@"   - statusCode: %d", status);
+        //NSLog(@"   - statusCode: %d", status);
         //...
         if (status >= 400) {
             NSString *alertMessage = [NSString stringWithFormat:@"Received status %d for URL %@", status, [response URL]];
@@ -89,7 +89,7 @@
     } else  {
         [responseText stringByAppendingString:dataString];
     }
-    //    NSLog(@"responseText length: %d", [responseText length]);
+    //NSLog(@"responseText length: %d", [responseText length]);
     //    [super connection:connection didReceiveData:data];
 }
 
@@ -97,20 +97,20 @@
     NSLog(@"PlaceManager:connectionDidFinishLoading connection: %@", connection);
     //NSLog(@"                                      responseText: %@", responseText);
     //NSDictionary *responseDictionary = [responseText JSONValue];
-    NSString *filteredResponseText = [[[MREntitiesConverter alloc] init] convertEntiesInString: responseText];
+    NSString *filteredResponseText = [[[MREntitiesConverter alloc] init] convertEntitiesInString: responseText];
     //NSLog(@"                              filteredResponseText: %@", filteredResponseText);
     NSDictionary *responseDictionary = [filteredResponseText JSONValue];
 
-    //    NSLog(@"   - responseDictionary: %@: %@", [responseDictionary class], responseDictionary);
+    //NSLog(@"   - responseDictionary: %@: %@", [responseDictionary class], responseDictionary);
     NSDictionary *results = [responseDictionary valueForKey:@"results"];
-    //    NSLog(@"   - results: %@: %@", [results class], results);
+    //NSLog(@"   - results: %@: %@", [results class], results);
     NSArray *placeArray = [results valueForKey:@"places"];
     //NSLog(@"   - placeArray: %@: %@", [placeArray class], placeArray);
     NSMutableArray *places = [[NSMutableArray alloc] init];
     if (placeArray != nil) {
         for (int i = 0; i < [placeArray count]; i++) {
             NSDictionary *placeDict = [placeArray objectAtIndex:i];
-            //        NSLog(@"      - placeDict: %@: %@", [placeDict class], placeDict);
+            //NSLog(@"      - placeDict: %@: %@", [placeDict class], placeDict);
             Place *place = [Place alloc];
             [place initFromDict:placeDict];
             [places addObject:place];

@@ -46,13 +46,15 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    NSLog(@"PlaceManager locationManager: didUpdateToLocation: fromLocation:");
     @synchronized(self) {
+        [spinnerView startAnimating];
         newLocation = [LocationManager location];
-        NSLog(@"New location: %@", newLocation);
+        NSLog(@"   - new location: %@", newLocation);
         // If we are in the simulator, override with MAP_*_INITIAL values; One Infinite Loop is of no use to us!
-//#if (TARGET_IPHONE_SIMULATOR)
-//        newLocation = [[CLLocation alloc] initWithLatitude:MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
-//#endif
+        //#if (TARGET_IPHONE_SIMULATOR)
+        //newLocation = [[CLLocation alloc] initWithLatitude:MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
+        //#endif
         CLLocationCoordinate2D coordinate = newLocation.coordinate;
         NSString *locationText = [NSString stringWithFormat:@"%1.6f°, %1.6f°", coordinate.latitude, coordinate.longitude];
         if (newLocation.horizontalAccuracy != 0) {
@@ -78,15 +80,18 @@
 
 - (void) dataLoaded {
     NSLog(@"ShoutPlaceController dataLoaded");
-    [spinnerView stopAnimating];
-    [tableView setHidden:NO];
-    [tableView reloadData];
+    @synchronized(self) {
+        NSLog(@"   - loading new data");
+        [tableView setHidden:NO];
+        [tableView reloadData];
+        [spinnerView stopAnimating];
+    }
 }
 
 - (void) userSelectedPlace:(Place *)place {
     NSLog(@"ShoutPlaceController userSelectedPlace: %@", place);
     ShoutMessageController *shoutMessageController = [[ShoutMessageController alloc] initWithNibName:@"ShoutMessage" bundle:nil];
-    NSLog(@"   - shoutMessageController: %@", shoutMessageController);
+    //NSLog(@"   - shoutMessageController: %@", shoutMessageController);
     [shoutMessageController setPlace:place];
     //[[[ShizzupAppDelegate singleton] navController] pushViewController:shoutMessageController animated:YES];
     [(UINavigationController *)[self parentViewController] pushViewController:shoutMessageController animated:YES];

@@ -14,6 +14,7 @@
 
 #import "LoginController.h"
 #import "ShoutPlaceController.h"
+#import "IconCache.h"
 
 #define PREFKEY_USERNAME @"net.waj3.shizzup.accounts.1.username"
 #define PREFKEY_PASSWORD @"net.waj3.shizzup.accounts.1.password"
@@ -35,6 +36,11 @@ id APP_DELEGATE;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     APP_DELEGATE = self;
+
+//    IconCache *iconCache = [[IconCache alloc] init];
+//    NSLog(@"Icon for http://people.shizzow.com/bettse_48.jpg: %@", [iconCache iconForAddress:@"http://people.shizzow.com/bettse_48.jpg"]);
+//    [iconCache release];
+//    return;
 
     // Attempt to load saved credentials
     [self retrieveCredentials];
@@ -107,7 +113,7 @@ id APP_DELEGATE;
 
 - (IBAction) passwordChanged:(id)sender {
     password = [sender text];
-    NSLog(@"ShizzupAppDelegate passwordChanged: %@", password);
+    //NSLog(@"ShizzupAppDelegate passwordChanged: %@", password);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:password forKey:PREFKEY_PASSWORD];
 }
@@ -120,7 +126,7 @@ id APP_DELEGATE;
     if (password == nil) {
         result = NO;
     }
-    NSLog(@"ShizzupAppDelegate hasCredentials returning: %u", result);
+    //NSLog(@"ShizzupAppDelegate hasCredentials returning: %u", result);
     return result;
 }
 
@@ -131,15 +137,15 @@ id APP_DELEGATE;
 }
 
 - (id) updateCredentials {
-    NSLog(@"ShizzupAppDelegate updateCredentials");
+    //NSLog(@"ShizzupAppDelegate updateCredentials");
     [self updateCredentialsWithMessage:@"Welcome!"];
     return self;
 }
 
 - (id) updateCredentialsWithMessage:(NSString *)message {
-    NSLog(@"ShizzupAppDelegate updateCredentialsWithMessage");
+    //NSLog(@"ShizzupAppDelegate updateCredentialsWithMessage");
     @synchronized(self) {
-        NSLog(@"ShizzupAppDelegate updateCredentials - synchronized");
+        //NSLog(@"ShizzupAppDelegate updateCredentials - synchronized");
         //if (![self hasCredentials]){
         //NSLog(@"ShizzupAppDelegate updateCredentials - ! hasCredentials");
         [loginController setMessage: message];
@@ -152,7 +158,7 @@ id APP_DELEGATE;
 - (void) retrieveCredentials {
     NSLog(@"ShizzupAppDelegate retrieveCredentials");
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"   - defaults: %@", defaults);
+    //NSLog(@"   - defaults: %@", defaults);
     //NSLog(@"   - [defaults dictionaryRepresentation]: %@", [defaults dictionaryRepresentation]);
     username = [defaults stringForKey:PREFKEY_USERNAME];
     NSLog(@"   - username: %@", username);

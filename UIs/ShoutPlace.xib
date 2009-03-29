@@ -99,7 +99,6 @@
 						<double key="IBUIContentInset.right">0.000000e+00</double>
 						<bool key="IBUIDirectionalLockEnabled">YES</bool>
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
-						<bool key="IBUIPagingEnabled">YES</bool>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<double key="IBUIScrollIndicatorInsets.top">0.000000e+00</double>
 						<double key="IBUIScrollIndicatorInsets.bottom">0.000000e+00</double>

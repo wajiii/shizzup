@@ -18,6 +18,7 @@
 @implementation ShoutManager
 
 @synthesize delegate;
+@synthesize iconCache;
 @synthesize limit;
 @synthesize radius;
 @synthesize who;
@@ -28,29 +29,30 @@
     limit = SHIZZOW_API_SHOUTS_LIMIT_DEFAULT;
     radius = SHIZZOW_API_SHOUTS_RADIUS_DEFAULT;
     who = @"everyone";
+    iconCache = [[IconCache alloc] init];
     return self;
 }
 
 - (void) findShoutsForLocation:(CLLocation *)location {
     NSString *apiUriStub = [NSString stringWithFormat:@"%@?latitude=%f&longitude=%f&radius=%f&radius_unit=%@&when=recently&limit=%d", SHIZZOW_API_PATH_SHOUTS, location.coordinate.latitude, location.coordinate.longitude, radius, SHIZZOW_API_SHOUTS_RADIUSUNIT_DEFAULT, limit ];
-    NSLog(@"   apiUriStub: %@", apiUriStub);
-//    if (api != nil) {
-//        [api abort];
-//    }
+    //NSLog(@"   - apiUriStub: %@", apiUriStub);
+    //if (api != nil) {
+    //    [api abort];
+    //}
     api = [[ShizzowApiConnection alloc] init];
-    ShoutListReceiver *receiver = [[ShoutListReceiver alloc] init];
+    ShoutListReceiver *receiver = [[ShoutListReceiver alloc] initWithManager:self];
     [receiver setDelegate: delegate];
     [api callUri: apiUriStub delegate: receiver];
 }
 
 - (void) findShouts {
     NSString *apiUriStub = [NSString stringWithFormat:@"%@?who=listening&limit=%d", SHIZZOW_API_PATH_SHOUTS, SHIZZOW_API_SHOUTS_LIMIT_DEFAULT];
-    NSLog(@"   apiUriStub: %@", apiUriStub);
-//    if (api != nil) {
-//        [api abort];
-//    }
+    //NSLog(@"   apiUriStub: %@", apiUriStub);
+    //if (api != nil) {
+    //    [api abort];
+    //}
     api = [[ShizzowApiConnection alloc] init];
-    ShoutListReceiver *receiver = [[ShoutListReceiver alloc] init];
+    ShoutListReceiver *receiver = [[ShoutListReceiver alloc] initWithManager:self];
     [receiver setDelegate: delegate];
     [api callUri: apiUriStub delegate: receiver];
 }
@@ -59,7 +61,7 @@
     NSString *apiUriStub = [NSString stringWithFormat:@"/places/%@/shout", placeKey];
     NSString *body = [NSString stringWithFormat:@"shouts_message=%@", message];
     api = [[ShizzowApiConnection alloc] init];
-    ShoutSendReceiver *receiver = [[ShoutListReceiver alloc] init];
+    ShoutSendReceiver *receiver = [[ShoutListReceiver alloc] initWithManager:self];
     [receiver setDelegate: delegate];
     [api callUri: apiUriStub usingMethod:@"PUT" withDelegate:receiver withBody:body];
 }

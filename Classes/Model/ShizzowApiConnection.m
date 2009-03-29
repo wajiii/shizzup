@@ -16,20 +16,20 @@
 }
 
 - (NSURLConnection *) callUri:(NSString *)apiUriStub usingMethod:(NSString *)method withDelegate:(id)delegate withBody:(NSString *)body {
-    NSLog(@"   apiUriStub: %@", apiUriStub);
+    //NSLog(@"   - apiUriStub: %@", apiUriStub);
     
     NSString *apiUrlString = [NSString stringWithFormat:@"%@%@", SHIZZOW_API_URL_PREFIX, apiUriStub];
-    NSLog(@"   apiUrlString: %@", apiUrlString);
+    //NSLog(@"   - apiUrlString: %@", apiUrlString);
     
     NSURL *apiUrl = [NSURL URLWithString:apiUrlString];
-    NSLog(@"         apiUrl: %@", apiUrl);
+    NSLog(@"   - apiUrl: %@", apiUrl);
     
     NSURLProtectionSpace *protectionSpace = [NSURLProtectionSpace alloc];
     NSString *host = [apiUrl host];
     NSInteger port = [[apiUrl port] integerValue];
     NSString *scheme = [apiUrl scheme];
     [protectionSpace initWithHost:host port:port protocol:scheme realm:nil authenticationMethod:nil];
-    NSLog(@"protectionSpace: %@", protectionSpace);
+    //NSLog(@"protectionSpace: %@", protectionSpace);
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: apiUrl];
     [request setHTTPMethod: method];
@@ -37,7 +37,7 @@
     if ([@"PUT" caseInsensitiveCompare: method] ==  NSOrderedSame) {
         NSLog(@"     - setting Content-Type to application/x-www-form-urlencoded");
         // Needed for put, per http://iphonedevelopment.blogspot.com/2008/06/http-put-and-nsmutableurlrequest.html
-        //[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         if (body != nil) {
             NSData *putData = [body dataUsingEncoding: NSUTF8StringEncoding];
             NSLog(@"     - setting HTTP body to: %@", putData);
@@ -55,7 +55,7 @@
     }
 
     connection = [NSURLConnection connectionWithRequest:request delegate:delegate];
-    NSLog(@"     connection: %@", connection);
+    //NSLog(@"     connection: %@", connection);
     
     return connection;
 }

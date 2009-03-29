@@ -7,6 +7,8 @@
 //
 
 #import "Shout.h"
+
+#import "IconCache.h"
 #import "ImageManipulator.h"
 #import "ShoutManager.h"
 
@@ -14,7 +16,6 @@
 
 // Real separate fields
 @synthesize shoutId;
-@synthesize icon;
 
 // Maps to dictionary
 @synthesize latitude;
@@ -22,6 +23,7 @@
 @synthesize modified;
 @synthesize placeName = places_name;
 @synthesize relativeShoutTime = shout_time;
+@synthesize status;
 @synthesize username = people_name;
 
 + (Shout *) initWithDict:(NSDictionary *) shoutDict fromManager:(ShoutManager *)manager {
@@ -36,20 +38,7 @@
     raw = shoutDict;
     [self setValuesForKeysWithDictionary:raw];
     shoutId = [[NSNumber alloc] initWithLongLong:[shouts_history_id longLongValue]];
-    
-    NSDictionary *iconAddresses = [raw valueForKey:@"people_images"];
-    //NSLog(@"   iconAddresses: %@: %@", [iconAddresses class], placeName);
-    NSString *iconAddress = [iconAddresses valueForKey:@"people_image_48"];
-    //NSLog(@"   iconAddress: %@: %@", [iconAddress class], iconAddress);
-    UIImage *roundedIcon;
-    if ([iconAddress compare:@"/images/people/people_48.jpg"] == 0) {
-        roundedIcon = nil;
-    } else {
-        NSURL *iconUrl = [NSURL URLWithString:iconAddress];
-        roundedIcon = [ImageManipulator getIconForUrl:iconUrl];
-    }
-    icon = [roundedIcon retain];
-    
+    iconCache = [manager iconCache];
     return self;
 }
 
@@ -59,22 +48,47 @@
 
 - (NSString *) message {
     if (!message_checked) {
-        NSLog(@"   - message_checked is false; looking for message for shout %@ in dictionary:\n%@", shouts_history_id, shouts_messages);
+        //NSLog(@"   - message_checked is false; looking for message for shout %@ in dictionary:\n%@", shouts_history_id, shouts_messages);
         for (NSDictionary *messageDict in shouts_messages) {
-            NSLog(@"   - messageDict: %@", messageDict);
+            //NSLog(@"   - messageDict: %@", messageDict);
             NSString *messageShoutId = [messageDict valueForKey:@"shouts_history_id"];
-            NSLog(@"   - is \"%@\" equal to \"%@\"?", shouts_history_id, messageShoutId);
+            //NSLog(@"   - is \"%@\" equal to \"%@\"?", shouts_history_id, messageShoutId);
             if ([shouts_history_id isEqualToString:messageShoutId]) {
-                NSLog(@"     - yes!");
+                //NSLog(@"     - yes!");
                 message = [messageDict valueForKey:@"message"];
-                NSLog(@"     - message: \"%@\"", message);
+                //NSLog(@"     - message: \"%@\"", message);
                 break;
             }
         }
-//        message = @"abc";
+        //        message = @"abc";
         message_checked = YES;
     }
     return message;
+}
+
+- (UIImage *) icon {
+    //NSLog(@"Shout icon");
+    if (icon == nil) {
+        // Only incur synchronization cost if necessary.
+        @synchronized(self) {
+            // Check again to be sure this is still needed.
+            if (icon == nil) {
+                //NSLog(@"   - people_images: %@: %@", people_images);
+                NSString *iconAddress = [people_images valueForKey:@"people_image_48"];
+                //NSLog(@"   - iconAddress: %@: %@", [iconAddress class], iconAddress);
+//                UIImage *roundedIcon;
+//                if ([iconAddress compare:@"/images/people/people_48.jpg"] == 0) {
+//                    roundedIcon = nil;
+//                } else {
+//                    NSURL *iconUrl = [NSURL URLWithString:iconAddress];
+//                    roundedIcon = [ImageManipulator getIconForUrl:iconUrl];
+//                }
+//                icon = [roundedIcon retain];
+                icon = [iconCache iconForAddress: iconAddress];
+            }
+        }
+    }
+    return icon;
 }
 
 @end

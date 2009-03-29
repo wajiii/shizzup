@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "IconCache.h"
 #import "ShizzowApiConnection.h"
 #import "Shout.h"
 
@@ -21,12 +22,14 @@
     long limit;
     float radius;
     NSString *who;
+    IconCache *iconCache;
 }
 
 @property (nonatomic, retain) id<ShoutManagerDelegate> delegate;
 @property (nonatomic) long limit;
 @property (nonatomic) float radius;
 @property (nonatomic, retain) NSString *who;
+@property (nonatomic, retain, readonly) IconCache *iconCache;
 
 - (void) findShouts;
 - (void) findShoutsForLocation:(CLLocation *)location;

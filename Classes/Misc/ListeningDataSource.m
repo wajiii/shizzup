@@ -10,11 +10,12 @@
 
 #import "ShizzupConstants.h"
 #import "ShizzupAppDelegate.h"
+#import "ShoutListCell.h"
 
-#define CELL_REUSE_ID @"ShoutCell"
+#define CELL_REUSE_ID @"ShoutListCell"
 #define TAG_ICON 10
 #define TAG_LABEL 20
-#define CELL_HEIGHT_MIN (ICON_HEIGHT + (ICON_MARGIN_VERTICAL * 2))
+#define TAG_AGE 30
 
 @implementation ListeningDataSource
 
@@ -24,6 +25,8 @@
 - (id) init {
     [super init];
     defaultPersonIcon = [UIImage imageNamed:@"DefaultPersonIcon.png"];
+    messageFont = [UIFont systemFontOfSize: LABEL_FONT_SIZE];
+    ageFont = [UIFont systemFontOfSize: AGE_FONT_SIZE];
     return self;
 }
 
@@ -50,23 +53,23 @@
     return shout;
 }
 
-- (void) setIcon:(UIImage *)shoutIcon forCell:(UITableViewCell *)cell  {
+//- (void) setIcon:(UIImage *)shoutIcon forCell:(UITableViewCell *)cell  {
     // Add icon
-    UIImage *icon;
-    if (shoutIcon != nil) {
-        icon = shoutIcon;
-    } else {
-        icon = defaultPersonIcon;
-    }
-    UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:TAG_ICON];
-    if (imageView == nil) {
-        imageView = [[UIImageView alloc] init];
-        imageView.tag = TAG_ICON;
-        imageView.frame = CGRectMake(ICON_MARGIN_HORIZONTAL, ICON_MARGIN_VERTICAL, ICON_WIDTH, ICON_HEIGHT);
-        [cell.contentView addSubview:imageView];
-    }
-    imageView.image = icon;
-}
+//    UIImage *icon;
+//    if (shoutIcon != nil) {
+//        icon = shoutIcon;
+//    } else {
+//        icon = defaultPersonIcon;
+//    }
+//    UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:TAG_ICON];
+//    if (imageView == nil) {
+//        imageView = [[UIImageView alloc] init];
+//        imageView.tag = TAG_ICON;
+//        imageView.frame = CGRectMake(SHOUTCELL_MARGIN_HORIZONTAL, SHOUTCELL_MARGIN_VERTICAL, ICON_WIDTH, ICON_HEIGHT);
+//        [cell.contentView addSubview:imageView];
+//    }
+//    imageView.image = icon;
+//}
 
 - (NSString *) textForShout: (Shout *) shout  {
     if (shout == nil) {
@@ -75,8 +78,7 @@
     }
     NSString *username = shout.username;
     NSString *placeName = shout.placeName;
-    NSString *relativeShoutTime = shout.relativeShoutTime;
-    NSString *shoutText = [NSString stringWithFormat:@"%@ shouted from %@ %@", username, placeName, relativeShoutTime];
+    NSString *shoutText = [NSString stringWithFormat:@"%@ shouted from %@", username, placeName];
     if (shout.message != nil) {
         shoutText = [shoutText stringByAppendingFormat:@":\n%@", shout.message];
     }
@@ -96,65 +98,38 @@
     if (shoutIndex == -1) {
         return [controller refreshButtonCell];
     }
-    Shout *shout = [self getShoutForRow :shoutIndex];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_REUSE_ID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CELL_REUSE_ID];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor lightGrayColor];
-        cell.opaque = 1.0;
-        CGSize cellFrameSize = cell.frame.size;
-        //NSLog(@"cell frame size width, height: %f, %f", cellFrameSize.width, cellFrameSize.height);
-        
-        // Add label
-        CGFloat labelX = ICON_WIDTH + (ICON_MARGIN_HORIZONTAL * 2);
-        CGFloat labelWidth = cellFrameSize.width - labelX;
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(labelX, 0, labelWidth, cellFrameSize.height)];
-        label.tag = TAG_LABEL;
-        label.font = [UIFont systemFontOfSize:LABEL_FONT_SIZE];
-        label.adjustsFontSizeToFitWidth = NO;
-        label.autoresizingMask = UIViewAutoresizingNone;
-        label.textAlignment = UITextAlignmentLeft;
-        label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [label setNumberOfLines:(cellFrameSize.height / LABEL_FONT_SIZE)];
-        label.lineBreakMode = UILineBreakModeWordWrap;
-        [cell.contentView addSubview:label];
-    }
     
-    if (shoutIndex >= 0) {
-        // Set icon
-        [self setIcon:shout.icon forCell:cell];
-        NSString *shoutText = [self textForShout: shout];
-        [(UILabel*)[cell.contentView viewWithTag:TAG_LABEL] setText:shoutText];
+    ShoutListCell *cell = (ShoutListCell *)[tableView dequeueReusableCellWithIdentifier: CELL_REUSE_ID];
+    if (cell == nil) {
+        cell = [[ShoutListCell alloc] initWithFrame: CGRectZero reuseIdentifier: CELL_REUSE_ID];
     }
+    Shout *shout = [self getShoutForRow:shoutIndex];
+    [cell setShout: shout];
+    CGFloat myWidth = [tableView bounds].size.width - (ICON_WIDTH + (SHOUTCELL_MARGIN_HORIZONTAL * 2));
+    // Set icon
+//    [self setIcon:shout.icon forCell:cell];
+    NSString *ageText = [shout relativeShoutTime];
+    //NSLog(@"   - myWidth: %f", myWidth);
+    NSString *shoutText = [self textForShout: shout];
+    CGSize shoutLabelSize = [shoutText sizeWithFont: messageFont forWidth: myWidth lineBreakMode: UILineBreakModeWordWrap];
+    //NSLog(@"   - shoutLabelSize.width: %f", shoutLabelSize.width);
+    //NSLog(@"   - shoutLabelSize.height: %f", shoutLabelSize.height);
+    UILabel *shoutLabel = (UILabel*)[cell.contentView viewWithTag: TAG_LABEL];
+    [shoutLabel setBounds:CGRectMake(0, 0, myWidth, shoutLabelSize.height)];
+    [shoutLabel setText: shoutText];
+    //[ageLabel setBounds
+    [(UILabel*)[cell.contentView viewWithTag: TAG_AGE] setText: ageText];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat result = 56;
-    @try {
-        NSUInteger shoutIndex = [self shoutRowForIndexPath:indexPath];
-        //NSLog(@"shoutIndex: %d", shoutIndex);
-        if (shoutIndex != -1) {
-            Shout *shout = [self getShoutForRow:shoutIndex];
-            NSString *shoutText = [self textForShout: shout];
-            if (shout != nil) {
-                CGSize cellSize = [shoutText sizeWithFont:[UIFont systemFontOfSize:12] forWidth:320 lineBreakMode:UILineBreakModeWordWrap];
-                result = cellSize.height;
-            }
-        }
-        //NSLog(@"row %d (shout %@) height: %d", shoutIndex, shout, result);
-        //        NSString *ageString = @"10 minutes ago";
-        //        CGSize ageSize = [ageString sizeWithFont:[UIFont systemFontOfSize:LABEL_FONT_SIZE]];
-        //        result += ageSize.height;
-        //        NSLog(@"          updated height: %d", shoutIndex, shout, result);
-        if (result < CELL_HEIGHT_MIN) {
-            result = CELL_HEIGHT_MIN;
-            //NSLog(@"Generated row height was too small; overridden to %5.1f.", result);
-        }
-    }
-    @catch (NSException * e) {
-        NSLog(@"Caught exception in ListeningDataSource:heightForRowAtIndexPath: %@ %@\n%@", [e name], [e reason], [e callStackReturnAddresses]);
+    //NSLog(@"ListeningDataSource tableView:%@ heightForRowAtIndexPath:%@", tableView, indexPath);
+    CGFloat result = CELL_HEIGHT_MIN;
+    NSUInteger shoutIndex = [self shoutRowForIndexPath:indexPath];
+    //NSLog(@"shoutIndex: %d", shoutIndex);
+    if (shoutIndex != -1) {
+        Shout *shout = [self getShoutForRow:shoutIndex];
+        result = [ShoutListCell tableView:tableView heightForShout:shout];
     }
     return result;
 }
@@ -176,7 +151,7 @@
 }
 
 - (void) managerLoadedShouts:(NSArray *)newShouts {
-    NSLog(@"ListeningDataSource managerLoadedShouts:");
+    //NSLog(@"ListeningDataSource managerLoadedShouts:");
     [self setShouts:newShouts];
     [controller dataLoaded: newShouts];
 }

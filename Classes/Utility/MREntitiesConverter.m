@@ -24,7 +24,7 @@
     [self.resultString appendString:s];
 }
 
-- (NSString*)convertEntiesInString:(NSString*)s {
+- (NSString*)convertEntitiesInString:(NSString*)s {
 	if(s == nil) {
 		NSLog(@"ERROR : Parameter string is nil");
 	}

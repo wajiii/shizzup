@@ -32,7 +32,12 @@
     [placePhone setText:[place phone]];
     NSLog(@"   - place.address1: %@", [place address1]);
     NSLog(@"   - place.address2: %@", [place address2]);
-    NSString *address = [NSString stringWithFormat:@"%@\n%@", [place address1], [place address2]];
+    NSString *address1 = [place address1];
+    NSString *address2 = [place address2];
+    NSString *address = [NSString stringWithFormat:@"%@", address1];
+    if ([place address2] != nil) {
+        address = [address stringByAppendingFormat:@"\n%@", address2];
+    }
     [placeAddress setText:address];
     [message setText:@""];
 }

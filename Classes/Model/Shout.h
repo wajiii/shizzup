@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class ShoutManager;
+@class IconCache;
 
 @interface Shout : NSObject {
     NSDictionary *raw;
@@ -16,6 +17,7 @@
     //NSString *username;
     //NSString *placeName;
     //NSString *relativeShoutTime;
+    IconCache *iconCache;
     UIImage *icon;
     
     // Start dictionary keys
@@ -50,16 +52,17 @@
     NSString *zip;
 }
 
-@property (readonly, retain) NSNumber *shoutId;
-@property (readonly, retain) UIImage *icon;
+@property (nonatomic, readonly, retain) NSNumber *shoutId;
+@property (nonatomic, readonly, retain) UIImage *icon;
 
-@property (readonly, retain) NSString *latitude;
-@property (readonly, retain) NSString *longitude;
-@property (readonly)         NSString *message;
-@property (readonly, retain) NSString *modified;
-@property (readonly, retain) NSString *placeName;
-@property (readonly, retain) NSString *relativeShoutTime;
-@property (readonly, retain) NSString *username;
+@property (nonatomic, readonly, retain) NSString *latitude;
+@property (nonatomic, readonly, retain) NSString *longitude;
+@property (nonatomic, readonly)         NSString *message;
+@property (nonatomic, readonly, retain) NSString *modified;
+@property (nonatomic, readonly, retain) NSString *placeName;
+@property (nonatomic, readonly, retain) NSString *relativeShoutTime;
+@property (nonatomic, readonly, retain) NSString *status;
+@property (nonatomic, readonly, retain) NSString *username;
 
 + (Shout *) initWithDict:(NSDictionary *)shoutDict fromManager:(ShoutManager *)manager;
 - (Shout *) initWithDict:(NSDictionary *)shoutDict fromManager:(ShoutManager *)manager;
