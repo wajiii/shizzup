@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>ShizzowIcon.png</string>
+	<string>ShizzupIcon.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.waj3.Shizzup</string>
 	<key>CFBundleInfoDictionaryVersion</key>
