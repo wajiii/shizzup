@@ -63,6 +63,7 @@ NSInteger distanceSort(id place1, id place2, void *context) {
         NSString *alertTitle = [NSString stringWithFormat:@"Connection Error (%d)", [error code]];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle message:[error description] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
         [alert show];
+        [alert release];
     }
     [controller exitShoutView];
 }
@@ -112,7 +113,7 @@ NSInteger distanceSort(id place1, id place2, void *context) {
     Place *place = [self getPlaceForIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_REUSE_ID];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CELL_REUSE_ID];
+        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CELL_REUSE_ID] autorelease];
         
         CGFloat nameX = NAME_MARGIN_HORIZONTAL;
         CGFloat nameY = NAME_MARGIN_VERTICAL;
@@ -131,6 +132,7 @@ NSInteger distanceSort(id place1, id place2, void *context) {
             [nameLabel setFont:[UIFont systemFontOfSize:NAME_FONT_SIZE]];
             [nameLabel setLineBreakMode:UILineBreakModeWordWrap];
             [cell.contentView addSubview:nameLabel];
+            [nameLabel release];
         }
         CGFloat distX = (cell.contentView.frame.size.width * 0.8) + (DIST_MARGIN_HORIZONTAL / 2);
         CGFloat distY = DIST_MARGIN_VERTICAL;
@@ -147,6 +149,7 @@ NSInteger distanceSort(id place1, id place2, void *context) {
             [distLabel setFont:[UIFont systemFontOfSize:DIST_FONT_SIZE]];
             [distLabel setLineBreakMode:UILineBreakModeWordWrap];
             [cell.contentView addSubview:distLabel];
+            [distLabel release];
         }
     }
     UILabel *nameLabel = (UILabel *)[cell.contentView viewWithTag:TAG_NAME];

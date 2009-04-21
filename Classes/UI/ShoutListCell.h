@@ -14,12 +14,12 @@
     NSString *age;
     NSString *message;
     Shout *shout;
-    NSNumber *shoutId;
+    NSString *shoutId;
 }
 
 @property (nonatomic, retain) Shout *shout;
 
-+ (CGFloat) tableView:(UITableView *)tableView heightForShout:(Shout *)shout;
++ (CGFloat) heightForShout:(Shout *)shout;
 + (NSString *) messageForShout:(Shout *)shout;
 + (void) setPageWidth:(CGFloat)newWidth;
 

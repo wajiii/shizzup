@@ -10,13 +10,18 @@
 #import "ShoutManager.h"
 
 @interface ShoutListReceiver : NSObject {
+    NSString *cacheName;
     id<ShoutManagerDelegate> delegate;
     ShoutManager *manager;
+    BOOL readFromCache;
     NSString *responseText;
 }
 
+@property (nonatomic, retain) NSString *cacheName;
 @property (nonatomic, retain) id<ShoutManagerDelegate> delegate;
+@property (nonatomic)         BOOL readFromCache;
 
 - (id) initWithManager:(ShoutManager *)manager;
+- (void) processShoutList;
 
 @end

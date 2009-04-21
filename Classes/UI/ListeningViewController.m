@@ -14,13 +14,17 @@
 
 @implementation ListeningViewController
 
+#define REDRAW_TIMER_INTERVAL  10.0  // seconds
+#define AUTORELOAD_INTERVAL 60.0  // seconds
+#define TAG_REFRESH_BUTTON_CELL 0xfade
+
 @synthesize refreshButtonCell;
 @synthesize spinnerView;
 @synthesize tableView;
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    
+
     NSLog(@"Setting up shout manager...");
     shoutManager = [[ShoutManager alloc] init];
     
@@ -32,10 +36,10 @@
     [tableView setDataSource:shoutsDataSource];
     [tableView setDelegate:shoutsDataSource];
     [tableView setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-    
-    // Start data retrieval
-    //NSLog(@"Starting shout retrieval...");
-    //    [shoutManager findShouts];
+
+    isFirstLoad = YES;
+    [refreshButtonCell setTag:TAG_REFRESH_BUTTON_CELL];
+    nextAutoReload = CFAbsoluteTimeGetCurrent() - 1;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -44,14 +48,19 @@
     
     // Start data retrieval
     NSLog(@"Starting shout retrieval...");
-    //    [spinnerView startAnimating];
-    //    [shoutManager findShouts];
-    [self refreshShoutList];
-    //    [self performSelectorInBackground:@selector(refreshShoutList) withObject:nil];
+    //[self refreshShoutList];
+    [self loadCachedShouts];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    NSLog(@"ListeningViewController viewDidAppear");
+    [super viewDidAppear:animated];
+    [self startRedrawTimer];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
     NSLog(@"ListeningViewController viewWillDisappear");
+    [self stopRedrawTimer];
     [super viewWillDisappear:animated];
 }
 
@@ -72,14 +81,30 @@
     //    [tableView performSelectorInBackground:@selector(reloadData) withObject:nil];
     
     // Scroll to first shout
-    if ([shouts count] > 0) {
+    // Reconsidering this, given auto-reload
+    NSArray *visibleCells = [tableView visibleCells];
+    NSLog(@"  - visibleCells: %@", visibleCells);
+    UITableViewCell *firstVisibleCell = (UITableViewCell *)[visibleCells objectAtIndex:0];
+    NSLog(@"  - firstVisibleCell: %@", firstVisibleCell);
+    NSLog(@"  - firstVisibleCell.tag: %i", firstVisibleCell.tag);
+    if ((firstVisibleCell.tag == TAG_REFRESH_BUTTON_CELL) && (shoutCount > 0)) {
         NSUInteger indexes[2] = { 0, 1 };
         NSIndexPath *indexPath = [[NSIndexPath alloc] initWithIndexes:indexes length:2];
         [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        [indexPath release];
     }
     
     // Let user know we're done reloading
     [spinnerView stopAnimating];
+    if (isFirstLoad) {
+        NSLog(@"  - is first load!");
+        isFirstLoad = NO;
+    } else {
+        NSLog(@"  - is not first load!");
+        nextAutoReload = CFAbsoluteTimeGetCurrent() + AUTORELOAD_INTERVAL;
+    }
+    NSLog(@"  - next automatic reload: %f", nextAutoReload);
+    [self startRedrawTimer];
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -97,9 +122,48 @@
     [super dealloc];
 }
 
+- (void) loadCachedShouts {
+    NSLog(@"ListeningViewController loadCachedShouts");
+    [spinnerView startAnimating];
+    [self stopRedrawTimer];
+    [shoutManager loadCachedShouts];
+}
+
 - (IBAction) refreshShoutList {
+    NSLog(@"ListeningViewController refreshShoutList");
+    [self stopRedrawTimer];
     [spinnerView startAnimating];
     [shoutManager findShouts];
+}
+
+- (void) startRedrawTimer {
+    [self stopRedrawTimer];
+    NSLog(@"ListeningViewController startRedrawTimer");
+    redrawTimer = [[NSTimer scheduledTimerWithTimeInterval:REDRAW_TIMER_INTERVAL target:self selector:@selector(redraw:) userInfo:nil repeats:YES] retain];
+    [redrawTimer setFireDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.1]];
+    NSLog(@"  - redrawTimer: %@", redrawTimer);
+}
+
+- (void) redraw:(NSTimer*)theTimer {
+    @synchronized(self) {
+        CFAbsoluteTime now = CFAbsoluteTimeGetCurrent();
+        NSLog(@"ListeningViewController redraw - now: %.2f; next auto-reload: %.2f", now, nextAutoReload);
+        if (now >= nextAutoReload) {
+            [self refreshShoutList];
+        } else {
+            [tableView reloadData];
+        }
+    }
+}
+
+- (void) stopRedrawTimer {
+    NSLog(@"ListeningViewController stopRedrawTimer");
+    if (redrawTimer != nil) {
+        NSLog(@"  - invalidating redrawTimer");
+        [redrawTimer invalidate];
+        [redrawTimer release];
+        redrawTimer = nil;
+    }
 }
 
 @end

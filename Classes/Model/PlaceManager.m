@@ -32,6 +32,8 @@
     //NSLog(@"   - apiUriStub: %@", apiUriStub);
     if (api != nil) {
         [api abort];
+        [api release];
+        api = nil;
     }
     api = [[ShizzowApiConnection alloc] init];
     [api callUri:apiUriStub delegate:self];
@@ -85,19 +87,22 @@
     NSLog(@"PlaceManager didReceiveData connection:%@ data.length:%u", connection, [data length]);
     NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     if (responseText == nil) {
-        responseText = dataString;
+        responseText = [dataString retain];
     } else  {
         [responseText stringByAppendingString:dataString];
     }
     //NSLog(@"responseText length: %d", [responseText length]);
     //    [super connection:connection didReceiveData:data];
+    [dataString release];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"PlaceManager:connectionDidFinishLoading connection: %@", connection);
     //NSLog(@"                                      responseText: %@", responseText);
     //NSDictionary *responseDictionary = [responseText JSONValue];
-    NSString *filteredResponseText = [[[MREntitiesConverter alloc] init] convertEntitiesInString: responseText];
+    MREntitiesConverter *converter = [[MREntitiesConverter alloc] init];
+    NSString *filteredResponseText = [converter convertEntitiesInString: responseText];
+    [converter release];
     //NSLog(@"                              filteredResponseText: %@", filteredResponseText);
     NSDictionary *responseDictionary = [filteredResponseText JSONValue];
 
@@ -114,10 +119,12 @@
             Place *place = [Place alloc];
             [place initFromDict:placeDict];
             [places addObject:place];
+            [place release];
         }
     }
     api = nil;
     [delegate managerLoadedPlaces:places];
+    [places release];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {

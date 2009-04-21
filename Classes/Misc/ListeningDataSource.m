@@ -10,6 +10,7 @@
 
 #import "ShizzupConstants.h"
 #import "ShizzupAppDelegate.h"
+#import "ShoutDetailController.h"
 #import "ShoutListCell.h"
 
 #define CELL_REUSE_ID @"ShoutListCell"
@@ -38,14 +39,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
-    return [shouts count];
+    // Add one for the "refresh" cell
+    return [shouts count]+1;
 }
 
 - (Shout *) getShoutForRow:(NSUInteger)row {
     Shout *shout = nil;
     //NSLog(@"Requested row: %u ; shout count: %u", row, [shouts count]);
-    if ((row >= 0) && (row < [shouts count])) {
-        shout = [shouts objectAtIndex:row];
+    if ((row > 0) && (row <= [shouts count])) {
+        shout = [shouts objectAtIndex:(row-1)];
     } else {
         NSLog(@"Oops! Requested row %u, but shout count is %u.", row, [shouts count]);
     }
@@ -54,7 +56,7 @@
 }
 
 //- (void) setIcon:(UIImage *)shoutIcon forCell:(UITableViewCell *)cell  {
-    // Add icon
+// Add icon
 //    UIImage *icon;
 //    if (shoutIcon != nil) {
 //        icon = shoutIcon;
@@ -86,7 +88,7 @@
 }
 
 - (NSUInteger) shoutRowForIndexPath:(NSIndexPath *) indexPath {
-    NSUInteger shoutIndex = [indexPath indexAtPosition:([indexPath length]-1)] - 1;
+    NSUInteger shoutIndex = [indexPath indexAtPosition:([indexPath length]-1)];
     return shoutIndex;
 }
 
@@ -95,19 +97,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //NSLog(@"ListeningDataSource cellForRowAtIndexPath: %@", indexPath);
     NSUInteger shoutIndex = [self shoutRowForIndexPath:indexPath];
-    if (shoutIndex == -1) {
+    if (shoutIndex == 0) {
         return [controller refreshButtonCell];
     }
     
     ShoutListCell *cell = (ShoutListCell *)[tableView dequeueReusableCellWithIdentifier: CELL_REUSE_ID];
     if (cell == nil) {
-        cell = [[ShoutListCell alloc] initWithFrame: CGRectZero reuseIdentifier: CELL_REUSE_ID];
+        cell = [[[ShoutListCell alloc] initWithFrame: CGRectZero reuseIdentifier: CELL_REUSE_ID] autorelease];
     }
     Shout *shout = [self getShoutForRow:shoutIndex];
     [cell setShout: shout];
     CGFloat myWidth = [tableView bounds].size.width - (ICON_WIDTH + (SHOUTCELL_MARGIN_HORIZONTAL * 2));
     // Set icon
-//    [self setIcon:shout.icon forCell:cell];
+    //    [self setIcon:shout.icon forCell:cell];
     NSString *ageText = [shout relativeShoutTime];
     //NSLog(@"   - myWidth: %f", myWidth);
     NSString *shoutText = [self textForShout: shout];
@@ -127,9 +129,11 @@
     CGFloat result = CELL_HEIGHT_MIN;
     NSUInteger shoutIndex = [self shoutRowForIndexPath:indexPath];
     //NSLog(@"shoutIndex: %d", shoutIndex);
-    if (shoutIndex != -1) {
+    if (shoutIndex != 0) {
         Shout *shout = [self getShoutForRow:shoutIndex];
-        result = [ShoutListCell tableView:tableView heightForShout:shout];
+        result = [ShoutListCell heightForShout:shout];
+    } else {
+        result = [controller refreshButtonCell].bounds.size.height;
     }
     return result;
 }
@@ -139,21 +143,46 @@
     ShizzupAppDelegate *delegate = [ShizzupAppDelegate singleton];
     NSLog(@"   - delegate: %@", delegate);
     NSUInteger shoutIndex = [self shoutRowForIndexPath: newIndexPath];
-    if (shoutIndex == -1) {
-        NSLog(@"   - TODO: refresh list.");
+    if (shoutIndex == 0) {
+        //NSLog(@"   - TODO: refresh list.");
         [controller refreshShoutList];
+        [tableView deselectRowAtIndexPath:newIndexPath animated:YES];
     } else {
         Shout *shout = [self getShoutForRow:shoutIndex];
         NSLog(@"   - shout: %@", shout);
         NSLog(@"   - shout.placeName: %@", shout.placeName);
         NSLog(@"   - shout.message: %@", shout.message);
+        [tableView deselectRowAtIndexPath:newIndexPath animated:YES];
+        [delegate enterShoutDetailView:shout];
     }
 }
 
 - (void) managerLoadedShouts:(NSArray *)newShouts {
-    //NSLog(@"ListeningDataSource managerLoadedShouts:");
+    NSLog(@"ListeningDataSource managerLoadedShouts");
+    NSLog(@"  - thread: %@", [NSThread currentThread]);
+    [newShouts retain];
     [self setShouts:newShouts];
+    [self performSelectorInBackground:@selector(updateIcons) withObject:nil];
+    //[NSThread detachNewThreadSelector:@selector(myThreadMainMethod:) toTarget:self withObject:nil];
     [controller dataLoaded: newShouts];
+}
+
+
+- (void) updateIcons {
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    NSLog(@"ListeningViewController updateIcons");
+    NSLog(@"  - sleeping 1 second");
+    sleep(1);
+    NSThread *thread = [NSThread currentThread];
+    NSLog(@"  - thread: %@", thread);
+    for (Shout *shout in shouts) {
+        CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+        //UIImage *icon = 
+        [shout icon];
+        CFAbsoluteTime endTime = CFAbsoluteTimeGetCurrent();
+        NSLog(@"  - user: %@; place:%@; icon load time: %f", [shout username], [shout placeName], (endTime - startTime));
+    }
+    [pool release];
 }
 
 @end

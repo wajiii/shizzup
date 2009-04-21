@@ -60,6 +60,9 @@
     //NSLog(@"responseDictionary: %@: %@", [responseDictionary class], responseDictionary);
     NSDictionary *results = [responseDictionary valueForKey:@"results"];
     NSLog(@"results: %@: %@", [results class], results);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:[NSString stringWithFormat:@"%@",results] delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
     //NSArray *shoutArray = [results valueForKey:@"shouts"];
     //NSLog(@"   - shoutArray: %@: %@", [shoutArray class], shoutArray);
     //NSMutableArray *newShouts = [[[NSMutableArray alloc] init] retain];

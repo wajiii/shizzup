@@ -28,7 +28,7 @@
 }
 
 - (NSString *) nameForAddress:(NSString *)iconAddress {
-    NSLog(@"IconCache nameForAddress: %@", iconAddress);
+    //NSLog(@"IconCache nameForAddress: %@", iconAddress);
     CFAbsoluteTime currentMethodStart = CFAbsoluteTimeGetCurrent();
     NSUInteger length = [iconAddress length];
     //NSLog(@"   - length: %u", length);
@@ -39,11 +39,11 @@
     unichar newChar;
     unichar oldChar;
     for (int i = 0; i < length; i++) {
-        newChar = 
+        //newChar = 
         oldChar = characters[i];
         //NSLog(@"   - character: %C", character);
         if (oldChar < 48 || (oldChar > 57 && oldChar < 65) || (oldChar > 90 && oldChar < 97) || oldChar > 122) {
-            newChar = 
+            //newChar = 
             characters[i] = SPACER_CHARACTER;
         }
         //NSLog(@"   - character: %C %C", oldChar, newChar);
@@ -53,32 +53,32 @@
     //NSLog(@"   - result: %@", result);
     free(characters);
     CFAbsoluteTime currentMethodFinish = CFAbsoluteTimeGetCurrent();
-    NSLog(@"   - IconCache nameForAddress time: %f", (currentMethodFinish - currentMethodStart));
+    //NSLog(@"   - IconCache nameForAddress time: %f", (currentMethodFinish - currentMethodStart));
     return result;
 }
 
 - (UIImage *) iconForAddress:(NSString *)iconAddress {
-    NSLog(@"IconCache iconForAddress: %@", iconAddress);
+    //NSLog(@"IconCache iconForAddress: %@", iconAddress);
     CFAbsoluteTime currentMethodStart = CFAbsoluteTimeGetCurrent();
     UIImage *icon = [icons objectForKey:iconAddress];
     if (icon != nil) {
-        NSLog(@"   - memory cache hit (immediate)");
+        //NSLog(@"   - memory cache hit (immediate)");
     } else {
         @synchronized(self) {
             icon = [icons objectForKey:iconAddress];
             if (icon != nil) {
-                NSLog(@"   - memory cache hit (@synchronized)");
+                //NSLog(@"   - memory cache hit (@synchronized)");
             } else {
-                NSLog(@"   - memory cache miss");
+                //NSLog(@"   - memory cache miss");
                 NSString *thisFileName = [self nameForAddress:iconAddress];
-                NSLog(@"   - thisFileName: %@", thisFileName);
+                //NSLog(@"   - thisFileName: %@", thisFileName);
                 NSString *thisFilePath = [diskCachePath stringByAppendingPathComponent:thisFileName];
-                NSLog(@"   - thisFilePath: %@", thisFilePath);
+                //NSLog(@"   - thisFilePath: %@", thisFilePath);
                 icon = [UIImage imageWithContentsOfFile:thisFilePath];
                 if (icon != nil) {
-                    NSLog(@"   - disk cache hit");
+                    //NSLog(@"   - disk cache hit");
                 } else {
-                    NSLog(@"   - disk cache miss");
+                    //NSLog(@"   - disk cache miss");
                     UIImage *roundedIcon;
                     if ([iconAddress compare:@"/images/people/people_48.jpg"] == 0) {
                         roundedIcon = nil;
@@ -90,14 +90,14 @@
                     NSData *iconPngData = UIImagePNGRepresentation(icon);
                     BOOL cacheWriteResult = [iconPngData writeToFile:thisFilePath atomically:YES];
                     //BOOL cacheWriteResult = [icons writeToFile:diskCachePath atomically:YES];
-                    NSLog(@"   - write to disk cache: %d", cacheWriteResult);
+                    //NSLog(@"   - write to disk cache: %d", cacheWriteResult);
                 }
                 [icons setValue:icon forKey:iconAddress];
             }
         }
     }
     CFAbsoluteTime currentMethodFinish = CFAbsoluteTimeGetCurrent();
-    NSLog(@"   - IconCache iconForAddress time: %f", (currentMethodFinish - currentMethodStart));
+    //NSLog(@"   - IconCache iconForAddress time: %f", (currentMethodFinish - currentMethodStart));
     return icon;
 }
 

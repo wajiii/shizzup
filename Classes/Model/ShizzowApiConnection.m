@@ -54,6 +54,7 @@
         NSLog(@"Error attempting to override certificate handling; API calls will probably fail.\nException %@ (%@): %@", [e class], [e name], [e description]);
     }
 
+    [self abort];
     connection = [NSURLConnection connectionWithRequest:request delegate:delegate];
     //NSLog(@"     connection: %@", connection);
     
@@ -61,7 +62,11 @@
 }
 
 - (void) abort {
-    [connection cancel];
+    if (connection != nil) {
+        [connection cancel];
+        [connection release];
+        connection = nil;
+    }
 }
 
 @end

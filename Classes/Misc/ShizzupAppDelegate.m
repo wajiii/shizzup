@@ -13,6 +13,8 @@
 #import <execinfo.h>
 
 #import "LoginController.h"
+#import "Shout.h"
+#import "ShoutDetailController.h"
 #import "ShoutPlaceController.h"
 #import "IconCache.h"
 
@@ -36,6 +38,7 @@ id APP_DELEGATE;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     APP_DELEGATE = self;
+    [[NSThread currentThread] setName:@"Shizzup.main"];
 
 //    IconCache *iconCache = [[IconCache alloc] init];
 //    NSLog(@"Icon for http://people.shizzow.com/bettse_48.jpg: %@", [iconCache iconForAddress:@"http://people.shizzow.com/bettse_48.jpg"]);
@@ -88,7 +91,7 @@ id APP_DELEGATE;
             for (PLCrashReportThreadInfo *reportThread in report.threads) {
                 NSLog(@"   - Thread %d: %@", i, reportThread);
                 NSLog(@"      - Crashed: %d", reportThread.crashed);
-                NSString *frameList = [[NSString alloc] init];
+                NSString *frameList = [[[NSString alloc] init] autorelease];
                 for (PLCrashReportStackFrameInfo *frame in reportThread.stackFrames) {
                     frameList = [frameList stringByAppendingFormat:@",\n    %u", frame.instructionPointer];
                 }
@@ -171,6 +174,16 @@ id APP_DELEGATE;
     ShoutPlaceController *shoutPlaceController = [ShoutPlaceController alloc];
     [shoutPlaceController initWithNibName:@"ShoutPlace" bundle:nil];
     [navController pushViewController:shoutPlaceController animated:YES];
+    [shoutPlaceController release];
+}
+
+- (IBAction) enterShoutDetailView:(Shout *)shout {
+    NSLog(@"ShizzupAppDelgate enterShoutDetailView");
+    ShoutDetailController *shoutDetailController = [ShoutDetailController alloc];
+    [shoutDetailController initWithNibName:@"ShoutDetail" bundle:nil];
+    [shoutDetailController setShout:shout];
+    [navController pushViewController:shoutDetailController animated:YES];
+    [shoutDetailController release];
 }
 
 - (IBAction) exitCurrentView {

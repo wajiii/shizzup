@@ -17,6 +17,9 @@
 
 @implementation ShoutManager
 
+#define LISTENING_CACHE_NAME @"Listening"
+#define NEARBY_CACHE_NAME @"Nearby"
+
 @synthesize delegate;
 @synthesize iconCache;
 @synthesize limit;
@@ -42,7 +45,9 @@
     api = [[ShizzowApiConnection alloc] init];
     ShoutListReceiver *receiver = [[ShoutListReceiver alloc] initWithManager:self];
     [receiver setDelegate: delegate];
+    [receiver setCacheName: NEARBY_CACHE_NAME];
     [api callUri: apiUriStub delegate: receiver];
+    [receiver release];
 }
 
 - (void) findShouts {
@@ -54,7 +59,19 @@
     api = [[ShizzowApiConnection alloc] init];
     ShoutListReceiver *receiver = [[ShoutListReceiver alloc] initWithManager:self];
     [receiver setDelegate: delegate];
+    [receiver setCacheName: LISTENING_CACHE_NAME];
     [api callUri: apiUriStub delegate: receiver];
+    [receiver release];
+}
+
+- (void) loadCachedShouts {
+    NSLog(@"ShoutManager loadCachedShouts");
+    ShoutListReceiver *receiver = [[ShoutListReceiver alloc] initWithManager:self];
+    [receiver setDelegate: delegate];
+    [receiver setCacheName: LISTENING_CACHE_NAME];
+    [receiver setReadFromCache:YES];
+    [receiver processShoutList];
+    [receiver release];
 }
 
 - (void) sendShoutFromPlace:(NSString *)placeKey withMessage:(NSString *)message{
@@ -64,6 +81,7 @@
     ShoutSendReceiver *receiver = [[ShoutListReceiver alloc] initWithManager:self];
     [receiver setDelegate: delegate];
     [api callUri: apiUriStub usingMethod:@"PUT" withDelegate:receiver withBody:body];
+    [receiver release];
 }
 
 @end

@@ -28,7 +28,7 @@ static UIFont *messageFont = nil;
         NSLog(@"   - initializing fonts");
 		messageFont = [[UIFont systemFontOfSize:14] retain];
 		ageFont = [[UIFont systemFontOfSize:10] retain];
-        allSizes = [[NSMutableDictionary alloc] init];
+        allSizes = [[[NSMutableDictionary alloc] init] retain];
 		// this is a good spot to load any graphics you might be drawing in -drawContentView:
 		// just load them and retain them here (ONLY if they're small enough that you don't care about them wasting memory)
 		// the idea is to do as LITTLE work (e.g. allocations) in -drawContentView: as possible
@@ -66,8 +66,8 @@ static UIFont *messageFont = nil;
 }
 
 - (void)drawContentView:(CGRect)r {
-//    CFAbsoluteTime currentMethodStart = CFAbsoluteTimeGetCurrent();
     //NSLog(@"ShoutListCell drawContentView");
+    //CFAbsoluteTime currentMethodStart = CFAbsoluteTimeGetCurrent();
     NSArray *mySizes = [allSizes objectForKey:shoutId];
     //NSLog(@"   - mySizes: %@", mySizes);
     
@@ -87,27 +87,34 @@ static UIFont *messageFont = nil;
     [[shout icon] drawAtPoint:CGPointMake(SHOUTCELL_MARGIN_HORIZONTAL, SHOUTCELL_MARGIN_VERTICAL)];
     
 	[textColor set];
-    float messageWidth = [[mySizes objectAtIndex:0] floatValue];
+    //float messageWidth = [[mySizes objectAtIndex:0] floatValue];
     float messageHeight = [[mySizes objectAtIndex:1] floatValue];
     //NSLog(@"   - messageWidth: %f", messageWidth);
     //NSLog(@"   - messageHeight: %f", messageHeight);
     CGRect firstRect = CGRectMake(LABEL_ORIGIN_X, SHOUTCELL_MARGIN_VERTICAL, labelWidth, messageHeight);
     CGSize firstSizeDrawn = [message drawInRect:firstRect withFont:messageFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
 	
+    //CGSize ageSize = [age sizeWithFont:ageFont constrainedToSize:maxTextSize lineBreakMode:UILineBreakModeWordWrap];
+    //float ageWidth = ageSize.width;
     float ageWidth = [[mySizes objectAtIndex:2] floatValue];
     float ageHeight = [[mySizes objectAtIndex:3] floatValue];
     //NSLog(@"   - ageWidth: %f", ageWidth);
     //NSLog(@"   - ageHeight: %f", ageHeight);
-    CGFloat ageX = pageWidth - ageWidth - SHOUTCELL_MARGIN_HORIZONTAL;
-    CGFloat ageMinY = CELL_HEIGHT_MIN - ageHeight - SHOUTCELL_MARGIN_VERTICAL;
+    CGFloat ageX = pageWidth - SHOUTCELL_MARGIN_HORIZONTAL - ageWidth;
+    //NSLog(@"   - ageX: %f", ageX);
+    CGFloat ageMinY = CELL_HEIGHT_MIN - SHOUTCELL_MARGIN_VERTICAL - ageHeight;
+    //NSLog(@"   - ageMinY: %f", ageMinY);
     CGFloat ageY = firstSizeDrawn.height + (SHOUTCELL_MARGIN_VERTICAL * 2);
+    //NSLog(@"   - ageY: %f", ageY);
     ageY = MAX(ageMinY, ageY);
+    //NSLog(@"   - ageY: %f", ageY);
     CGRect ageRect = CGRectMake(ageX, ageY, ageWidth, ageHeight);
-    CGSize ageSizeDrawn = [age drawInRect:ageRect withFont:ageFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentRight];
+    //CGSize ageSizeDrawn = 
+        [age drawInRect:ageRect withFont:ageFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentRight];
     //NSLog(@"   - ageSizeDrawn.width: %f", ageSizeDrawn.width);
     //NSLog(@"   - ageSizeDrawn.height: %f", ageSizeDrawn.height);
     //CFAbsoluteTime currentMethodFinish = CFAbsoluteTimeGetCurrent();
-    //NSLog(@"   - time: %f", (currentMethodFinish - currentMethodStart));
+    //NSLog(@"   - ShoutListCell drawContentView time: %f", (currentMethodFinish - currentMethodStart));
 }
 
 - (void)dealloc {
@@ -120,9 +127,10 @@ static UIFont *messageFont = nil;
 
 - (void) setShout:(Shout *) newShout {
     shout = newShout;
+    [ShoutListCell heightForShout:newShout];
     age = [[shout relativeShoutTime] retain];
     message = [[ShoutListCell messageForShout:shout] retain];
-    shoutId = [shout shoutId];
+    shoutId = [shout shouts_history_id];
     [self setNeedsDisplay];
 }
 
@@ -136,37 +144,56 @@ static UIFont *messageFont = nil;
     NSLog(@"   - maxTextSize.height: %f", maxTextSize.height);
 }
 
-+ (CGFloat) tableView:(UITableView *)tableView heightForShout:(Shout *)shout {
++ (CGFloat) heightForShout:(Shout *)shout {
     //CFAbsoluteTime currentMethodStart = CFAbsoluteTimeGetCurrent();
-    //NSLog(@"ShoutListCell tableView:heightForShout");
+    //NSLog(@"ShoutListCell heightForShout");
     CGFloat result = 44.0f;
-    NSNumber *shoutId = [shout shoutId];
+    NSString *shoutId = [shout shouts_history_id];
+    NSString *message = [ShoutListCell messageForShout: shout];
+    NSString *age = [shout relativeShoutTime];
     
+    BOOL calculate = YES;
     NSMutableArray *mySizes = [allSizes objectForKey:shoutId];
     if (mySizes != nil) {
         //NSLog(@"   - got mySizes from allSizes");
         //NSLog(@"   - mySizes: %@", mySizes);
-        result = [[mySizes objectAtIndex:4] floatValue];
-    } else {
+        NSString *storedMessage = [mySizes objectAtIndex:5];
+        NSString *storedAge = [mySizes objectAtIndex:6];
+        if ([storedMessage isEqualToString:message] && [storedAge isEqualToString:age]){
+            calculate = NO;
+            result = [[mySizes objectAtIndex:4] floatValue];
+        } else {
+            NSLog(@"  - cell size cache mismatch, recalculating!");
+            NSLog(@"    - stored: %@ %@", storedMessage, storedAge);
+            NSLog(@"    - new   : %@ %@", message, age);
+        }
+    }
+    if (calculate) {            
         //NSLog(@"   - creating new mySizes");
         mySizes = [[NSMutableArray alloc] initWithCapacity:5];
         //NSLog(@"   - mySizes: %@", mySizes);
-        NSString *message = [ShoutListCell messageForShout: shout];
         //NSLog(@"   - message: %@", message);
         CGSize messageSize = [message sizeWithFont:messageFont constrainedToSize:maxTextSize lineBreakMode:UILineBreakModeWordWrap];
         //NSLog(@"   - messageSize.width: %f", messageSize.width);
         //NSLog(@"   - messageSize.height: %f", messageSize.height);
-        [mySizes addObject:[[NSNumber alloc] initWithFloat:messageSize.width]];
-        [mySizes addObject:[[NSNumber alloc] initWithFloat:messageSize.height]];
+        NSNumber *messageWidthNSN = [[NSNumber alloc] initWithFloat:messageSize.width];
+        NSNumber *messageHeightNSN = [[NSNumber alloc] initWithFloat:messageSize.height];
+        [mySizes addObject:messageWidthNSN];
+        [mySizes addObject:messageHeightNSN];
+        [messageWidthNSN release];
+        [messageHeightNSN release];
         
-        // Text height, plus 8px margins above and below
+        // Text height, plus vertical margins above and below
         result = (SHOUTCELL_MARGIN_VERTICAL * 2) + messageSize.height;
         //NSLog(@"   - result: %f", result);
         
-        NSString *age = [shout relativeShoutTime];
         CGSize ageSize = [age sizeWithFont:ageFont constrainedToSize:maxTextSize lineBreakMode:UILineBreakModeWordWrap];
-        [mySizes addObject:[[NSNumber alloc] initWithFloat:ageSize.width]];
-        [mySizes addObject:[[NSNumber alloc] initWithFloat:ageSize.height]];
+        NSNumber *ageWidthNSN = [[NSNumber alloc] initWithFloat:ageSize.width];
+        NSNumber *ageHeightNSN = [[NSNumber alloc] initWithFloat:ageSize.height];
+        [mySizes addObject:ageWidthNSN];
+        [mySizes addObject:ageHeightNSN];
+        [ageWidthNSN release];
+        [ageHeightNSN release];
         
         // Add this text's height plus a final bottom margin.
         result += ageSize.height + SHOUTCELL_MARGIN_VERTICAL;
@@ -174,12 +201,20 @@ static UIFont *messageFont = nil;
         
         result = MAX(result, CELL_HEIGHT_MIN);	// at least one row
         //NSLog(@"   - result: %f", result);
-        [mySizes addObject:[[NSNumber alloc] initWithFloat:result]];
+        NSNumber *cellHeightNSN = [[NSNumber alloc] initWithFloat:result];
+        [mySizes addObject:cellHeightNSN];
+        [cellHeightNSN release];
+        
+        // For later comparison
+        [mySizes addObject:message];
+        [mySizes addObject:age];
+        
         //NSLog(@"   - mySizes: %@", mySizes);
         [allSizes setValue:mySizes forKey:shoutId];
+        [mySizes release];
     }
     //CFAbsoluteTime currentMethodFinish = CFAbsoluteTimeGetCurrent();
-    //NSLog(@"   - ShoutListCell tableView:heightForShout time: %f", (currentMethodFinish - currentMethodStart));
+    //NSLog(@"   - ShoutListCell heightForShout time: %f", (currentMethodFinish - currentMethodStart));
 	return result;
 }
 

@@ -11,9 +11,13 @@
 @class ShoutManager;
 
 @interface ListeningViewController : UIViewController {
-    UITableView *tableView;
+    CFAbsoluteTime nextAutoReload;
+    BOOL isFirstLoad;
+    NSTimer *redrawTimer;
+    NSTimer *refreshTimer;
     UIActivityIndicatorView *spinnerView;
     ShoutManager *shoutManager;
+    UITableView *tableView;
     UITableViewCell *refreshButtonCell;
 }
 
@@ -22,6 +26,10 @@
 @property (nonatomic, retain) IBOutlet UITableViewCell *refreshButtonCell;
 
 - (void) dataLoaded:(NSArray *) shouts;
+- (void) loadCachedShouts;
 - (void) refreshShoutList;
+- (void) startRedrawTimer;
+- (void) stopRedrawTimer;
+- (void) redraw:(NSTimer*)theTimer;
 
 @end

@@ -65,6 +65,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     NSURLResponse *response;
     NSError *error;
     NSData *imageData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    [request release], request = nil;
     if ([error code] != 0) {
         NSLog(@"Error retrieving \"%@\"!  %@", url, error);
     } else {

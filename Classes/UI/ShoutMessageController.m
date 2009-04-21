@@ -14,7 +14,7 @@
 
 @synthesize place;
 @synthesize placeName;
-@synthesize placePhone;
+//@synthesize placePhone;
 @synthesize placeAddress;
 @synthesize message;
 
@@ -28,8 +28,8 @@
     NSLog(@"   - place: %@", place);
     NSLog(@"   - place.name: %@", [place name]);
     [placeName setText:[place name]];
-    NSLog(@"   - place.phone: %@", [place phone]);
-    [placePhone setText:[place phone]];
+    //NSLog(@"   - place.phone: %@", [place phone]);
+    //[placePhone setText:[place phone]];
     NSLog(@"   - place.address1: %@", [place address1]);
     NSLog(@"   - place.address2: %@", [place address2]);
     NSString *address1 = [place address1];

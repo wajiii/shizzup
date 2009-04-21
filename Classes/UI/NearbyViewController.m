@@ -22,11 +22,11 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-
+    
     // Set up data source
     shoutManager = [[ShoutManager alloc] init];
     nearbyDataSource = [NearbyDataSource initWithManager:shoutManager controller:self];
-
+    
     // Set up map view
     NSLog(@"Setting up map view...");
     mapView = [self view];
@@ -36,9 +36,9 @@
     [mapContents setMapCenter:location.coordinate];
     [mapContents setScale: MAP_SCALE_INITIAL];
     [mapContents setZoomBounds:0.5 maxZoom:125000];
-    [mapView setDelegate:self];
+    [mapView setDelegate: self];
     [self setView:mapView];
-
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -48,11 +48,11 @@
     [LocationManager setDelegate:self];
     NSLog(@"   - NearbyViewController starting location updates...");
     [LocationManager startUpdating];
-
+    
     // Start data retrieval
-//NSLog(@"Starting shout retrieval...");
-//    [spinnerView startAnimating];
-//    [shoutManager findShoutsForLocation:[LocationManager location]];
+    //NSLog(@"Starting shout retrieval...");
+    //    [spinnerView startAnimating];
+    //    [shoutManager findShoutsForLocation:[LocationManager location]];
     [self refreshShoutList];
 }
 
@@ -107,64 +107,68 @@
                 shoutCount--;
             } else {
                 [people addObject:[shout username]];
-                //Shout *shout = [[shouts objectEnumerator] nextObject];
-                RMMarker *marker = [RMMarker alloc];
-                [marker initWithNamedStyle:RMMarkerBlueKey];
-                //[marker setTextLabel:[NSString stringWithFormat:@"%@\n%@", [shout username], [shout placeName]]];
-                [marker setTextLabel:[NSString stringWithFormat:@"%@", [shout username]]];
-                UIView *labelView = [marker labelView];
-                //NSLog(@"marker labelView: %@", label);
-                if (labelView != nil) {
-                    BOOL isLabel = [labelView isMemberOfClass:[UILabel class]];
-                    //NSLog(@"marker labelView isLabel: %d", isLabel);
-                    if (isLabel) {
-                        //NSLog(@"Alright!");
-                        UILabel *label = (UILabel *)labelView;
-                        //[label setShadowColor:[UIColor whiteColor]];
-                        //[label setNumberOfLines:2];
-                        //CGRect frame = [label frame];
-                        //frame.size.height *= 2;
-                        //[label setFrame:frame];
-                        [label setTextAlignment:UITextAlignmentCenter];
-                        [label setFont:[UIFont systemFontOfSize:14]];
-                        [label setAlpha:1.0];
-                        //[label setBackgroundColor:[UIColor lightGrayColor]];
-                        [label setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.5]];
-                    } else {
-                        NSLog(@"Whoops, marker labelView %@ is not a UILabel.  Oh well!", labelView);
+                if (![shout isHere]) {
+                    NSLog(@"  - Person %@ left place %@; not including in map.", [shout username], [shout placeName]);
+                } else {
+                    //Shout *shout = [[shouts objectEnumerator] nextObject];
+                    RMMarker *marker = [RMMarker alloc];
+                    [marker initWithNamedStyle:RMMarkerBlueKey];
+                    //[marker setTextLabel:[NSString stringWithFormat:@"%@\n%@", [shout username], [shout placeName]]];
+                    [marker setTextLabel:[NSString stringWithFormat:@"%@", [shout username]]];
+                    UIView *labelView = [marker labelView];
+                    //NSLog(@"marker labelView: %@", label);
+                    if (labelView != nil) {
+                        BOOL isLabel = [labelView isMemberOfClass:[UILabel class]];
+                        //NSLog(@"marker labelView isLabel: %d", isLabel);
+                        if (isLabel) {
+                            //NSLog(@"Alright!");
+                            UILabel *label = (UILabel *)labelView;
+                            //[label setShadowColor:[UIColor whiteColor]];
+                            //[label setNumberOfLines:2];
+                            //CGRect frame = [label frame];
+                            //frame.size.height *= 2;
+                            //[label setFrame:frame];
+                            [label setTextAlignment:UITextAlignmentCenter];
+                            [label setFont:[UIFont systemFontOfSize:14]];
+                            [label setAlpha:1.0];
+                            //[label setBackgroundColor:[UIColor lightGrayColor]];
+                            [label setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.5]];
+                        } else {
+                            NSLog(@"Whoops, marker labelView %@ is not a UILabel.  Oh well!", labelView);
+                        }
                     }
-                }
-                //[marker setOpacity:0.5];
-                CLLocation *location = [CLLocation alloc];
-                CLLocationDegrees lat = [[shout latitude] doubleValue];
-                CLLocationDegrees lon = [[shout longitude] doubleValue];
-                [location initWithLatitude:lat longitude:lon];
-                float markerOpacity = 1;
-                //float shoutAgeWeight = [shout
-                NSLog(@"   - shout.username: %@; shout.modified: %@", [shout username], [shout modified]);
-                //NSCalendarDate calModified = [NSCalendarDate calendarDateWithString:[shout modified]];
-                NSDate *dateModified = [self dateFromISO8601:[shout modified]];
-                //NSLog(@"   - modified as NSDate: %@", dateModified);
-                NSTimeInterval timeInterval = [now timeIntervalSinceDate:dateModified];
-                if (timeInterval > 3600) {
-                    if (timeInterval > (60*60*8)) {
-                        markerOpacity = 0.5;
-                    } else {
-                        NSTimeInterval base = (timeInterval - 3600);
-                        //NSLog(@"   - base: %f", base);
-                        NSTimeInterval diff = (60*60*8) - base;
-                        //NSLog(@"   - diff: %f", diff);
-                        diff /= (60*60*8);
-                        //NSLog(@"   - diff: %f", diff);
-                        diff *= 0.25;
-                        //NSLog(@"   - diff: %f", diff);
-                        diff += 0.75;
-                        //NSLog(@"   - diff: %f", diff);
-                        markerOpacity = diff;
+                    //[marker setOpacity:0.5];
+                    CLLocation *location = [CLLocation alloc];
+                    CLLocationDegrees lat = [[shout latitude] doubleValue];
+                    CLLocationDegrees lon = [[shout longitude] doubleValue];
+                    [location initWithLatitude:lat longitude:lon];
+                    float markerOpacity = 1;
+                    //float shoutAgeWeight = [shout
+                    NSLog(@"   - shout.username: %@; shout.modified: %@", [shout username], [shout modified]);
+                    //NSCalendarDate calModified = [NSCalendarDate calendarDateWithString:[shout modified]];
+                    NSDate *dateModified = [self dateFromISO8601:[shout modified]];
+                    //NSLog(@"   - modified as NSDate: %@", dateModified);
+                    NSTimeInterval timeInterval = [now timeIntervalSinceDate:dateModified];
+                    if (timeInterval > 3600) {
+                        if (timeInterval > (60*60*8)) {
+                            markerOpacity = 0.5;
+                        } else {
+                            NSTimeInterval base = (timeInterval - 3600);
+                            //NSLog(@"   - base: %f", base);
+                            NSTimeInterval diff = (60*60*8) - base;
+                            //NSLog(@"   - diff: %f", diff);
+                            diff /= (60*60*8);
+                            //NSLog(@"   - diff: %f", diff);
+                            diff *= 0.25;
+                            //NSLog(@"   - diff: %f", diff);
+                            diff += 0.75;
+                            //NSLog(@"   - diff: %f", diff);
+                            markerOpacity = diff;
+                        }
                     }
+                    [marker setOpacity:markerOpacity];
+                    [manager addMarker:marker AtLatLong:location.coordinate];
                 }
-                [marker setOpacity:markerOpacity];
-                [manager addMarker:marker AtLatLong:location.coordinate];
             }
         }
     }
@@ -178,7 +182,7 @@
         NSLog(@"   - NearbyViewController updating with location: %@", newLocation);
         CLLocationCoordinate2D coordinate = newLocation.coordinate;
         [[mapView contents] setMapCenter:coordinate];
-
+        
         NSLog(@"   - Starting shout retrieval...");
         // Start data retrieval
         [self refreshShoutList];
@@ -199,6 +203,10 @@
     NSLog(@"NearbyViewController refreshShoutList");
     [spinnerView startAnimating];
     [shoutManager findShoutsForLocation:[LocationManager location]];
+}
+
+- (void) afterMapMove: (RMMapView*) map {
+    NSLog(@"NearbyViewController afterMapMove: %@", map);
 }
 
 @end

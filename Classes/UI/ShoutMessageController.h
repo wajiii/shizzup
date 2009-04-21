@@ -13,14 +13,14 @@
     UITextView *message;
     Place *place;
     UILabel *placeName;
-    UILabel *placePhone;
+    //UILabel *placePhone;
     UILabel *placeAddress;
 }
 
 @property (nonatomic, retain) IBOutlet UITextView *message;
-@property (nonatomic, retain) IBOutlet Place *place;
+@property (nonatomic, retain) Place *place;
 @property (nonatomic, retain) IBOutlet UILabel *placeName;
-@property (nonatomic, retain) IBOutlet UILabel *placePhone;
+//@property (nonatomic, retain) IBOutlet UILabel *placePhone;
 @property (nonatomic, retain) IBOutlet UILabel *placeAddress;
 
 - (IBAction) doShout;

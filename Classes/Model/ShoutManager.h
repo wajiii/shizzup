@@ -32,6 +32,7 @@
 @property (nonatomic, retain, readonly) IconCache *iconCache;
 
 - (void) findShouts;
+- (void) loadCachedShouts;
 - (void) findShoutsForLocation:(CLLocation *)location;
 - (void) sendShoutFromPlace:(NSString *)placeKey withMessage:(NSString *)message;
 

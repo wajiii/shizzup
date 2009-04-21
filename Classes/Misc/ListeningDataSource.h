@@ -24,5 +24,6 @@
 
 + (ListeningDataSource *) initWithManager:(ShoutManager *)manager controller:(ListeningViewController *)controller;
 - (NSUInteger) shoutRowForIndexPath:(NSIndexPath *)indexPath;
+- (void) updateIcons;
 
 @end

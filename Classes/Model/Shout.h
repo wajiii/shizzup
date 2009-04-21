@@ -14,9 +14,6 @@
 @interface Shout : NSObject {
     NSDictionary *raw;
     NSNumber *shoutId;
-    //NSString *username;
-    //NSString *placeName;
-    //NSString *relativeShoutTime;
     IconCache *iconCache;
     UIImage *icon;
     
@@ -43,6 +40,7 @@
     NSString *profiles_name;
     NSString *public;
     NSString *shout_time;
+    CFAbsoluteTime shout_time_nextUpdate;
     NSString *shouts_history_id;
     NSDictionary *shouts_messages;
     NSString *state_iso;
@@ -53,14 +51,18 @@
 }
 
 @property (nonatomic, readonly, retain) NSNumber *shoutId;
-@property (nonatomic, readonly, retain) UIImage *icon;
+@property (nonatomic, readonly, retain) UIImage  *icon;
 
+@property (nonatomic, readonly)         BOOL     isHere;
 @property (nonatomic, readonly, retain) NSString *latitude;
 @property (nonatomic, readonly, retain) NSString *longitude;
 @property (nonatomic, readonly)         NSString *message;
+@property (nonatomic, readonly)         NSDictionary *messages;
 @property (nonatomic, readonly, retain) NSString *modified;
+@property (nonatomic, readonly, retain) NSString *personFullName;
 @property (nonatomic, readonly, retain) NSString *placeName;
 @property (nonatomic, readonly, retain) NSString *relativeShoutTime;
+@property (nonatomic, readonly, retain) NSString *shouts_history_id;
 @property (nonatomic, readonly, retain) NSString *status;
 @property (nonatomic, readonly, retain) NSString *username;
 

@@ -10,6 +10,7 @@
 #import <RMMapView.h>
 
 @class LoginController;
+@class Shout;
 
 @interface ShizzupAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     UIWindow *window;
@@ -38,6 +39,7 @@
 - (IBAction) passwordChanged:(id)sender;
 - (void) retrieveCredentials;
 - (IBAction) enterShoutView;
+- (IBAction) enterShoutDetailView:(Shout *)shout;
 - (IBAction) exitCurrentView;
 - (IBAction) exitToMainView;
 

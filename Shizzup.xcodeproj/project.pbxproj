@@ -48,17 +48,16 @@
 		324BCBA60F672F1F00B3AE7E /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB9D0F672F1F00B3AE7E /* SettingsView.xib */; };
 		324BCBA70F672F1F00B3AE7E /* ShoutMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB9E0F672F1F00B3AE7E /* ShoutMessage.xib */; };
 		324BCBA80F672F1F00B3AE7E /* ShoutPlace.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BCB9F0F672F1F00B3AE7E /* ShoutPlace.xib */; };
-		324BCBAE0F672F7500B3AE7E /* plan.html in Resources */ = {isa = PBXBuildFile; fileRef = 324BCBAA0F672F7500B3AE7E /* plan.html */; };
-		324BCBAF0F672F7500B3AE7E /* plan.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 324BCBAB0F672F7500B3AE7E /* plan.rtf */; };
-		324BCBB00F672F7500B3AE7E /* shizzow-api-shouts-json.html in Resources */ = {isa = PBXBuildFile; fileRef = 324BCBAC0F672F7500B3AE7E /* shizzow-api-shouts-json.html */; };
-		324BCBB10F672F7500B3AE7E /* shizzow-api-shouts-json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 324BCBAD0F672F7500B3AE7E /* shizzow-api-shouts-json.txt */; };
 		326A0EF10F4E17C800322F4D /* Listening.png in Resources */ = {isa = PBXBuildFile; fileRef = 326A0EF00F4E17C800322F4D /* Listening.png */; };
 		32750FF20F5D0955000885F6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 32750FF10F5D0955000885F6 /* Settings.bundle */; };
 		327802310F5C5FD0007E197C /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327802300F5C5FD0007E197C /* CrashReporter.framework */; };
+		3280DDC60F9A69B90050E480 /* ShizzupIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3280DDC50F9A69B90050E480 /* ShizzupIcon.png */; };
 		32A0B3520F3A420900EEB53C /* DefaultPersonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */; };
 		32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3510F3A420900EEB53C /* ShizzowIcon.png */; };
-		32A60B8C0F720C3A00F24337 /* shizzow-api-places-json.txt in Resources */ = {isa = PBXBuildFile; fileRef = 32A60B8B0F720C3A00F24337 /* shizzow-api-places-json.txt */; };
-		32A60B8E0F720C9300F24337 /* shizzow-api-places-json.html in Resources */ = {isa = PBXBuildFile; fileRef = 32A60B8D0F720C9300F24337 /* shizzow-api-places-json.html */; };
+		32A626240F7F6C0400DDE5BE /* ShoutDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A626230F7F6C0400DDE5BE /* ShoutDetail.xib */; };
+		32A6262B0F7F6EAE00DDE5BE /* ShoutDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A6262A0F7F6EAE00DDE5BE /* ShoutDetailController.m */; };
+		32A626970F80830100DDE5BE /* plan.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 324BCBAB0F672F7500B3AE7E /* plan.rtf */; };
+		32F59BD60F9DBA3900B83E3E /* Shizzup.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 32F59BD50F9DBA3900B83E3E /* Shizzup.mobileprovision */; };
 		32F8F4DE0F65D8270065886D /* Nearby.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4DD0F65D8270065886D /* Nearby.png */; };
 		32F8F4E30F65D8F60065886D /* Hotspots.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4E20F65D8F60065886D /* Hotspots.png */; };
 		32F8F4E50F65D9050065886D /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4E40F65D9050065886D /* Settings.png */; };
@@ -163,10 +162,15 @@
 		326A0EF00F4E17C800322F4D /* Listening.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Listening.png; sourceTree = "<group>"; };
 		32750FF10F5D0955000885F6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		327802300F5C5FD0007E197C /* CrashReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = CrashReporter.framework; path = "../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone/CrashReporter.framework"; sourceTree = SOURCE_ROOT; };
+		3280DDC50F9A69B90050E480 /* ShizzupIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShizzupIcon.png; sourceTree = "<group>"; };
 		32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultPersonIcon.png; sourceTree = "<group>"; };
 		32A0B3510F3A420900EEB53C /* ShizzowIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShizzowIcon.png; sourceTree = "<group>"; };
 		32A60B8B0F720C3A00F24337 /* shizzow-api-places-json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "shizzow-api-places-json.txt"; sourceTree = "<group>"; };
 		32A60B8D0F720C9300F24337 /* shizzow-api-places-json.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "shizzow-api-places-json.html"; sourceTree = "<group>"; };
+		32A626230F7F6C0400DDE5BE /* ShoutDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoutDetail.xib; sourceTree = "<group>"; };
+		32A626290F7F6EAE00DDE5BE /* ShoutDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoutDetailController.h; sourceTree = "<group>"; };
+		32A6262A0F7F6EAE00DDE5BE /* ShoutDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutDetailController.m; sourceTree = "<group>"; };
+		32F59BD50F9DBA3900B83E3E /* Shizzup.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = Shizzup.mobileprovision; sourceTree = "<group>"; };
 		32F8F4DD0F65D8270065886D /* Nearby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nearby.png; sourceTree = "<group>"; };
 		32F8F4E20F65D8F60065886D /* Hotspots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hotspots.png; sourceTree = "<group>"; };
 		32F8F4E40F65D9050065886D /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				32F59BD50F9DBA3900B83E3E /* Shizzup.mobileprovision */,
 				324BCB960F672EFF00B3AE7E /* UIs */,
 				32A0B34F0F3A420900EEB53C /* Images */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -283,10 +288,12 @@
 				324BCAD20F6669A100B3AE7E /* ListeningViewController.m */,
 				324BCABA0F66692900B3AE7E /* NearbyViewController.h */,
 				324BCABB0F66692900B3AE7E /* NearbyViewController.m */,
-				324BCABE0F66692900B3AE7E /* ShoutPlaceController.h */,
-				324BCABF0F66692900B3AE7E /* ShoutPlaceController.m */,
+				32A626290F7F6EAE00DDE5BE /* ShoutDetailController.h */,
+				32A6262A0F7F6EAE00DDE5BE /* ShoutDetailController.m */,
 				324BCABC0F66692900B3AE7E /* ShoutMessageController.h */,
 				324BCABD0F66692900B3AE7E /* ShoutMessageController.m */,
+				324BCABE0F66692900B3AE7E /* ShoutPlaceController.h */,
+				324BCABF0F66692900B3AE7E /* ShoutPlaceController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -334,6 +341,7 @@
 				324BCB980F672F1F00B3AE7E /* ListeningView.xib */,
 				324BCB9C0F672F1F00B3AE7E /* NearbyView.xib */,
 				324BCB9D0F672F1F00B3AE7E /* SettingsView.xib */,
+				32A626230F7F6C0400DDE5BE /* ShoutDetail.xib */,
 				324BCB9F0F672F1F00B3AE7E /* ShoutPlace.xib */,
 				324BCB9E0F672F1F00B3AE7E /* ShoutMessage.xib */,
 			);
@@ -372,6 +380,7 @@
 		32A0B34F0F3A420900EEB53C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3280DDC50F9A69B90050E480 /* ShizzupIcon.png */,
 				32A0B3510F3A420900EEB53C /* ShizzowIcon.png */,
 				326A0EF00F4E17C800322F4D /* Listening.png */,
 				32F8F4EC0F65E10A0065886D /* Refresh.png */,
@@ -474,12 +483,10 @@
 				324BCBA60F672F1F00B3AE7E /* SettingsView.xib in Resources */,
 				324BCBA70F672F1F00B3AE7E /* ShoutMessage.xib in Resources */,
 				324BCBA80F672F1F00B3AE7E /* ShoutPlace.xib in Resources */,
-				324BCBAE0F672F7500B3AE7E /* plan.html in Resources */,
-				324BCBAF0F672F7500B3AE7E /* plan.rtf in Resources */,
-				324BCBB00F672F7500B3AE7E /* shizzow-api-shouts-json.html in Resources */,
-				324BCBB10F672F7500B3AE7E /* shizzow-api-shouts-json.txt in Resources */,
-				32A60B8C0F720C3A00F24337 /* shizzow-api-places-json.txt in Resources */,
-				32A60B8E0F720C9300F24337 /* shizzow-api-places-json.html in Resources */,
+				32A626240F7F6C0400DDE5BE /* ShoutDetail.xib in Resources */,
+				32A626970F80830100DDE5BE /* plan.rtf in Resources */,
+				3280DDC60F9A69B90050E480 /* ShizzupIcon.png in Resources */,
+				32F59BD60F9DBA3900B83E3E /* Shizzup.mobileprovision in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +537,7 @@
 				322D809A0F6DEB0F00D8C768 /* IconCache.m in Sources */,
 				322D809F0F6DEB1F00D8C768 /* ABTableViewCell.m in Sources */,
 				322D80A00F6DEB1F00D8C768 /* ShoutListCell.m in Sources */,
+				32A6262B0F7F6EAE00DDE5BE /* ShoutDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +577,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphoneos.sdk;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bill Jackson";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bill Jackson";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = YES;
@@ -582,7 +591,8 @@
 					"-ObjC",
 					"-ljson",
 				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
+				PROVISIONING_PROFILE = "FBBE8595-7578-4381-9E47-1956D130577C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FBBE8595-7578-4381-9E47-1956D130577C";
 				SDKROOT = iphoneos2.2;
 			};
 			name = Release;
@@ -603,7 +613,7 @@
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = Shizzup;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphonesimulator2.2.1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_BUILDER = waj;
 			};
@@ -637,7 +647,8 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphonesimulator.sdk;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bill Jackson";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -690,7 +701,7 @@
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = Shizzup;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphonesimulator2.2.1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_BUILDER = waj;
 				VERSION_INFO_EXPORT_DECL = versionvar;

@@ -46,15 +46,11 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    NSLog(@"PlaceManager locationManager: didUpdateToLocation: fromLocation:");
     @synchronized(self) {
+        NSLog(@"PlaceManager locationManager: didUpdateToLocation: fromLocation:");
         [spinnerView startAnimating];
         newLocation = [LocationManager location];
         NSLog(@"   - new location: %@", newLocation);
-        // If we are in the simulator, override with MAP_*_INITIAL values; One Infinite Loop is of no use to us!
-        //#if (TARGET_IPHONE_SIMULATOR)
-        //newLocation = [[CLLocation alloc] initWithLatitude:MAP_LAT_INITIAL longitude:MAP_LON_INITIAL];
-        //#endif
         CLLocationCoordinate2D coordinate = newLocation.coordinate;
         NSString *locationText = [NSString stringWithFormat:@"%1.6f°, %1.6f°", coordinate.latitude, coordinate.longitude];
         if (newLocation.horizontalAccuracy != 0) {
@@ -63,8 +59,6 @@
         locationLabel.text = locationText;
         placeManager.center = newLocation;
         [placeManager findPlaces];
-        // For exception handler testing only!
-        //@throw [NSException exceptionWithName:@"WhoopsieGoldberg" reason:@"Whoopsie Daisy!" userInfo:nil];
     }
 }
 
@@ -79,8 +73,8 @@
 }
 
 - (void) dataLoaded {
-    NSLog(@"ShoutPlaceController dataLoaded");
     @synchronized(self) {
+        NSLog(@"ShoutPlaceController dataLoaded");
         NSLog(@"   - loading new data");
         [tableView setHidden:NO];
         [tableView reloadData];
