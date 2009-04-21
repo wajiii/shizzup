@@ -56,7 +56,6 @@
 		32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3510F3A420900EEB53C /* ShizzowIcon.png */; };
 		32A626240F7F6C0400DDE5BE /* ShoutDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A626230F7F6C0400DDE5BE /* ShoutDetail.xib */; };
 		32A6262B0F7F6EAE00DDE5BE /* ShoutDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A6262A0F7F6EAE00DDE5BE /* ShoutDetailController.m */; };
-		32A626970F80830100DDE5BE /* plan.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 324BCBAB0F672F7500B3AE7E /* plan.rtf */; };
 		32F59BD60F9DBA3900B83E3E /* Shizzup.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 32F59BD50F9DBA3900B83E3E /* Shizzup.mobileprovision */; };
 		32F8F4DE0F65D8270065886D /* Nearby.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4DD0F65D8270065886D /* Nearby.png */; };
 		32F8F4E30F65D8F60065886D /* Hotspots.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4E20F65D8F60065886D /* Hotspots.png */; };
@@ -399,7 +398,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* Shizzup */ = {
+		1D6058900D05DD3D006BFB54 /* SimpleMap */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Shizzup" */;
 			buildPhases = (
@@ -437,7 +436,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* Shizzup */,
+				1D6058900D05DD3D006BFB54 /* SimpleMap */,
 			);
 		};
 /* End PBXProject section */
@@ -484,7 +483,6 @@
 				324BCBA70F672F1F00B3AE7E /* ShoutMessage.xib in Resources */,
 				324BCBA80F672F1F00B3AE7E /* ShoutPlace.xib in Resources */,
 				32A626240F7F6C0400DDE5BE /* ShoutDetail.xib in Resources */,
-				32A626970F80830100DDE5BE /* plan.rtf in Resources */,
 				3280DDC60F9A69B90050E480 /* ShizzupIcon.png in Resources */,
 				32F59BD60F9DBA3900B83E3E /* Shizzup.mobileprovision in Resources */,
 			);
@@ -555,7 +553,6 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone\"",
@@ -564,91 +561,26 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shizzup_Prefix.pch;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-ljson",
-				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
-				SDKROOT = iphonesimulator2.2.1;
+				PROVISIONING_PROFILE = "60B0C72B-C853-4A30-8665-D0ACD015E887";
 			};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphoneos.sdk;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bill Jackson";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bill Jackson";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone\"",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shizzup_Prefix.pch;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-ljson",
-				);
-				PROVISIONING_PROFILE = "FBBE8595-7578-4381-9E47-1956D130577C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FBBE8595-7578-4381-9E47-1956D130577C";
-				SDKROOT = iphoneos2.2;
 			};
 			name = Release;
-		};
-		326C42A80F55E8EC001C6CD8 /* Debug-Phone */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphoneos.sdk;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bill Jackson";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "../MapView/**";
-				INFOPLIST_FILE = Info.plist;
-				OTHER_LDFLAGS = "-licucore";
-				PRODUCT_NAME = Shizzup;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
-				SDKROOT = iphonesimulator2.2.1;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_BUILDER = waj;
-			};
-			name = "Debug-Phone";
-		};
-		326C42A90F55E8EC001C6CD8 /* Debug-Phone */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bill Jackson";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Shizzup_Prefix.pch;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-ljson",
-				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
-				SDKROOT = iphoneos2.2;
-			};
-			name = "Debug-Phone";
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphonesimulator.sdk;
+				"ADDITIONAL_SDKS[arch=armv6]" = $HOME/Library/SDKs/JSON/iphoneos.sdk;
+				"ADDITIONAL_SDKS[arch=i386]" = $HOME/Library/SDKs/JSON/iphonesimulator.sdk;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bill Jackson";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -670,16 +602,22 @@
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				GENERATE_PROFILING_CODE = NO;
+				GENERATE_PROFILING_CODE = YES;
 				HEADER_SEARCH_PATHS = "../MapView/**";
 				IBC_FLATTEN_NIBS = YES;
 				INFOPLIST_FILE = Info.plist;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-licucore";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-ljson",
+					"-licucore",
+				);
 				PRODUCT_NAME = Shizzup;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
-				SDKROOT = iphonesimulator2.2.1;
+				PROVISIONING_PROFILE = "60B0C72B-C853-4A30-8665-D0ACD015E887";
+				SDKROOT = iphoneos2.2.1;
+				"SDKROOT[arch=i386]" = iphonesimulator2.2.1;
 				STRIP_INSTALLED_PRODUCT = NO;
+				VALID_ARCHS = "armv6 i386";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_BUILDER = waj;
 			};
@@ -688,20 +626,31 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ADDITIONAL_SDKS = $HOME/Library/SDKs/JSON/iphoneos.sdk;
+				ADDITIONAL_SDKS = "";
+				"ADDITIONAL_SDKS[arch=armv6]" = $HOME/Library/SDKs/JSON/iphoneos.sdk;
+				"ADDITIONAL_SDKS[arch=i386]" = $HOME/Library/SDKs/JSON/iphonesimulator.sdk;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bill Jackson";
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bill Jackson";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../plcrashreporter/CrashReporter-20090302-snap/CrashReporter-iPhone\"";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "../MapView/**";
 				INFOPLIST_FILE = Info.plist;
-				OTHER_LDFLAGS = "-licucore";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-ljson",
+					"-licucore",
+				);
 				PRODUCT_NAME = Shizzup;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "211C6F53-C491-4A9F-B4EB-9B172E66D7F1";
-				SDKROOT = iphonesimulator2.2.1;
+				PROVISIONING_PROFILE = "60B0C72B-C853-4A30-8665-D0ACD015E887";
+				SDKROOT = iphoneos2.2.1;
+				"SDKROOT[arch=i386]" = iphonesimulator2.2.1;
+				VALID_ARCHS = "armv6 i386";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_BUILDER = waj;
 				VERSION_INFO_EXPORT_DECL = versionvar;
@@ -718,21 +667,19 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
-				326C42A90F55E8EC001C6CD8 /* Debug-Phone */,
 				1D6058950D05DD3E006BFB54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Shizzup" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
-				326C42A80F55E8EC001C6CD8 /* Debug-Phone */,
 				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
