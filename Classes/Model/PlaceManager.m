@@ -35,7 +35,7 @@
         [api release];
         api = nil;
     }
-    api = [[ShizzowApiConnection alloc] init];
+    api = [[[ShizzowApiConnection alloc] init] retain];
     [api callUri:apiUriStub delegate:self];
 }
 
@@ -122,7 +122,10 @@
             [place release];
         }
     }
-    api = nil;
+    if (api != nil) {
+        [api release];
+        api = nil;
+    }
     [delegate managerLoadedPlaces:places];
     [places release];
 }
