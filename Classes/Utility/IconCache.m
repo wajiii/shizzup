@@ -29,14 +29,14 @@
 
 - (NSString *) nameForAddress:(NSString *)iconAddress {
     //NSLog(@"IconCache nameForAddress: %@", iconAddress);
-    CFAbsoluteTime currentMethodStart = CFAbsoluteTimeGetCurrent();
+    //CFAbsoluteTime currentMethodStart = CFAbsoluteTimeGetCurrent();
     NSUInteger length = [iconAddress length];
     //NSLog(@"   - length: %u", length);
     unichar *characters = malloc(length * sizeof(unichar));
     //NSLog(@"   - characters: %S", characters);
     [iconAddress getCharacters:characters];
     //NSLog(@"   - characters: %S", characters);
-    unichar newChar;
+    //unichar newChar;
     unichar oldChar;
     for (int i = 0; i < length; i++) {
         //newChar = 
@@ -52,14 +52,14 @@
     NSString *result = [NSString stringWithCharacters:characters length:length];
     //NSLog(@"   - result: %@", result);
     free(characters);
-    CFAbsoluteTime currentMethodFinish = CFAbsoluteTimeGetCurrent();
+    //CFAbsoluteTime currentMethodFinish = CFAbsoluteTimeGetCurrent();
     //NSLog(@"   - IconCache nameForAddress time: %f", (currentMethodFinish - currentMethodStart));
     return result;
 }
 
 - (UIImage *) iconForAddress:(NSString *)iconAddress {
     //NSLog(@"IconCache iconForAddress: %@", iconAddress);
-    CFAbsoluteTime currentMethodStart = CFAbsoluteTimeGetCurrent();
+    //CFAbsoluteTime currentMethodStart = CFAbsoluteTimeGetCurrent();
     UIImage *icon = [icons objectForKey:iconAddress];
     if (icon != nil) {
         //NSLog(@"   - memory cache hit (immediate)");
@@ -88,7 +88,8 @@
                     }
                     icon = [roundedIcon retain];
                     NSData *iconPngData = UIImagePNGRepresentation(icon);
-                    BOOL cacheWriteResult = [iconPngData writeToFile:thisFilePath atomically:YES];
+                    //BOOL cacheWriteResult = 
+                        [iconPngData writeToFile:thisFilePath atomically:YES];
                     //BOOL cacheWriteResult = [icons writeToFile:diskCachePath atomically:YES];
                     //NSLog(@"   - write to disk cache: %d", cacheWriteResult);
                 }
@@ -96,7 +97,7 @@
             }
         }
     }
-    CFAbsoluteTime currentMethodFinish = CFAbsoluteTimeGetCurrent();
+    //CFAbsoluteTime currentMethodFinish = CFAbsoluteTimeGetCurrent();
     //NSLog(@"   - IconCache iconForAddress time: %f", (currentMethodFinish - currentMethodStart));
     return icon;
 }

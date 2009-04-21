@@ -68,5 +68,6 @@
 
 + (Shout *) initWithDict:(NSDictionary *)shoutDict fromManager:(ShoutManager *)manager;
 - (Shout *) initWithDict:(NSDictionary *)shoutDict fromManager:(ShoutManager *)manager;
+- (NSDate *) dateFromISO8601:(NSString *)str;
 
 @end

@@ -148,6 +148,7 @@
 /*
  Derived from code posted by Nathan Vander Wilt:
  http://www.cocoabuilder.com/archive/message/cocoa/2008/3/18/201578
+ TODO: centralize these in a utility class or something.
  */
 - (NSDate *) dateFromISO8601:(NSString *) str {
     static NSDateFormatter* sISO8601 = nil;
