@@ -24,7 +24,7 @@
     [self.resultString appendString:s];
 }
 
-- (NSString*)convertEntitiesInString:(NSString*)s {
+- (NSString*)newConvertEntitiesInString:(NSString*)s {
 	if(s == nil) {
 		NSLog(@"ERROR : Parameter string is nil");
 	}
@@ -33,6 +33,7 @@
 	NSXMLParser* xmlParse = [[NSXMLParser alloc] initWithData:data];
 	[xmlParse setDelegate:self];
 	[xmlParse parse];
+    [xmlParse release];
 	NSString* returnStr = [[NSString alloc] initWithFormat:@"%@",resultString];
 	return returnStr;
 }

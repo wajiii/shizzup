@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "Place.h"
 
+//@class Place;
+@class PlaceListReceiver;
 @class PlaceManager;
 @class ShizzowApiConnection;
 
@@ -21,6 +22,7 @@
 @interface PlaceManager : NSObject {
     CLLocation *center;
     id<PlaceManagerDelegate> delegate;
+    PlaceListReceiver *receiver;
     NSString *responseText;
     ShizzowApiConnection *api;
 }

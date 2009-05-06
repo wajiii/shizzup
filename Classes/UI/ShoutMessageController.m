@@ -18,6 +18,14 @@
 @synthesize placeAddress;
 @synthesize message;
 
+- (void)dealloc {
+    [place release];
+    [placeName release];
+    [placeAddress release];
+    [message release];
+    [super dealloc];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
@@ -47,10 +55,6 @@
     // Release anything that's not essential, such as cached data
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
-
 - (IBAction) doShout {
     NSLog(@"ShoutMessageController doShout");
     NSLog(@"   - place.name: %@", [place key]);
@@ -59,6 +63,7 @@
     ShoutManager *manager = [[ShoutManager alloc] init];
     [manager sendShoutFromPlace:[place key] withMessage:[message text]];
     [(UINavigationController *)[self parentViewController] popToRootViewControllerAnimated:YES];
+    [manager release];
 }
 
 @end

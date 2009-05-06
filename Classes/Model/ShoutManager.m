@@ -26,6 +26,14 @@
 @synthesize radius;
 @synthesize who;
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+    [delegate release];
+    [iconCache release];
+    [who release];
+    [super dealloc];
+}
+
 - (id) init {
     [super init];
     api = nil;

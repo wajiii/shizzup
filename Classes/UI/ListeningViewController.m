@@ -22,6 +22,13 @@
 @synthesize spinnerView;
 @synthesize tableView;
 
+- (void) dealloc {
+    [refreshButtonCell release];
+    [spinnerView release];
+    [tableView release];
+    [super dealloc];
+}
+
 - (void) viewDidLoad {
     [super viewDidLoad];
 
@@ -83,10 +90,10 @@
     // Scroll to first shout
     // Reconsidering this, given auto-reload
     NSArray *visibleCells = [tableView visibleCells];
-    NSLog(@"  - visibleCells: %@", visibleCells);
+    //NSLog(@"  - visibleCells: %@", visibleCells);
     UITableViewCell *firstVisibleCell = (UITableViewCell *)[visibleCells objectAtIndex:0];
-    NSLog(@"  - firstVisibleCell: %@", firstVisibleCell);
-    NSLog(@"  - firstVisibleCell.tag: %i", firstVisibleCell.tag);
+    //NSLog(@"  - firstVisibleCell: %@", firstVisibleCell);
+    //NSLog(@"  - firstVisibleCell.tag: %i", firstVisibleCell.tag);
     if ((firstVisibleCell.tag == TAG_REFRESH_BUTTON_CELL) && (shoutCount > 0)) {
         NSUInteger indexes[2] = { 0, 1 };
         NSIndexPath *indexPath = [[NSIndexPath alloc] initWithIndexes:indexes length:2];
@@ -97,10 +104,10 @@
     // Let user know we're done reloading
     [spinnerView stopAnimating];
     if (isFirstLoad) {
-        NSLog(@"  - is first load!");
+        //NSLog(@"  - is first load!");
         isFirstLoad = NO;
     } else {
-        NSLog(@"  - is not first load!");
+        //NSLog(@"  - is not first load!");
         nextAutoReload = CFAbsoluteTimeGetCurrent() + AUTORELOAD_INTERVAL;
     }
     NSLog(@"  - next automatic reload: %f", nextAutoReload);
@@ -116,10 +123,6 @@
     // Releases the view if it doesn't have a superview
     [super didReceiveMemoryWarning];
     // Release anything that's not essential, such as cached data
-}
-
-- (void) dealloc {
-    [super dealloc];
 }
 
 - (void) loadCachedShouts {
@@ -140,8 +143,10 @@
     [self stopRedrawTimer];
     NSLog(@"ListeningViewController startRedrawTimer");
     redrawTimer = [[NSTimer scheduledTimerWithTimeInterval:REDRAW_TIMER_INTERVAL target:self selector:@selector(redraw:) userInfo:nil repeats:YES] retain];
-    [redrawTimer setFireDate:[[NSDate alloc] initWithTimeIntervalSinceNow:0.1]];
+    NSDate *fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:0.1];
+    [redrawTimer setFireDate:fireDate];
     NSLog(@"  - redrawTimer: %@", redrawTimer);
+    [fireDate release];
 }
 
 - (void) redraw:(NSTimer*)theTimer {

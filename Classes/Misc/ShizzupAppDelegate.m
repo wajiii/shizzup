@@ -32,6 +32,16 @@ id APP_DELEGATE;
 @synthesize username;
 @synthesize password;
 
+- (void)dealloc {
+    [username release];
+    [password release];
+    [mainTabBarController release];
+    [loginController release];
+	[navController release];
+    [window release];
+    [super dealloc];
+}
+
 + (id) singleton {
     return APP_DELEGATE;
 }
@@ -131,12 +141,6 @@ id APP_DELEGATE;
     }
     //NSLog(@"ShizzupAppDelegate hasCredentials returning: %u", result);
     return result;
-}
-
-- (void)dealloc {
-	[navController release];
-    [window release];
-    [super dealloc];
 }
 
 - (id) updateCredentials {

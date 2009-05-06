@@ -56,6 +56,7 @@
 		32A0B3530F3A420900EEB53C /* ShizzowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A0B3510F3A420900EEB53C /* ShizzowIcon.png */; };
 		32A626240F7F6C0400DDE5BE /* ShoutDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A626230F7F6C0400DDE5BE /* ShoutDetail.xib */; };
 		32A6262B0F7F6EAE00DDE5BE /* ShoutDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A6262A0F7F6EAE00DDE5BE /* ShoutDetailController.m */; };
+		32A9810C0FA262280075E8BC /* PlaceListReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A9810B0FA262280075E8BC /* PlaceListReceiver.m */; };
 		32F59BD60F9DBA3900B83E3E /* Shizzup.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 32F59BD50F9DBA3900B83E3E /* Shizzup.mobileprovision */; };
 		32F8F4DE0F65D8270065886D /* Nearby.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4DD0F65D8270065886D /* Nearby.png */; };
 		32F8F4E30F65D8F60065886D /* Hotspots.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F8F4E20F65D8F60065886D /* Hotspots.png */; };
@@ -169,6 +170,8 @@
 		32A626230F7F6C0400DDE5BE /* ShoutDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoutDetail.xib; sourceTree = "<group>"; };
 		32A626290F7F6EAE00DDE5BE /* ShoutDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoutDetailController.h; sourceTree = "<group>"; };
 		32A6262A0F7F6EAE00DDE5BE /* ShoutDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoutDetailController.m; sourceTree = "<group>"; };
+		32A9810A0FA262280075E8BC /* PlaceListReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceListReceiver.h; sourceTree = "<group>"; };
+		32A9810B0FA262280075E8BC /* PlaceListReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceListReceiver.m; sourceTree = "<group>"; };
 		32F59BD50F9DBA3900B83E3E /* Shizzup.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = Shizzup.mobileprovision; sourceTree = "<group>"; };
 		32F8F4DD0F65D8270065886D /* Nearby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nearby.png; sourceTree = "<group>"; };
 		32F8F4E20F65D8F60065886D /* Hotspots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hotspots.png; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 				324BCB890F67286100B3AE7E /* ShoutListReceiver.m */,
 				324BCB8C0F67286100B3AE7E /* ShoutSendReceiver.h */,
 				324BCB8D0F67286100B3AE7E /* ShoutSendReceiver.m */,
+				32A9810A0FA262280075E8BC /* PlaceListReceiver.h */,
+				32A9810B0FA262280075E8BC /* PlaceListReceiver.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -398,7 +403,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* SimpleMap */ = {
+		1D6058900D05DD3D006BFB54 /* Shizzup */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Shizzup" */;
 			buildPhases = (
@@ -436,7 +441,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* SimpleMap */,
+				1D6058900D05DD3D006BFB54 /* Shizzup */,
 			);
 		};
 /* End PBXProject section */
@@ -536,6 +541,7 @@
 				322D809F0F6DEB1F00D8C768 /* ABTableViewCell.m in Sources */,
 				322D80A00F6DEB1F00D8C768 /* ShoutListCell.m in Sources */,
 				32A6262B0F7F6EAE00DDE5BE /* ShoutDetailController.m in Sources */,
+				32A9810C0FA262280075E8BC /* PlaceListReceiver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,7 +567,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Shizzup_Prefix.pch;
-				PROVISIONING_PROFILE = "60B0C72B-C853-4A30-8665-D0ACD015E887";
+				PROVISIONING_PROFILE = "E5F9D801-A1B9-4679-9315-7ACB38710862";
 			};
 			name = Debug;
 		};
@@ -594,7 +600,7 @@
 				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SHADOW = "";
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -606,14 +612,14 @@
 				HEADER_SEARCH_PATHS = "../MapView/**";
 				IBC_FLATTEN_NIBS = YES;
 				INFOPLIST_FILE = Info.plist;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-ljson",
 					"-licucore",
 				);
 				PRODUCT_NAME = Shizzup;
-				PROVISIONING_PROFILE = "60B0C72B-C853-4A30-8665-D0ACD015E887";
+				PROVISIONING_PROFILE = "E5F9D801-A1B9-4679-9315-7ACB38710862";
 				SDKROOT = iphoneos2.2.1;
 				"SDKROOT[arch=i386]" = iphonesimulator2.2.1;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -637,17 +643,22 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_SHADOW = "";
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "../MapView/**";
 				INFOPLIST_FILE = Info.plist;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-ljson",
 					"-licucore",
 				);
 				PRODUCT_NAME = Shizzup;
-				PROVISIONING_PROFILE = "60B0C72B-C853-4A30-8665-D0ACD015E887";
+				PROVISIONING_PROFILE = "E5F9D801-A1B9-4679-9315-7ACB38710862";
 				SDKROOT = iphoneos2.2.1;
 				"SDKROOT[arch=i386]" = iphonesimulator2.2.1;
 				VALID_ARCHS = "armv6 i386";

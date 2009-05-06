@@ -10,9 +10,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreLocation/CLLocationManagerDelegate.h>
 
-@interface LocationManager : NSObject {
+@interface LocationManager : NSObject <CLLocationManagerDelegate> {
 }
 
++ (CLLocation *) defaultLocation;
 + (void) setDelegate:(id<CLLocationManagerDelegate>) delegate;
 + (void) startUpdating;
 + (void) stopUpdating;

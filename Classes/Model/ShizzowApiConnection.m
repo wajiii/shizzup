@@ -11,6 +11,11 @@
 
 @implementation ShizzowApiConnection
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+    [super dealloc];
+}
+
 - (NSURLConnection *) callUri:(NSString *)apiUriStub delegate:(id)delegate {
     return [self callUri:apiUriStub usingMethod:@"GET" withDelegate:delegate withBody:nil];
 }
@@ -55,7 +60,7 @@
     }
 
     [self abort];
-    connection = [NSURLConnection connectionWithRequest:request delegate:delegate];
+    connection = [[NSURLConnection connectionWithRequest:request delegate:delegate] retain];
     //NSLog(@"     connection: %@", connection);
     
     return connection;

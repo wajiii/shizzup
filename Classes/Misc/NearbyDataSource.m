@@ -21,6 +21,13 @@
 @synthesize controller;
 @synthesize shouts;
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+    [controller release];
+    [shouts release];
+    [super dealloc];
+}
+
 - (id) init {
     [super init];
     return self;

@@ -20,6 +20,12 @@
 @synthesize refreshImage;
 @synthesize spinnerView;
 
+- (void) dealloc {
+    [refreshImage release];
+    [spinnerView release];
+    [super dealloc];
+}
+
 - (void) viewDidLoad {
     [super viewDidLoad];
     
@@ -29,9 +35,12 @@
     
     // Set up map view
     NSLog(@"Setting up map view...");
-    mapView = [self view];
+    mapView = (RMMapView *)[self view];
     RMMapContents *mapContents = [mapView contents];
     CLLocation *location = [LocationManager location];
+    if (location == nil) {
+        location = [LocationManager defaultLocation];
+    }
     NSLog(@"Setting location: %f, %f", location.coordinate.latitude, location.coordinate.longitude);
     [mapContents setMapCenter:location.coordinate];
     [mapContents setScale: MAP_SCALE_INITIAL];
@@ -192,10 +201,6 @@
 - (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
-}
-
-- (void) dealloc {
-    [super dealloc];
 }
 
 - (IBAction) refreshShoutList {

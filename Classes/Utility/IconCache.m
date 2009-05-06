@@ -13,6 +13,11 @@
 
 #define SPACER_CHARACTER 95
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+    [super dealloc];
+}
+
 - (id) init {
     NSLog(@"IconCache init");
     [super init];

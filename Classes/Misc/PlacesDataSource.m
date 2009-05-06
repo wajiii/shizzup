@@ -26,6 +26,12 @@
 
 @synthesize controller;
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+    [controller release];
+    [super dealloc];
+}
+
 + (PlacesDataSource *) initWithManager:(PlaceManager *)manager controller:(ShoutPlaceController *)controller {
     PlacesDataSource *source = [[PlacesDataSource alloc] init];
     [source setController:controller];
@@ -158,6 +164,9 @@ NSInteger distanceSort(id place1, id place2, void *context) {
     //NSLog(@"   - nameValue: %@", nameValue);
     if ([place isFavorite]) {
         nameValue = [nameValue stringByAppendingString:@" (favorite)"];
+        [nameLabel setTextColor:[UIColor redColor]];
+    } else {
+        [nameLabel setTextColor:[UIColor blackColor]];
     }
     [nameLabel setText:nameValue];
     

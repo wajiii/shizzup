@@ -11,12 +11,16 @@
 #import <UIKit/UIKit.h>
 #import "PlaceManager.h"
 
+@class Place;
+
 @interface ShoutPlaceController : UIViewController <CLLocationManagerDelegate> {
     PlaceManager *placeManager;
     UILabel *locationLabel;
+    CLLocation *nextLocation;
     UIActivityIndicatorView *spinnerView;
     UITableView *tableView;
     RMMapView *mapView;
+    BOOL updating;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *locationLabel;
@@ -26,6 +30,8 @@
 
 - (void) dataLoaded;
 - (IBAction) exitShoutView;
+- (IBAction) refreshLocation;
+- (void) updateLocation;
 - (void) userSelectedPlace:(Place *)place;
 
 @end

@@ -56,7 +56,9 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     CGColorSpaceRelease(colorSpace);
     //[img release];
     
-    return [UIImage imageWithCGImage:imageMasked];
+    UIImage *result = [UIImage imageWithCGImage:imageMasked];
+    CGImageRelease(imageMasked);
+    return result;
 }
 
 + (UIImage *) getImageForUrl:(NSURL *) url {

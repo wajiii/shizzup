@@ -10,6 +10,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import "LocationManager.h"
+#import "Place.h"
 #import "PlaceManager.h"
 #import "PlacesDataSource.h"
 #import "ShizzupAppDelegate.h"
@@ -23,9 +24,18 @@
 @synthesize tableView;
 @synthesize mapView;
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+    [locationLabel release];
+    [spinnerView release];
+    [tableView release];
+    [mapView release];
+    [super dealloc];
+}
+
 - (void) viewDidLoad {
     [super viewDidLoad];
-    placeManager = [[PlaceManager alloc] init];
+    placeManager = [[[PlaceManager alloc] init] retain];
     PlacesDataSource *placesDataSource = [PlacesDataSource initWithManager:placeManager controller:self];
     [placeManager setDelegate:placesDataSource];
     [tableView setDataSource:placesDataSource];
@@ -46,19 +56,44 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    NSLog(@"ShoutPlaceController locationManager: didUpdateToLocation: fromLocation:");
+    //NSLog(@"  - oldLocation: %@", oldLocation);
+    //NSLog(@"  - newLocation: %@", newLocation);
     @synchronized(self) {
-        NSLog(@"PlaceManager locationManager: didUpdateToLocation: fromLocation:");
-        [spinnerView startAnimating];
-        newLocation = [LocationManager location];
-        NSLog(@"   - new location: %@", newLocation);
-        CLLocationCoordinate2D coordinate = newLocation.coordinate;
-        NSString *locationText = [NSString stringWithFormat:@"%1.6f°, %1.6f°", coordinate.latitude, coordinate.longitude];
-        if (newLocation.horizontalAccuracy != 0) {
-            locationText = [locationText stringByAppendingFormat:@" (±%1.0fm)", newLocation.horizontalAccuracy];
+        if (nextLocation != nil) {
+            [nextLocation release];
+            nextLocation = nil;
         }
-        locationLabel.text = locationText;
-        placeManager.center = newLocation;
-        [placeManager findPlaces];
+        nextLocation = [newLocation retain];
+        [self updateLocation];
+    }
+}
+
+- (void) updateLocation {
+    NSLog(@"ShoutPlaceController updateLocation");
+    NSLog(@"  - thread: %@", [NSThread currentThread]);
+    @synchronized(self) {
+        if (updating) {
+            NSLog(@"  - another update is active, rescheduling...");
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateLocation) userInfo:nil repeats:NO];
+        } else {
+            NSLog(@"  - done waiting.");
+            updating = YES;
+            [spinnerView startAnimating];
+            NSLog(@"   - new location: %@", nextLocation);
+            if (nextLocation == nil) {
+                nextLocation = [LocationManager location];
+                NSLog(@"   - new location (retrieved directly): %@", nextLocation);
+            }
+            CLLocationCoordinate2D coordinate = nextLocation.coordinate;
+            NSString *locationText = [NSString stringWithFormat:@"%1.6f°, %1.6f°", coordinate.latitude, coordinate.longitude];
+            if (nextLocation.horizontalAccuracy != 0) {
+                locationText = [locationText stringByAppendingFormat:@" (±%1.0fm)", nextLocation.horizontalAccuracy];
+            }
+            locationLabel.text = locationText;
+            placeManager.center = nextLocation;
+            [placeManager findPlaces];
+        }
     }
 }
 
@@ -67,18 +102,16 @@
     // Release anything that's not essential, such as cached data
 }
 
-- (void)dealloc {
-    NSLog(@"dealloc: %@", self);
-    [super dealloc];
-}
-
 - (void) dataLoaded {
+    NSLog(@"ShoutPlaceController dataLoaded (initial) - thread %@", [NSThread currentThread]);
     @synchronized(self) {
-        NSLog(@"ShoutPlaceController dataLoaded");
-        NSLog(@"   - loading new data");
+        NSLog(@"ShoutPlaceController dataLoaded (synchronized) - thread %@", [NSThread currentThread]);
+        NSLog(@"  - thread: %@", [NSThread currentThread]);
+        NSLog(@"  - loading new data");
         [tableView setHidden:NO];
         [tableView reloadData];
         [spinnerView stopAnimating];
+        updating = NO;
     }
 }
 
@@ -89,12 +122,18 @@
     [shoutMessageController setPlace:place];
     //[[[ShizzupAppDelegate singleton] navController] pushViewController:shoutMessageController animated:YES];
     [(UINavigationController *)[self parentViewController] pushViewController:shoutMessageController animated:YES];
-    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    [shoutMessageController release];
 }
 
 - (IBAction) exitShoutView {
     NSLog(@"ShoutPlaceController exitShoutView");
     [[ShizzupAppDelegate singleton] exitCurrentView];
+}
+
+- (IBAction) refreshLocation {
+    [LocationManager stopUpdating];
+    [LocationManager startUpdating];
 }
 
 @end

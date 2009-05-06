@@ -23,6 +23,13 @@
 @synthesize controller;
 @synthesize shouts;
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+    [controller release];
+    [shouts release];
+    [super dealloc];
+}
+
 - (id) init {
     [super init];
     defaultPersonIcon = [UIImage imageNamed:@"DefaultPersonIcon.png"];
@@ -176,11 +183,11 @@
     NSThread *thread = [NSThread currentThread];
     NSLog(@"  - thread: %@", thread);
     for (Shout *shout in shouts) {
-        CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+        //CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
         //UIImage *icon = 
         [shout icon];
-        CFAbsoluteTime endTime = CFAbsoluteTimeGetCurrent();
-        NSLog(@"  - user: %@; place:%@; icon load time: %f", [shout username], [shout placeName], (endTime - startTime));
+        //CFAbsoluteTime endTime = CFAbsoluteTimeGetCurrent();
+        //NSLog(@"  - user: %@; place:%@; icon load time: %f", [shout username], [shout placeName], (endTime - startTime));
     }
     [pool release];
 }

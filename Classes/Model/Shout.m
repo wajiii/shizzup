@@ -28,6 +28,11 @@
 @synthesize status;
 @synthesize username = people_name;
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+    [super dealloc];
+}
+
 + (Shout *) initWithDict:(NSDictionary *) shoutDict fromManager:(ShoutManager *)manager {
     Shout *shout = [Shout alloc];
     [shout initWithDict:shoutDict fromManager:manager];
@@ -95,21 +100,21 @@
 }
 
 - (BOOL) isHere {
-    return [status isEqualToString:@"here"];
+    return (status != nil) && ([status isEqualToString:@"here"]);
 }
 
 - (NSString *) relativeShoutTime {
     CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
     if (currentTime >= shout_time_nextUpdate) {
-        NSLog(@"Shout relativeShoutTime");
-        NSLog(@"  - shout_time: %@", shout_time);
+        //CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+        //NSLog(@"Shout relativeShoutTime");
+        //NSLog(@"  - shout_time: %@", shout_time);
         //NSLog(@"  - currentTime: %f", currentTime);
         NSDate *dateModified = [self dateFromISO8601:modified];
         //NSLog(@"   - modified as NSDate: %@", dateModified);
         NSDate *now = [NSDate date];
         //double timeInterval = trunc([now timeIntervalSinceDate:dateModified]);
         double timeInterval = [now timeIntervalSinceDate:dateModified];
-        long int timeValue = lrint(timeInterval);
         //NSLog(@"  - timeInterval: %f", timeInterval);
         NSString *timeUnit;
         int timeUnitSeconds = 1;
@@ -125,7 +130,7 @@
             timeUnit = @"day";
             timeUnitSeconds = 86400;
         }
-        timeValue = lrint(timeInterval / timeUnitSeconds);
+        long int timeValue = lrint(timeInterval / timeUnitSeconds);
         int updatePeriod = (timeValue * timeUnitSeconds) - timeInterval;
         if (updatePeriod < 0) {
             updatePeriod += timeUnitSeconds;
@@ -138,9 +143,11 @@
         //shout_time = [NSString stringWithFormat:@"%.0f %@ ago", timeInterval, timeUnit];
         shout_time = [NSString stringWithFormat:@"%d %@ ago", timeValue, timeUnit];
         [shout_time retain];
-        NSLog(@"  - shout_time: %@", shout_time);
+        //NSLog(@"  - shout_time: %@", shout_time);
         shout_time_nextUpdate = currentTime + updatePeriod;
-        NSLog(@"  - shout_time_nextUpdate: %f", shout_time_nextUpdate);
+        //NSLog(@"  - shout_time_nextUpdate: %f", shout_time_nextUpdate);
+        //CFAbsoluteTime endTime = CFAbsoluteTimeGetCurrent();
+        //NSLog(@"  - Shout relativeShoutTime execution: %f", (endTime - startTime));
     }
     return shout_time;
 }

@@ -19,6 +19,13 @@
 @synthesize delegate;
 @synthesize readFromCache;
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+    [cacheName release];
+    [delegate release];
+    [super dealloc];
+}
+
 - (id) initWithManager:(ShoutManager *)shoutManager {
     cacheName = @"General";
     manager = shoutManager;
@@ -85,7 +92,8 @@
     }
     NSMutableArray *newShouts = [[NSMutableArray alloc] init];
     if (responseText != nil) {
-        NSString *filteredResponseText = [[[[MREntitiesConverter alloc] init] autorelease] convertEntitiesInString: responseText];
+        MREntitiesConverter *converter = [[[MREntitiesConverter alloc] init] autorelease];
+        NSString *filteredResponseText = [[converter newConvertEntitiesInString: responseText] autorelease];
         //NSLog(@"                              filteredResponseText: %@", filteredResponseText);
         CFAbsoluteTime jsonStart = CFAbsoluteTimeGetCurrent();
         NSDictionary *responseDictionary = [filteredResponseText JSONValue];

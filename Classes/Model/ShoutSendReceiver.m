@@ -15,6 +15,12 @@
 
 @synthesize delegate;
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+    [delegate release];
+    [super dealloc];
+}
+
 - (void) connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     NSInteger failureCount = [challenge previousFailureCount];
     //NSLog(@"ShoutSendReceiver:didRecieveAuthenticationChallenge; previous failure count: %d", failureCount);
@@ -44,17 +50,19 @@
     if (responseText == nil) {
         responseText = dataString;
     } else  {
-        [responseText stringByAppendingString:dataString];
+        responseText = [responseText stringByAppendingString:dataString];
     }
     //NSLog(@"responseText length: %d", [responseText length]);
     //NSLog(@"   - responseText: %@", responseText);
+    [dataString release];
 }
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     //NSLog(@"ShoutSendReceiver:connectionDidFinishLoading connection:%@ responseText:\n%@", connection, responseText);
     NSLog(@"ShoutSendReceiver connectionDidFinishLoading connection: %@", connection);
     //NSLog(@"                                      responseText: %@", responseText);
-    NSString *filteredResponseText = [[[MREntitiesConverter alloc] init] convertEntitiesInString: responseText];
+    MREntitiesConverter *converter = [[[MREntitiesConverter alloc] init] autorelease];
+    NSString *filteredResponseText = [[converter newConvertEntitiesInString: responseText] autorelease];
     //NSLog(@"                              filteredResponseText: %@", filteredResponseText);
     NSDictionary *responseDictionary = [filteredResponseText JSONValue];
     //NSLog(@"responseDictionary: %@: %@", [responseDictionary class], responseDictionary);

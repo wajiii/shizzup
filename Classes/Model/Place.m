@@ -28,6 +28,28 @@
 @synthesize website;
 @synthesize zip;
 
+- (void)dealloc {
+    NSLog(@"dealloc: %@", self);
+    [address1 release];
+    [address2 release];
+    [altitude release];
+    [city release];
+    [country_iso release];
+    [country_name release];
+    [distance release];
+    [distance_unit release];
+    [places_key release];
+    [latitude release];
+    [longitude release];
+    [places_name release];
+    [phone release];
+    [state_iso release];
+    [state_name release];
+    [website release];
+    [zip release];
+    [super dealloc];
+}
+
 - (id) initFromDict:(NSDictionary *)placeDict {
     [self setValuesForKeysWithDictionary:placeDict];
     return self;

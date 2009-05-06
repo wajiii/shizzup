@@ -46,8 +46,14 @@
 
 
 - (void)dealloc {
-    [super dealloc];
+    [iconView release];
+    [lastModifiedLabel release];
+    [messages release];
+    [personHandleLabel release];
+    [personNameLabel release];
+    [placeNameLabel release];
     [shout release];
+    [super dealloc];
 }
 
 
