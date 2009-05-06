@@ -91,7 +91,7 @@
     //NSLog(@"                                      responseText: %@", responseText);
     //NSDictionary *responseDictionary = [responseText JSONValue];
     MREntitiesConverter *converter = [[MREntitiesConverter alloc] init];
-    NSString *filteredResponseText = [[converter newConvertEntitiesInString: responseText] autorelease];
+    NSString *filteredResponseText = [converter newConvertEntitiesInString: responseText];
     [converter release];
     //NSLog(@"                              filteredResponseText: %@", filteredResponseText);
     NSDictionary *responseDictionary = [filteredResponseText JSONValue];
@@ -102,7 +102,7 @@
     NSArray *placeArray = [results valueForKey:@"places"];
     //NSLog(@"   - placeArray: %@: %@", [placeArray class], placeArray);
     NSMutableArray *places = [[[NSMutableArray alloc] init] autorelease];
-    if (placeArray != nil) {
+    if ((placeArray != nil) && ([placeArray isKindOfClass:[NSArray class]])) {
         for (int i = 0; i < [placeArray count]; i++) {
             NSDictionary *placeDict = [placeArray objectAtIndex:i];
             //NSLog(@"      - placeDict: %@: %@", [placeDict class], placeDict);
@@ -117,6 +117,7 @@
         api = nil;
     }
     [delegate managerLoadedPlaces:places];
+    [filteredResponseText release];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {

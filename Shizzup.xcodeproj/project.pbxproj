@@ -20,6 +20,7 @@
 		321E7FF40F42207000E4B1C6 /* marker-red-withletter.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */; };
 		321E7FF50F42207000E4B1C6 /* marker-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 321E7FF10F42207000E4B1C6 /* marker-red.png */; };
 		321E807C0F42512600E4B1C6 /* Shizzup.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 321E7F0E0F42098B00E4B1C6 /* Shizzup.xcclassmodel */; };
+		322414EF0FB24D01000272C6 /* Refresh-30px.png in Resources */ = {isa = PBXBuildFile; fileRef = 322414EE0FB24D01000272C6 /* Refresh-30px.png */; };
 		322D809A0F6DEB0F00D8C768 /* IconCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 322D80990F6DEB0F00D8C768 /* IconCache.m */; };
 		322D809F0F6DEB1F00D8C768 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 322D809C0F6DEB1F00D8C768 /* ABTableViewCell.m */; };
 		322D80A00F6DEB1F00D8C768 /* ShoutListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 322D809E0F6DEB1F00D8C768 /* ShoutListCell.m */; };
@@ -104,6 +105,7 @@
 		321E7FEF0F42207000E4B1C6 /* marker-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-blue.png"; sourceTree = "<group>"; };
 		321E7FF00F42207000E4B1C6 /* marker-red-withletter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-red-withletter.png"; sourceTree = "<group>"; };
 		321E7FF10F42207000E4B1C6 /* marker-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker-red.png"; sourceTree = "<group>"; };
+		322414EE0FB24D01000272C6 /* Refresh-30px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Refresh-30px.png"; sourceTree = "<group>"; };
 		322D80980F6DEB0F00D8C768 /* IconCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IconCache.h; path = Utility/IconCache.h; sourceTree = "<group>"; };
 		322D80990F6DEB0F00D8C768 /* IconCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IconCache.m; path = Utility/IconCache.m; sourceTree = "<group>"; };
 		322D809B0F6DEB1F00D8C768 /* ABTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABTableViewCell.h; path = UI/ABTableViewCell.h; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				32A0B3510F3A420900EEB53C /* ShizzowIcon.png */,
 				326A0EF00F4E17C800322F4D /* Listening.png */,
 				32F8F4EC0F65E10A0065886D /* Refresh.png */,
+				322414EE0FB24D01000272C6 /* Refresh-30px.png */,
 				32A0B3500F3A420900EEB53C /* DefaultPersonIcon.png */,
 				32F8F4DD0F65D8270065886D /* Nearby.png */,
 				32F8F4E20F65D8F60065886D /* Hotspots.png */,
@@ -490,6 +493,7 @@
 				32A626240F7F6C0400DDE5BE /* ShoutDetail.xib in Resources */,
 				3280DDC60F9A69B90050E480 /* ShizzupIcon.png in Resources */,
 				32F59BD60F9DBA3900B83E3E /* Shizzup.mobileprovision in Resources */,
+				322414EF0FB24D01000272C6 /* Refresh-30px.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

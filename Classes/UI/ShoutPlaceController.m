@@ -132,6 +132,7 @@
 }
 
 - (IBAction) refreshLocation {
+    NSLog(@"ShoutPlaceController refreshLocation");
     [LocationManager stopUpdating];
     [LocationManager startUpdating];
 }

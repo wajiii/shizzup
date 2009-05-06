@@ -87,6 +87,10 @@ void ensureInit() {
     NSLog(@"LocationManager locationManager: didUpdateToLocation: fromLocation:");
     //NSLog(@"  - oldLocation: %@", oldLocation);
     //NSLog(@"  - newLocation: %@", newLocation);
+#if (TARGET_IPHONE_SIMULATOR)
+    newLocation = defaultLocation;
+    NSLog(@"  - TARGET_IPHONE_SIMULATOR is set, sending default location.");
+#endif
     [delegate locationManager:manager didUpdateToLocation:newLocation fromLocation:oldLocation];
 }
 
