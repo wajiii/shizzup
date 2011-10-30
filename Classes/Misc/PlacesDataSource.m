@@ -120,7 +120,7 @@ NSInteger distanceSort(id place1, id place2, void *context) {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_REUSE_ID];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CELL_REUSE_ID] autorelease];
-        
+
         CGFloat nameX = NAME_MARGIN_HORIZONTAL;
         CGFloat nameY = NAME_MARGIN_VERTICAL;
         CGFloat nameWidth = (cell.contentView.frame.size.width * 0.8) - (NAME_MARGIN_HORIZONTAL * 1.5);
@@ -169,13 +169,13 @@ NSInteger distanceSort(id place1, id place2, void *context) {
         [nameLabel setTextColor:[UIColor blackColor]];
     }
     [nameLabel setText:nameValue];
-    
+
     UILabel *distLabel = (UILabel *)[cell.contentView viewWithTag:TAG_DISTANCE];
     //NSLog(@"   - distLabel: %@", distLabel);
     NSString *distValue = [NSString stringWithFormat:@"%1.0fm", ([[place distance] doubleValue] * 1000)];
     //NSLog(@"   - distValue: %@", distValue);
     [distLabel setText:distValue];
-    
+
     return cell;
 }
 

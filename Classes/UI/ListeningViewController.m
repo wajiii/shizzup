@@ -34,11 +34,11 @@
 
     NSLog(@"Setting up shout manager...");
     shoutManager = [[ShoutManager alloc] init];
-    
+
     NSLog(@"Setting up shouts data source...");
     [shoutManager setWho:@"listening"];
     ListeningDataSource *shoutsDataSource = [ListeningDataSource initWithManager:shoutManager controller:self];
-    
+
     NSLog(@"Setting up list view...");
     [tableView setDataSource:shoutsDataSource];
     [tableView setDelegate:shoutsDataSource];
@@ -52,7 +52,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     NSLog(@"ListeningViewController viewWillAppear");
     [super viewWillAppear:animated];
-    
+
     // Start data retrieval
     NSLog(@"Starting shout retrieval...");
     //[self refreshShoutList];
@@ -73,7 +73,7 @@
 
 - (void) dataLoaded:(NSArray *)shouts {
     NSLog(@"ListeningViewController dataLoaded");
-    
+
     // Update tab bar item badge
     NSUInteger shoutCount = 0;
     if (shouts != nil) {
@@ -81,12 +81,12 @@
     }
     NSString *shoutCountS = [NSString stringWithFormat:@"%u", shoutCount];
     [[self tabBarItem] setBadgeValue:shoutCountS];
-    
+
     // Update list view table
     [tableView setHidden:NO];
     [tableView reloadData];
     //    [tableView performSelectorInBackground:@selector(reloadData) withObject:nil];
-    
+
     // Scroll to first shout
     // Reconsidering this, given auto-reload
     NSArray *visibleCells = [tableView visibleCells];
@@ -100,7 +100,7 @@
         [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
         [indexPath release];
     }
-    
+
     // Let user know we're done reloading
     [spinnerView stopAnimating];
     if (isFirstLoad) {

@@ -22,20 +22,20 @@
 
 - (NSURLConnection *) callUri:(NSString *)apiUriStub usingMethod:(NSString *)method withDelegate:(id)delegate withBody:(NSString *)body {
     //NSLog(@"   - apiUriStub: %@", apiUriStub);
-    
+
     NSString *apiUrlString = [NSString stringWithFormat:@"%@%@", SHIZZOW_API_URL_PREFIX, apiUriStub];
     //NSLog(@"   - apiUrlString: %@", apiUrlString);
-    
+
     NSURL *apiUrl = [NSURL URLWithString:apiUrlString];
     NSLog(@"   - apiUrl: %@", apiUrl);
-    
+
     NSURLProtectionSpace *protectionSpace = [NSURLProtectionSpace alloc];
     NSString *host = [apiUrl host];
     NSInteger port = [[apiUrl port] integerValue];
     NSString *scheme = [apiUrl scheme];
     [protectionSpace initWithHost:host port:port protocol:scheme realm:nil authenticationMethod:nil];
     //NSLog(@"protectionSpace: %@", protectionSpace);
-    
+
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: apiUrl];
     [request setHTTPMethod: method];
     NSLog(@"   - method: %@", method);
@@ -50,7 +50,7 @@
         }
     }
     NSLog(@"        request: %@", request);
-    
+
     // TODO: Find a better way around this!  Would be ideal to detect the problem, prompt user before continuing, and allow only for the appropriate request; a la Safari's invalid-certificate handling.
     @try {
         [NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[apiUrl host]];
@@ -62,7 +62,7 @@
     [self abort];
     connection = [[NSURLConnection connectionWithRequest:request delegate:delegate] retain];
     //NSLog(@"     connection: %@", connection);
-    
+
     return connection;
 }
 
