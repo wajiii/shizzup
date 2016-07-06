@@ -95,7 +95,7 @@
     [converter release];
     //NSLog(@"                              filteredResponseText: %@", filteredResponseText);
     NSDictionary *responseDictionary = [filteredResponseText JSONValue];
-    
+
     //NSLog(@"   - responseDictionary: %@: %@", [responseDictionary class], responseDictionary);
     NSDictionary *results = [responseDictionary valueForKey:@"results"];
     //NSLog(@"   - results: %@: %@", [results class], results);

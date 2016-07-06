@@ -70,7 +70,7 @@ static UIFont *messageFont = nil;
     //CFAbsoluteTime currentMethodStart = CFAbsoluteTimeGetCurrent();
     NSArray *mySizes = [allSizes objectForKey:shoutId];
     //NSLog(@"   - mySizes: %@", mySizes);
-    
+
 	CGContextRef context = UIGraphicsGetCurrentContext();
     UIColor *backgroundColor = [UIColor whiteColor];
 	UIColor *textColor = [UIColor blackColor];
@@ -78,14 +78,14 @@ static UIFont *messageFont = nil;
 		backgroundColor = [UIColor clearColor];
 		textColor = [UIColor whiteColor];
 	}
-    
+
 	// Fill cell with background color
 	[backgroundColor set];
 	CGContextFillRect(context, r);
-    
+
 	// Draw user's icon
     [[shout icon] drawAtPoint:CGPointMake(SHOUTCELL_MARGIN_HORIZONTAL, SHOUTCELL_MARGIN_VERTICAL)];
-    
+
 	[textColor set];
     //float messageWidth = [[mySizes objectAtIndex:0] floatValue];
     float messageHeight = [[mySizes objectAtIndex:1] floatValue];
@@ -93,7 +93,7 @@ static UIFont *messageFont = nil;
     //NSLog(@"   - messageHeight: %f", messageHeight);
     CGRect firstRect = CGRectMake(LABEL_ORIGIN_X, SHOUTCELL_MARGIN_VERTICAL, labelWidth, messageHeight);
     CGSize firstSizeDrawn = [message drawInRect:firstRect withFont:messageFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
-	
+
     //CGSize ageSize = [age sizeWithFont:ageFont constrainedToSize:maxTextSize lineBreakMode:UILineBreakModeWordWrap];
     //float ageWidth = ageSize.width;
     float ageWidth = [[mySizes objectAtIndex:2] floatValue];
@@ -109,7 +109,7 @@ static UIFont *messageFont = nil;
     ageY = MAX(ageMinY, ageY);
     //NSLog(@"   - ageY: %f", ageY);
     CGRect ageRect = CGRectMake(ageX, ageY, ageWidth, ageHeight);
-    //CGSize ageSizeDrawn = 
+    //CGSize ageSizeDrawn =
         [age drawInRect:ageRect withFont:ageFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentRight];
     //NSLog(@"   - ageSizeDrawn.width: %f", ageSizeDrawn.width);
     //NSLog(@"   - ageSizeDrawn.height: %f", ageSizeDrawn.height);
@@ -151,7 +151,7 @@ static UIFont *messageFont = nil;
     NSString *shoutId = [shout shouts_history_id];
     NSString *message = [ShoutListCell messageForShout: shout];
     NSString *age = [shout relativeShoutTime];
-    
+
     BOOL calculate = YES;
     NSMutableArray *mySizes = [allSizes objectForKey:shoutId];
     if (mySizes != nil) {
@@ -168,7 +168,7 @@ static UIFont *messageFont = nil;
             NSLog(@"    - new   : %@ %@", message, age);
         }
     }
-    if (calculate) {            
+    if (calculate) {
         //NSLog(@"   - creating new mySizes");
         mySizes = [[NSMutableArray alloc] initWithCapacity:5];
         //NSLog(@"   - mySizes: %@", mySizes);
@@ -182,11 +182,11 @@ static UIFont *messageFont = nil;
         [mySizes addObject:messageHeightNSN];
         [messageWidthNSN release];
         [messageHeightNSN release];
-        
+
         // Text height, plus vertical margins above and below
         result = (SHOUTCELL_MARGIN_VERTICAL * 2) + messageSize.height;
         //NSLog(@"   - result: %f", result);
-        
+
         CGSize ageSize = [age sizeWithFont:ageFont constrainedToSize:maxTextSize lineBreakMode:UILineBreakModeWordWrap];
         NSNumber *ageWidthNSN = [[NSNumber alloc] initWithFloat:ageSize.width];
         NSNumber *ageHeightNSN = [[NSNumber alloc] initWithFloat:ageSize.height];
@@ -194,21 +194,21 @@ static UIFont *messageFont = nil;
         [mySizes addObject:ageHeightNSN];
         [ageWidthNSN release];
         [ageHeightNSN release];
-        
+
         // Add this text's height plus a final bottom margin.
         result += ageSize.height + SHOUTCELL_MARGIN_VERTICAL;
         //NSLog(@"   - result: %f", result);
-        
+
         result = MAX(result, CELL_HEIGHT_MIN);	// at least one row
         //NSLog(@"   - result: %f", result);
         NSNumber *cellHeightNSN = [[NSNumber alloc] initWithFloat:result];
         [mySizes addObject:cellHeightNSN];
         [cellHeightNSN release];
-        
+
         // For later comparison
         [mySizes addObject:message];
         [mySizes addObject:age];
-        
+
         //NSLog(@"   - mySizes: %@", mySizes);
         [allSizes setValue:mySizes forKey:shoutId];
         [mySizes release];

@@ -28,11 +28,11 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    
+
     // Set up data source
     shoutManager = [[ShoutManager alloc] init];
     nearbyDataSource = [NearbyDataSource initWithManager:shoutManager controller:self];
-    
+
     // Set up map view
     NSLog(@"Setting up map view...");
     mapView = (RMMapView *)[self view];
@@ -47,7 +47,7 @@
     [mapContents setZoomBounds:0.5 maxZoom:125000];
     [mapView setDelegate: self];
     [self setView:mapView];
-    
+
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -57,7 +57,7 @@
     [LocationManager setDelegate:self];
     NSLog(@"   - NearbyViewController starting location updates...");
     [LocationManager startUpdating];
-    
+
     // Start data retrieval
     //NSLog(@"Starting shout retrieval...");
     //    [spinnerView startAnimating];
@@ -191,7 +191,7 @@
         NSLog(@"   - NearbyViewController updating with location: %@", newLocation);
         CLLocationCoordinate2D coordinate = newLocation.coordinate;
         [[mapView contents] setMapCenter:coordinate];
-        
+
         NSLog(@"   - Starting shout retrieval...");
         // Start data retrieval
         [self refreshShoutList];

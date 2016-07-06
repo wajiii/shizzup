@@ -57,7 +57,7 @@ id APP_DELEGATE;
 
     // Attempt to load saved credentials
     [self retrieveCredentials];
-    
+
     // Crash reporting stuff
     PLCrashReporter *crashReporter = [PLCrashReporter sharedReporter];
     // Check if we previously crashed
@@ -82,7 +82,7 @@ id APP_DELEGATE;
     PLCrashReporter *crashReporter = [PLCrashReporter sharedReporter];
     NSData *crashData;
     NSError *error;
-    
+
     // Try loading the crash report
     crashData = [crashReporter loadPendingCrashReportDataAndReturnError: &error];
     if (crashData == nil) {
@@ -111,7 +111,7 @@ id APP_DELEGATE;
             //NSLog(@"JSON crash data: %@", [report JSONRepresentation]);
         }
     }
-    
+
     // Purge the report
     //[crashReporter purgePendingCrashReport];
     return;

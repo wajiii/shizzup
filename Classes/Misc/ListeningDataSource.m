@@ -107,7 +107,7 @@
     if (shoutIndex == 0) {
         return [controller refreshButtonCell];
     }
-    
+
     ShoutListCell *cell = (ShoutListCell *)[tableView dequeueReusableCellWithIdentifier: CELL_REUSE_ID];
     if (cell == nil) {
         cell = [[[ShoutListCell alloc] initWithFrame: CGRectZero reuseIdentifier: CELL_REUSE_ID] autorelease];
@@ -184,7 +184,7 @@
     NSLog(@"  - thread: %@", thread);
     for (Shout *shout in shouts) {
         //CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
-        //UIImage *icon = 
+        //UIImage *icon =
         [shout icon];
         //CFAbsoluteTime endTime = CFAbsoluteTimeGetCurrent();
         //NSLog(@"  - user: %@; place:%@; icon load time: %f", [shout username], [shout placeName], (endTime - startTime));

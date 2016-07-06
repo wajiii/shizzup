@@ -16,7 +16,7 @@
     NSNumber *shoutId;
     IconCache *iconCache;
     UIImage *icon;
-    
+
     // Start dictionary keys
     NSString *address1;
     NSString *address2;

@@ -44,11 +44,11 @@
     //unichar newChar;
     unichar oldChar;
     for (int i = 0; i < length; i++) {
-        //newChar = 
+        //newChar =
         oldChar = characters[i];
         //NSLog(@"   - character: %C", character);
         if (oldChar < 48 || (oldChar > 57 && oldChar < 65) || (oldChar > 90 && oldChar < 97) || oldChar > 122) {
-            //newChar = 
+            //newChar =
             characters[i] = SPACER_CHARACTER;
         }
         //NSLog(@"   - character: %C %C", oldChar, newChar);
@@ -93,7 +93,7 @@
                     }
                     icon = [roundedIcon retain];
                     NSData *iconPngData = UIImagePNGRepresentation(icon);
-                    //BOOL cacheWriteResult = 
+                    //BOOL cacheWriteResult =
                         [iconPngData writeToFile:thisFilePath atomically:YES];
                     //BOOL cacheWriteResult = [icons writeToFile:diskCachePath atomically:YES];
                     //NSLog(@"   - write to disk cache: %d", cacheWriteResult);

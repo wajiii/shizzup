@@ -26,9 +26,9 @@
 @property(nonatomic, retain) IBOutlet UILabel *personHandleLabel;
 @property(nonatomic, retain) IBOutlet UILabel *personNameLabel;
 @property(nonatomic, retain) IBOutlet UILabel *placeNameLabel;
-//@property(nonatomic, retain) IBOutlet 
-//@property(nonatomic, retain) IBOutlet 
-//@property(nonatomic, retain) IBOutlet 
-//@property(nonatomic, retain) IBOutlet 
+//@property(nonatomic, retain) IBOutlet
+//@property(nonatomic, retain) IBOutlet
+//@property(nonatomic, retain) IBOutlet
+//@property(nonatomic, retain) IBOutlet
 
 @end
